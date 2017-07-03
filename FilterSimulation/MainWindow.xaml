@@ -1,12 +1,80 @@
-﻿<Window x:Class="FilterSimulation.MainWindow"
+﻿<RibbonWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FilterSimulation"
+        xmlns:Primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon" x:Class="FilterSimulation.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        Title="MainWindow" Height="573.897" Width="900.735">
+	<Grid Margin="1,1,1,1">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Ribbon Grid.Row="0" Margin="1,1,1,1">
+			<Ribbon.HelpPaneContent>
+				<RibbonButton KeyTip="F"/>
+			</Ribbon.HelpPaneContent>
+
+			<RibbonTab Header="Filter`s types">
+				<RibbonGroup Header="Belt Filters">
+					<RibbonButton LargeImageSource="images\DramFilterIcon.png" Label="Continuous Filters"/>
+					<RibbonButton LargeImageSource="images\Filter.png" Label="Reversible Trays"/>
+					<RibbonButton LargeImageSource="images\Filter2.png" Label="Intermittent Filter Medium Movement"/>
+				</RibbonGroup>
+				<RibbonGroup >
+					<RibbonButton LargeImageSource="images\Filter3.png" Label="Drum Filters" />
+
+					<RibbonButton LargeImageSource="images\Filter4.png" Label="Disk Filters"/>
+					<RibbonButton LargeImageSource="images\Filter5.png" Label="Pan Filters"/>
+					<RibbonButton LargeImageSource="images\Filter6.png" Label="Nutsche Filters"/>
+					<RibbonButton LargeImageSource="images\Filter7.png" Label="Candle Filters"/>
+					<RibbonButton LargeImageSource="images\Filter8.png" Label="Pressure Leaf Filters"/>
+					<RibbonButton LargeImageSource="images\Filter9.png" Label="Filter Presses"/>
+				</RibbonGroup>
+			</RibbonTab>
+		</Ribbon>
+		<Grid Margin="0,0,242.235,125.897" Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="226"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<GroupBox  Margin="1,0,1,0" Height="Auto" d:LayoutOverrides="LeftMargin, RightMargin" ScrollViewer.CanContentScroll="True">
+				<GroupBox.Header>
+					<CheckBox >Washing parameters</CheckBox>
+				</GroupBox.Header>
+				<StackPanel>
+				<Menu Height="18" VerticalAlignment="Top">
+					<MenuItem>
+						<MenuItem.Header>
+							<CheckBox>
+								Prop1
+							</CheckBox>
+						</MenuItem.Header>
+					</MenuItem>
+					<MenuItem >
+						<MenuItem.Header>
+							<CheckBox>
+								Prop2
+							</CheckBox>
+						</MenuItem.Header>
+						
+					</MenuItem>
+					<MenuItem>
+						<MenuItem.Header>
+							<Button>
+								<Image Source="Images/Filter7.png"/>
+							</Button>
+						</MenuItem.Header>
+					</MenuItem>
+					
+				</Menu>
+				<DataGrid Name="WashingParametersDataGrid"/>
+				</StackPanel>
+			</GroupBox>
+
+		</Grid>
+
+	</Grid>
+</RibbonWindow>

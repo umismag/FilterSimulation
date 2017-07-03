@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Setting>
+	<MainWindow Maximized="1"><Rect Left="0" Top="0" Right="1280" Bottom="760"/><TopToolbar Visible="1"/><BottomToolbar Visible="1"/><LeftPane Visible="1" SplitterPos="194" CurrentTab="1" TabIndex0="0" TabIndex1="1" TabIndex2="2" TabIndex3="3" TabIndex4="4" TabIndex5="5"/></MainWindow>
+	<RecentFiles><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Петцольд Ч. Microsoft Windows Presentation Foundation. 2008. 944 с..djvu"/><File FilePath="D:\GoogleDisk\LAB\2017_Весняний семестр\Проектування інтерфейсу користувача\Л.З\Л.Р. 6 - 7 - Створення інтерфейсів користувача засобами Windows Presentation Foundation (Частина 2).pdf"/><File FilePath="D:\GoogleDisk\LAB\2017_Весняний семестр\Проектування інтерфейсу користувача\Л.З\Л.Р. 4 - 5. Створення інтерфейсів користувача засобами Windows Presentation Foundation.pdf"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Натан А. WPF 4. Подробное руководство. 2011. 880 с..pdf"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Мак-Дональд М. WPF- Windows Presentation Foundation в .NET 4.0 с примерами на C# 2010 для профессионалов (2011).djvu"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Common\(Ь)Пауэрс Л. MS Visual Studio 2008. 2009 р. 1200 с.djvu"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\C#\Windows8forCSdevelopment.pdf"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\C#\Пугачев С. В., Шериев А. М., Кичинский К. А. Разработка приложений для Windows 8 на языке C# (2013).pdf"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Мак-Дональд М. WPF 4 - Windows Presentation Foundation в .NET 4.0 с примерами на С# 2010 для профессионалов. 2011. 1024 с..djvu"/><File FilePath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Мак-Дональд М. Windows Presentation Foundation в .NET 4 (2011).djvu"/></RecentFiles>
+	<General UpdatePeriod="2" LastCheckUpdate="1499018127" CloseAppType="0">
+		<Language ID="ru"/>
+		<RecentFileList MaxCount="10"/>
+		<TabsSetting Bottom="0" OneOpenDocShow="0" DblClickClose="0" SkinIndex="1"/>
+		<DefaultZoom Method="1" Value="0"/><DefaultLayout Type="1"/><NavPanel DefaultIndex="1"/></General>
+	<Extended RestoreViewCheckedInOpenDialog="1" ReopenSession="0" RestoreView="1" PrintScalingTypeDef="1"/>
+	<FB2OptionsDlg MeasureUnits="1" PaperSizeType="0" PaperOrientation="0" PageWidth="135" PageHeight="210" PageMarginLeft="10" PageMarginTop="10" PageMarginRight="10" PageMarginBottom="10" PageBackgroundColor="15466495" ParagraphAlignment="3" ParagraphSpacingCoeff="2" ParagraphFirstLineIndent="10" ParagraphLineSpaceCoeff="1.1" FontName="Tahoma" FontBold="0" FontItalic="0" FontColor="0" FontSize="12"/>
+	<FB2Setting CoveragePageSkipMargin="1" AnchorColor="16744448">
+		<PageSetting Width="510.236206054688" Height="793.700805664063" MarginLeft="37.7952766418457" MarginRight="472.440948486328" MarginTop="37.7952766418457" MarginBottom="755.905517578125" Background="15466495"/>
+		<MainBody>
+			<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+			<TitleSetting>
+				<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="7.55905532836914" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.53999996185303"/>
+				<Font Name="Tahoma" Size="40" Style="1" Color="0"/>
+			</TitleSetting>
+			<EpigraphSetting>
+				<MainSetting>
+					<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+				</MainSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Author>
+					<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+				</Author>
+				<PoemSetting>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</DateSetting>
+				</PoemSetting>
+			</EpigraphSetting>
+			<SectionSetting StartOnNewPage="1">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="32" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="27.2000007629395" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</SectionSetting>
+			<SectionSetting StartOnNewPage="0">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="24" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="20.7999992370605" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</SectionSetting>
+			<SectionSetting StartOnNewPage="0">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="17.6000003814697" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</SectionSetting>
+			<SectionSetting StartOnNewPage="0">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</SectionSetting>
+			<FootnoteSetting StartOnNewPage="0">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="0" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="11.1999998092651" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="11.1999998092651" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="11.1999998092651" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</FootnoteSetting>
+		</MainBody>
+		<RestBody>
+			<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+			<TitleSetting>
+				<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="7.55905532836914" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.53999996185303"/>
+				<Font Name="Tahoma" Size="40" Style="1" Color="0"/>
+			</TitleSetting>
+			<EpigraphSetting>
+				<MainSetting>
+					<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+				</MainSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Author>
+					<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+				</Author>
+				<PoemSetting>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</DateSetting>
+				</PoemSetting>
+			</EpigraphSetting>
+			<SectionSetting StartOnNewPage="0">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</SectionSetting>
+			<FootnoteSetting StartOnNewPage="0">
+				<ImageSetting SinglePage="0" HorzAlign="1" TopSpace="7.55905532836914" BottomSpace="7.55905532836914"/>
+				<TitleSetting>
+					<Paragraph Aligment="0" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="11.1999998092651" Style="1" Color="0"/>
+				</TitleSetting>
+				<SubTitleSetting>
+					<Paragraph Aligment="1" LeftIndent="0" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="11.1999998092651" Style="1" Color="0"/>
+				</SubTitleSetting>
+				<MainSetting>
+					<Paragraph Aligment="3" LeftIndent="0" RightIndent="0" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+					<Font Name="Tahoma" Size="11.1999998092651" Style="0" Color="0"/>
+				</MainSetting>
+				<EpigraphSetting>
+					<MainSetting>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+					</MainSetting>
+					<CiteSetting>
+						<MainSetting>
+							<Paragraph Aligment="3" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</SubTitleSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="228.18896484375" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</Author>
+						<PoemSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</TitleSetting>
+							<EpigraphSetting>
+								<MainSetting>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+								</MainSetting>
+								<Author>
+									<Paragraph Aligment="2" LeftIndent="335.763763427734" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+								</Author>
+							</EpigraphSetting>
+							<StanzaSetting>
+								<TitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</TitleSetting>
+								<SubTitleSetting>
+									<Paragraph Aligment="1" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+								</SubTitleSetting>
+								<MainSetting>
+									<Paragraph Aligment="0" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+									<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+								</MainSetting>
+							</StanzaSetting>
+							<AuthorSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</AuthorSetting>
+							<DateSetting>
+								<Paragraph Aligment="2" LeftIndent="247.748016357422" RightIndent="10.8661413192749" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</DateSetting>
+						</PoemSetting>
+					</CiteSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="217.322830200195" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="336.850402832031" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="12.9599990844727" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="3" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="17.2800006866455" Style="2" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</EpigraphSetting>
+				<CiteSetting>
+					<MainSetting>
+						<Paragraph Aligment="3" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</MainSetting>
+					<SubTitleSetting>
+						<Paragraph Aligment="1" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="37.7952766418457" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</SubTitleSetting>
+					<Author>
+						<Paragraph Aligment="2" LeftIndent="21.7322826385498" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</Author>
+					<PoemSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+						</TitleSetting>
+						<EpigraphSetting>
+							<MainSetting>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+							</MainSetting>
+							<Author>
+								<Paragraph Aligment="2" LeftIndent="236.881881713867" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+							</Author>
+						</EpigraphSetting>
+						<StanzaSetting>
+							<TitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</TitleSetting>
+							<SubTitleSetting>
+								<Paragraph Aligment="1" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="2.20000004768372"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+							</SubTitleSetting>
+							<MainSetting>
+								<Paragraph Aligment="0" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+								<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+							</MainSetting>
+						</StanzaSetting>
+						<AuthorSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</AuthorSetting>
+						<DateSetting>
+							<Paragraph Aligment="2" LeftIndent="60.8503913879395" RightIndent="21.7322826385498" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="30.2362213134766" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+						</DateSetting>
+					</PoemSetting>
+				</CiteSetting>
+				<Poem>
+					<TitleSetting>
+						<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+						<Font Name="Tahoma" Size="16" Style="1" Color="0"/>
+					</TitleSetting>
+					<EpigraphSetting>
+						<MainSetting>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="2" Color="0"/>
+						</MainSetting>
+						<Author>
+							<Paragraph Aligment="2" LeftIndent="239.055114746094" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="14.3999996185303" Style="3" Color="0"/>
+						</Author>
+					</EpigraphSetting>
+					<StanzaSetting>
+						<TitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</TitleSetting>
+						<SubTitleSetting>
+							<Paragraph Aligment="1" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="2.20000004768372"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="1" Color="0"/>
+						</SubTitleSetting>
+						<MainSetting>
+							<Paragraph Aligment="0" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="7.55905532836914" LineSpaceCoeff="1.10000002384186"/>
+							<Font Name="Tahoma" Size="19.2000007629395" Style="0" Color="0"/>
+						</MainSetting>
+					</StanzaSetting>
+					<AuthorSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</AuthorSetting>
+					<DateSetting>
+						<Paragraph Aligment="2" LeftIndent="43.4645652770996" RightIndent="0" FirstLineIndent="0" BeforeParagraphSpace="0" AfterParagraphSpace="15.1181106567383" LineSpaceCoeff="1.10000002384186"/>
+						<Font Name="Tahoma" Size="16" Style="0" Color="0"/>
+					</DateSetting>
+				</Poem>
+			</FootnoteSetting>
+		</RestBody>
+	</FB2Setting>
+	<SearchEngines>
+		<Item Title="Yandex" URL="http://yandex.ru/yandsearch?text=%%SS%%"/>
+		<Item Title="Google" URL="http://www.google.com/search?q=%%SS%%"/>
+		<Item Title="Wikipedia" URL="http://www.wikipedia.org/wiki/%%SS%%"/>
+	</SearchEngines>
+	<ScreenTap ColCount="2" RowCount="2" Actions="0,0,0,0,"/><NavPanelsContent/><NavPanelsBookmarks/><ExportImageDlg Folder="D:\DownLoads\" ImageType="2" Resolution="300"/><NavPanelsThumbnail ThumbnailsSize="50"/><SearchSetting MatchCase="0" WholeWord="0" SearchType="0"><SearchComboBox><Item Text="right"/><Item Text="asp"/><Item Text="Глава 3"/><Item Text="цвет текста"/><Item Text="foreground"/><Item Text="TextElement"/><Item Text="ajax"/><Item Text="относительный"/><Item Text="относительный путь"/><Item Text="относительній путь"/><Item Text="относит"/><Item Text="PD"/><Item Text="cs326"/><Item Text="парал"/><Item Text="paral"/><Item Text="люд"/><Item Text="інтерф"/><Item Text="СВ.2"/><Item Text="СВ.2.14"/><Item Text="СВ.2.14 "/><Item Text="Лекція №"/><Item Text="des."/><Item Text="des.chi"/><Item Text="Human-Computer Interact"/><Item Text="Programming Languages"/><Item Text="hci."/><Item Text=".chi"/><Item Text="chi."/><Item Text="chi"/><Item Text="hci"/><Item Text="человеко-машинн"/><Item Text="интерфейс"/><Item Text="blend"/><Item Text="квантиф"/><Item Text="KLM-GOMS"/><Item Text="Модель KLM-GOMS"/><Item Text="1.6"/><Item Text="1.5"/><Item Text="юза"/><Item Text="розділ"/><Item Text="having"/><Item Text="pragma"/><Item Text="grid"/><Item Text="openmp"/><Item Text="mpi"/><Item Text="семафор"/><Item Text="229"/><Item Text="list"/><Item Text="82"/><Item Text="делегат"/></SearchComboBox><ListView PageColumn="50" TextColumn="250"/></SearchSetting><NavPanelsHighlight/><NavPanelsFileSystem PrvPanelHeight="186"/><Session Name="" ActiveFile="7"><File Filepath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\C#\Пугачев С. В., Шериев А. М., Кичинский К. А. Разработка приложений для Windows 8 на языке C# (2013).pdf" PageIndex="5"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="1.82494145199063"/><Anchor PageIndex="4" X="0" Y="432"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\C#\Windows8forCSdevelopment.pdf" PageIndex="165"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="0" Value="0.666825775656324"/><Anchor PageIndex="164" X="0" Y="388"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Common\(Ь)Пауэрс Л. MS Visual Studio 2008. 2009 р. 1200 с.djvu" PageIndex="674"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="0.882302989130435"/><Anchor PageIndex="673" X="0" Y="4887"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Мак-Дональд М. WPF- Windows Presentation Foundation в .NET 4.0 с примерами на C# 2010 для профессионалов (2011).djvu" PageIndex="793"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="1.72339437367304"/><Anchor PageIndex="793" X="0" Y="0"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Натан А. WPF 4. Подробное руководство. 2011. 880 с..pdf" PageIndex="4"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="1.30966386554622"/><Anchor PageIndex="4" X="0" Y="298"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LAB\2017_Весняний семестр\Проектування інтерфейсу користувача\Л.З\Л.Р. 4 - 5. Створення інтерфейсів користувача засобами Windows Presentation Foundation.pdf" PageIndex="20"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="1.30966386554622"/><Anchor PageIndex="20" X="0" Y="28"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LAB\2017_Весняний семестр\Проектування інтерфейсу користувача\Л.З\Л.Р. 6 - 7 - Створення інтерфейсів користувача засобами Windows Presentation Foundation (Частина 2).pdf" PageIndex="9"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="1.30966386554622"/><Anchor PageIndex="9" X="0" Y="193"/><Rotate/></STDUViewerCtrl></File><File Filepath="D:\GoogleDisk\LIT\!Програмування\Мови програмування\.NET\Технології\WPF\Петцольд Ч. Microsoft Windows Presentation Foundation. 2008. 944 с..djvu" PageIndex="0"><STDUViewerCtrl><ColorEffect Brightness="0" Contrast="0" Gamma="0" InvertColors="0"/><Layout Type="1"/><Zoom Method="1" Value="0.890286536879627"/><Anchor PageIndex="0" X="0" Y="2172"/><Rotate/></STDUViewerCtrl></File></Session><MainWindowAccelerators><Item Virt="11" Key="67" CMD="57634"/><Item Virt="11" Key="45" CMD="57634"/><Item Virt="11" Key="115" CMD="57602"/><Item Virt="11" Key="79" CMD="57601"/><Item Virt="11" Key="80" CMD="57607"/><Item Virt="11" Key="83" CMD="57611"/><Item Virt="11" Key="36" CMD="32780"/><Item Virt="11" Key="35" CMD="32783"/><Item Virt="11" Key="34" CMD="32782"/><Item Virt="11" Key="71" CMD="32784"/><Item Virt="11" Key="33" CMD="32781"/><Item Virt="11" Key="82" CMD="32786"/><Item Virt="27" Key="50" CMD="32776"/><Item Virt="27" Key="51" CMD="32777"/><Item Virt="27" Key="49" CMD="32775"/><Item Virt="11" Key="90" CMD="32785"/><Item Virt="3" Key="114" CMD="33933"/><Item Virt="11" Key="9" CMD="32910"/><Item Virt="15" Key="9" CMD="32911"/><Item Virt="3" Key="117" CMD="32920"/><Item Virt="11" Key="66" CMD="32922"/><Item Virt="11" Key="68" CMD="32921"/><Item Virt="19" Key="13" CMD="32927"/><Item Virt="23" Key="13" CMD="32927"/><Item Virt="11" Key="70" CMD="32923"/><Item Virt="11" Key="84" CMD="32924"/><Item Virt="11" Key="52" CMD="32812"/><Item Virt="11" Key="51" CMD="32822"/><Item Virt="11" Key="49" CMD="32811"/><Item Virt="11" Key="50" CMD="32810"/><Item Virt="11" Key="107" CMD="32813"/><Item Virt="11" Key="187" CMD="32813"/><Item Virt="11" Key="189" CMD="32814"/><Item Virt="11" Key="109" CMD="32814"/><Item Virt="11" Key="53" CMD="32823"/><Item Virt="15" Key="83" CMD="33278"/></MainWindowAccelerators><TextOptionsDlg MeasureUnits="0" PaperSizeType="6" PaperOrientation="0" PageWidth="8.5" PageHeight="11" PageMarginLeft="0" PageMarginTop="0" PageMarginRight="0" PageMarginBottom="0" PageBackgroundColor="14740459"/><TextFileDefault PageWidth="215.9" PageHeight="279.4" PageMarginLeft="0" PageMarginTop="0" PageMarginRight="215.9" PageMarginBottom="279.4" PageBackgroundColor="14740459" FontName="Courier New" FontBold="0" FontItalic="0" FontColor="0" FontSize="14" Antialiasing="0"/><MOBIOptionsDlg/><EPUBOptionsDlg/><SessionListView ColumnWidth0="585" ColumnWidth1="50" ColumnWidth2="250"/><MOBISetting/><OpenFileDialog/><EPUBSetting/><DocPropertiesDlg><PageList OrdersArray="0,1,2,3,4" ColumnsArray="0,1,2,3,4" WidthsArray="150,159,80,80,80"/></DocPropertiesDlg></Setting>

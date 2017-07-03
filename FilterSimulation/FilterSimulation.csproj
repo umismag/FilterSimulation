@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -92,6 +93,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\DramFilterIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\AddMark_10580_inverse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Filter9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
