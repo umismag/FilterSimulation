@@ -1,0 +1,41 @@
+public List<string> PrintNewLeadSet()
+		{
+			List<string> res = new List<string>();
+
+			Type t = this.GetType();
+
+			PropertyInfo[] pi = t.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+			foreach (PropertyInfo propinfo in pi)
+			{
+				if (propinfo.PropertyType.Name.IndexOf("[]") > 0)
+				{
+					string s = string.Empty;
+					foreach (var element in propinfo.GetValue(this, null) as Array)
+					{
+						if (element != null)
+						{
+							if (element is double)
+								if (element.ToString() != "0")
+									s += element.ToString() + ", ";
+								else
+									continue;
+							else
+								s += element.ToString() + ", ";
+						}
+						else
+							break;
+					}
+					if (s.LastIndexOf(", ") == s.Length - 2)
+						s = s.Remove(s.Length - 2, 2);
+					res.Add(propinfo.Name + " = " + s);
+				}
+				else if (propinfo.Name == "NewMarkingText")
+				{
+					res.Add(propinfo.GetValue(this, null).ToString());
+				}
+				else
+					res.Add(propinfo.Name + " = " + propinfo.GetValue(this, null));
+			}
+
+			return res;
+		}
