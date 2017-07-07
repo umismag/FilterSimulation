@@ -167,13 +167,15 @@ namespace FilterSimulation.Classes
 			}
 			else
 			{
-				if (tmpobj.Unit!=string.Empty)
+				if (tmpobj.Unit != string.Empty)
+				{					
 					res.Add(new ParametersTemplate()
 					{
-						Parameter =(parentObj.Name ?? "") + " " + tmpobj.Name,
+						Parameter = ((parentObj!=null)?parentObj.Name :"") + " " + tmpobj.Name,
 						Units = tmpobj.Unit,
 						Value = tmpobj.Value.ToString()
 					});
+				}
 			}
 
 			return res;

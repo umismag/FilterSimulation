@@ -40,14 +40,14 @@ namespace FilterSimulation
 
 			Washings.AddRange(new Washing[] {
 				new Washing("Water washing",Liquids[0],new Max_wash_out(100), new Min_wash_out(1), new Adaptation_ParameterA(0),new Adaptation_ParameterB(0)),
-				new Washing("Water washing",Liquids[1],new Max_wash_out(75), new Min_wash_out(2), new Adaptation_ParameterA(1),new Adaptation_ParameterB(1)),
-				new Washing("Water washing",Liquids[2],new Max_wash_out(60), new Min_wash_out(3), new Adaptation_ParameterA(2),new Adaptation_ParameterB(2)),
-				new Washing("Water washing",Liquids[3],new Max_wash_out(50), new Min_wash_out(4), new Adaptation_ParameterA(3),new Adaptation_ParameterB(3)),
+				new Washing("Washing2",Liquids[1],new Max_wash_out(75), new Min_wash_out(2), new Adaptation_ParameterA(1),new Adaptation_ParameterB(1)),
+				new Washing("Washing3",Liquids[2],new Max_wash_out(60), new Min_wash_out(3), new Adaptation_ParameterA(2),new Adaptation_ParameterB(2)),
+				new Washing("Washing4",Liquids[3],new Max_wash_out(50), new Min_wash_out(4), new Adaptation_ParameterA(3),new Adaptation_ParameterB(3)),
 				});
 
 			//LiquidSelectComboBox.ItemsSource = Liquids;
 			LiquidPropertiesExpander.DataContext = Liquids;
-			
+			WashingGroupBox.DataContext = Washings;
 		}
 
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -69,10 +69,11 @@ namespace FilterSimulation
 		{
 
 		}
-
+					
 		private void WashingSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+			WasingParametersDataGrid.ItemsSource = MyReflection.PrintParameters(WashingSelectComboBox.SelectedItem, null);
+			LiquidSelectComboBox.SelectedItem = ((Washing)WashingSelectComboBox.SelectedItem).SubParameters[0];
 		}
 	}
 

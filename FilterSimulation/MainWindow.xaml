@@ -9,9 +9,9 @@
 	x:Class="FilterSimulation.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="573.897" Width="900.735">
-	
-	
-	
+
+
+
 	<Grid Margin="1,1,1,1">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -84,13 +84,21 @@
 		</Ribbon>
 
 
-		<Grid Margin="0,0,242.235,125.897" Grid.Row="1" Height="275">
+		<Grid Margin="0,10,0,0" Grid.Row="1">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="226"/>
+				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 			<StackPanel Orientation="Vertical">
-				<GroupBox x:Name="WashingGroupBox" Height="Auto" ScrollViewer.CanContentScroll="True" Padding="1,3,1,1" Margin="0,0,0,70">
+				<GroupBox Name="CakeFormationGroupBox">
+					<GroupBox.Header>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Cake Formation Parameters"/>
+							<ComboBox Text="Select ..." IsEditable="True" IsReadOnly="True"/>
+						</StackPanel>
+					</GroupBox.Header>
+				</GroupBox>
+				<GroupBox x:Name="WashingGroupBox" Height="Auto" ScrollViewer.CanContentScroll="True" Padding="1,3,1,1" Margin="0,0,0,0">
 					<GroupBox.Header>
 						<StackPanel Orientation="Horizontal">
 							<CheckBox x:Name="WasingCheckBox" Content="Washing    " Checked="CheckBox_Checked" Click="CheckBox_Checked" IsChecked="True"/>
@@ -121,7 +129,7 @@
 						</Menu>
 						<Expander Name="LiquidPropertiesExpander">
 							<Expander.Header>
-								<DockPanel Width="185">
+								<DockPanel Width="Auto">
 									<TextBlock Text="Liquid:  " VerticalAlignment="Center"/>
 									<ComboBox x:Name="LiquidSelectComboBox"  ItemsSource="{Binding}"	DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" Text="Select Liquid... " Width="Auto" SelectedIndex="-1" IsEditable="True" SelectionChanged="LiquidSelectCombobox_SelectionChanged" DockPanel.Dock="Right" IsReadOnly="True" />
 								</DockPanel>
@@ -129,13 +137,13 @@
 							<StackPanel Orientation="Vertical">
 
 								<DataGrid x:Name="WashingLiquidParametersDataGrid" AutoGenerateColumns="True">
-									
+
 								</DataGrid>
-								
+
 							</StackPanel>
 						</Expander>
-						<Expander>
-							<Expander.Header>Washing parameters </Expander.Header>
+						<Expander IsExpanded="True">
+							<Expander.Header>Washing parameters</Expander.Header>
 							<DataGrid Name="WasingParametersDataGrid" AutoGenerateColumns="True"/>
 						</Expander>
 					</StackPanel>

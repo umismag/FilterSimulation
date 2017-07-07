@@ -71,8 +71,4 @@ namespace FilterSimulation.Classes
 	}
 
 	
-
-		
-
-
 }
