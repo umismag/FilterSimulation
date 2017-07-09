@@ -49,15 +49,22 @@ namespace FilterSimulation.Classes
 		string symbol;
 		public string Symbol
 		{
-			get { return symbol; }
+			get { return symbol+SymbolSuffix; }
 			internal set { symbol = value; }
+		}
+
+		string symbolSuffix = string.Empty;
+		public string SymbolSuffix
+		{
+			get { return symbolSuffix; }
+			internal set { symbolSuffix = value; }
 		}
 
 		double minValue = double.MinValue;
 		double maxValue = double.MaxValue;
 
-		double value;
-		public double Value
+		double? value=null;
+		public double? Value
 		{
 			get { return this.value; }
 			set
@@ -87,7 +94,7 @@ namespace FilterSimulation.Classes
 			Symbol = "eta";
 		}
 
-		public Viscosity(double Value):this()
+		public Viscosity(double? Value):this()
 		{
 			this.Value = Value;
 		}
@@ -102,16 +109,16 @@ namespace FilterSimulation.Classes
 			Symbol = "rho";
 		}
 
-		public Density(double Value):this()
+		public Density(double? Value):this()
 		{
 			this.Value = Value;
 		}
 	}
 
-	class Liquid:Parameter
+	class WashingLiquid:Parameter
 	{
 		
-		public Liquid(string name, Viscosity viscosity, Density density)
+		public WashingLiquid(string name, Viscosity viscosity, Density density)
 		{
 			Name = name;
 			SubParameters = new Parameter[] { viscosity, density };
@@ -151,29 +158,29 @@ namespace FilterSimulation.Classes
 	{
 		public static List<ParametersTemplate> PrintParameters(object obj, Parameter parentObj)
 		{
-			Parameter tmpobj = obj as Parameter;
-			if (tmpobj == null) return null;
+			Parameter tmpObj = obj as Parameter;
+			if (tmpObj == null) return null;
 
 			
 			List<ParametersTemplate> res = new List<ParametersTemplate>();
 
-			if (tmpobj.SubParameters!=null)
+			if (tmpObj.SubParameters!=null)
 			{
-				foreach(Parameter par in tmpobj.SubParameters)
+				foreach(Parameter par in tmpObj.SubParameters)
 				{
-					res.AddRange(PrintParameters(par,tmpobj));
+					res.AddRange(PrintParameters(par,tmpObj));
 				}
 				
 			}
 			else
 			{
-				if (tmpobj.Unit != string.Empty)
+				if (tmpObj.Unit != string.Empty)
 				{					
 					res.Add(new ParametersTemplate()
 					{
-						Parameter = ((parentObj!=null)?parentObj.Name :"") + " " + tmpobj.Name,
-						Units = tmpobj.Unit,
-						Value = tmpobj.Value.ToString()
+						Parameter = ((parentObj!=null)?parentObj.Name :"") + " "+ tmpObj.Name+" ["+ tmpObj.Symbol + "]" ,
+						Units = tmpObj.Unit,
+						Value = tmpObj.Value.ToString()
 					});
 				}
 			}

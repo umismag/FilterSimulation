@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CakeFormation.cs" />
     <Compile Include="ClassesDirectory.cs" />
     <Compile Include="Classes\Washing.cs" />
     <Compile Include="MainWindow.xaml.cs">

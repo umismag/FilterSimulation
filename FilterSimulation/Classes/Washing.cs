@@ -8,7 +8,7 @@ namespace FilterSimulation.Classes
 {
 	class Washing : Parameter
 	{
-		public Washing(string name, Liquid liquid, Max_wash_out max_wash_out, Min_wash_out min_wash_out, Adaptation_ParameterA adaptation_ParameterA, Adaptation_ParameterB adaptation_ParameterB)
+		public Washing(string name, WashingLiquid liquid, Max_wash_out max_wash_out, Min_wash_out min_wash_out, Adaptation_ParameterA adaptation_ParameterA, Adaptation_ParameterB adaptation_ParameterB)
 		{
 			Name = name;
 			SubParameters = new Parameter[] { liquid, max_wash_out, min_wash_out, adaptation_ParameterA, adaptation_ParameterB };
@@ -17,7 +17,7 @@ namespace FilterSimulation.Classes
 	
 	class Max_wash_out:Parameter
 	{
-		public Max_wash_out(double value)
+		public Max_wash_out(double? value)
 		{
 			Value = value;
 			Name = "Max_wash_out";
@@ -28,7 +28,7 @@ namespace FilterSimulation.Classes
 
 	class Min_wash_out : Parameter
 	{
-		public Min_wash_out(double value)
+		public Min_wash_out(double? value)
 		{
 			Value = value;
 			Name = "Min_wash_out";
@@ -39,7 +39,7 @@ namespace FilterSimulation.Classes
 
 	class Washing_Index : Parameter
 	{
-		public Washing_Index(double value)
+		public Washing_Index(double? value)
 		{
 			Value = value;
 			Name = "Washing Index";
@@ -50,7 +50,7 @@ namespace FilterSimulation.Classes
 
 	class Adaptation_ParameterA : Parameter
 	{
-		public Adaptation_ParameterA(double value)
+		public Adaptation_ParameterA(double? value)
 		{
 			Value = value;
 			Name = "Adaptation Parameter A";
@@ -61,7 +61,7 @@ namespace FilterSimulation.Classes
 
 	class Adaptation_ParameterB : Parameter
 	{
-		public Adaptation_ParameterB(double value)
+		public Adaptation_ParameterB(double? value)
 		{
 			Value = value;
 			Name = "Adaptation Parameter B";

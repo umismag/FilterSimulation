@@ -23,7 +23,7 @@ namespace FilterSimulation
 	/// </summary>
 	public partial class MainWindow : RibbonWindow
 	{
-		List<Liquid> Liquids = new List<Liquid>();
+		List<WashingLiquid> Liquids = new List<WashingLiquid>();
 		List<Washing> Washings = new List<Washing>();
 		//public ObservableCollection<Liquid> Liquids = new ObservableCollection<Liquid>();
 
@@ -32,10 +32,10 @@ namespace FilterSimulation
 			InitializeComponent();
 
 			
-			Liquids.Add(new Liquid("Water", new Viscosity(0.894), new Density(1000)));
-			Liquids.Add(new Liquid("Acetone", new Viscosity(0.306), new Density(797.05)));
-			Liquids.Add(new Liquid("Ethanol", new Viscosity(1.074), new Density(789.3)));
-			Liquids.Add(new Liquid("Sulfuric acid", new Viscosity(24.2), new Density(1835.6)));
+			Liquids.Add(new WashingLiquid("Water", new Viscosity(0.894), new Density(1000)));
+			Liquids.Add(new WashingLiquid("Acetone", new Viscosity(0.306), new Density(797.05)));
+			Liquids.Add(new WashingLiquid("Ethanol", new Viscosity(1.074), new Density(789.3)));
+			Liquids.Add(new WashingLiquid("Sulfuric acid", new Viscosity(24.2), new Density(1835.6)));
 
 
 			Washings.AddRange(new Washing[] {
