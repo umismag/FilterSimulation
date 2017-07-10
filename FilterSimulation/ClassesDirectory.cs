@@ -24,8 +24,27 @@ namespace FilterSimulation.Classes
 
 	public abstract class Parameter : IParameterDefinition
 	{
-		Parameter[] subParameters=null;
-		public Parameter[] SubParameters
+		public Parameter this[string typeOfParameter]
+		{
+			get
+			{
+				foreach (Parameter par in SubParameters)
+				{
+					if (par.GetType().Name == typeOfParameter)
+					{
+						return par;
+					}
+				}
+				return null;
+			}
+			set
+			{
+
+			}
+		}
+
+		Dictionary<Type,Parameter> subParameters=null;
+		public Dictionary<Type, Parameter> SubParameters
 		{
 			get { return subParameters; }
 			set { subParameters = value; }
@@ -82,53 +101,7 @@ namespace FilterSimulation.Classes
 		{
 			return Value.ToString();
 		}		
-	}
-
-
-	class Viscosity:Parameter
-	{						
-		public Viscosity()
-		{
-			Name = "Viscosity";
-			Unit = "mPa*s";
-			Symbol = "eta";
-		}
-
-		public Viscosity(double? Value):this()
-		{
-			this.Value = Value;
-		}
-	}
-
-	class Density:Parameter
-	{
-		public Density()
-		{
-			Name = "Density";
-			Unit = "kg/m3";
-			Symbol = "rho";
-		}
-
-		public Density(double? Value):this()
-		{
-			this.Value = Value;
-		}
-	}
-
-	class WashingLiquid:Parameter
-	{
-		
-		public WashingLiquid(string name, Viscosity viscosity, Density density)
-		{
-			Name = name;
-			SubParameters = new Parameter[] { viscosity, density };
-		}
-
-		public override string ToString()
-		{
-			return Name;
-		}
-	}
+	}	
 	   
 	public class ParametersTemplate
 	{
@@ -166,7 +139,7 @@ namespace FilterSimulation.Classes
 
 			if (tmpObj.SubParameters!=null)
 			{
-				foreach(Parameter par in tmpObj.SubParameters)
+				foreach(Parameter par in tmpObj.SubParameters.Values)
 				{
 					res.AddRange(PrintParameters(par,tmpObj));
 				}
