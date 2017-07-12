@@ -9,42 +9,124 @@ namespace FilterSimulation
 {
 	class CakeFormation:Parameter
 	{
+		Suspension suspension;
+		public Suspension Suspension
+		{
+			get { return suspension; }
+			set { suspension = value; }
+		}
+
+		Filter filter;
+		public Filter Filter
+		{
+			get { return filter; }
+			set { filter = value; }
+		}
+
+		Cake cake;
+		public Cake Cake
+		{
+			get { return cake; }
+			set { cake = value; }
+		}
+
 		public CakeFormation(string name, Suspension suspension, Filter filter, Cake cake )
 		{
 			Name = name;
-			
-			SubParameters = new List<Parameter> { suspension, filter, cake };
+			Suspension = suspension;
+			Filter = filter;
+			Cake = cake;
 		}
 	}
 
 	class Suspension:Parameter
 	{
+		Filtrate filtrate;
+		public Filtrate Filtrate
+		{
+			get { return filtrate; }
+			set { filtrate = value; }
+		}
+
+		Density solidDensity;
+		public Density SolidDensity
+		{
+			get { return solidDensity; }
+			set { solidDensity = value; }
+		}
+
+		SolidConcentration solidConcentration;
+		public SolidConcentration SolidConcentration
+		{
+			get { return solidConcentration; }
+			set { solidConcentration = value; }
+		}
+
+		Compressibility compressibility;
+		public Compressibility Compressibility
+		{
+			get { return compressibility; }
+			set { compressibility = value; }
+		}
+
 		public Suspension(string name, Filtrate filtrate, Density solidDensity, SolidConcentration solidConcentration, Compressibility compressibility)
 		{
 			Name = name;
 			solidDensity.SymbolSuffix = " s";
-			SubParameters = new List<Parameter> { filtrate, solidDensity, solidConcentration, compressibility };
 
+			Filtrate = filtrate;
+			SolidDensity = solidDensity;
+			SolidConcentration = solidConcentration;
+			Compressibility = compressibility;
 		}
 	}
 	
 	class Filter:Parameter
 	{
+		Resistance mediumResistance;
+		public Resistance MediumResistance
+		{
+			get { return mediumResistance; }
+			set { mediumResistance = value; }
+		}
+
 		public Filter(string name, Resistance filterMediumResistance)
 		{
 			Name = name;
-
-			SubParameters = new List<Parameter> { filterMediumResistance };
+			MediumResistance = filterMediumResistance;
 		}
 	}
 
 	class Cake : Parameter
 	{
+		Porosity porosity;
+		public Porosity Porosity
+		{
+			get { return porosity; }
+			set { porosity = value; }
+		}
+
+		Permeability permeability;
+		public Permeability Permeability
+		{
+			get { return permeability; }
+			set { permeability = value; }
+		}
+
+		Compressibility compressibility;
+		public Compressibility Compressibility
+		{
+			get { return compressibility; }
+			set { compressibility = value; }
+		}
+
 		public Cake(string name, Porosity porosity, Permeability permeability, Compressibility compressibility)
 		{
 			Name = name;
 			permeability.SymbolSuffix = "c0";
-			SubParameters = new List<Parameter> { porosity, permeability, compressibility };
+			Porosity = porosity;
+			Permeability = permeability;
+			Compressibility = compressibility;
 		}
 	}
 
@@ -105,10 +187,25 @@ namespace FilterSimulation
 
 	class Filtrate:Parameter
 	{
+		Viscosity viscosity;
+		public Viscosity Viscosity
+		{
+			get { return viscosity; }
+			set { viscosity = value; }
+		}
+
+		Density density;
+		public Density Density
+		{
+			get { return density; }
+			set { density = value; }
+		}
+
 		Filtrate(string name, Viscosity viscosity, Density density)
 		{
 			Name = name;
-			SubParameters = new List<Parameter> { viscosity, density };
+			Viscosity = viscosity;
+			Density = density;
 		}
 	}
 }

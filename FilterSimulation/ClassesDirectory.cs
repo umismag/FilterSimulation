@@ -24,33 +24,7 @@ namespace FilterSimulation.Classes
 
 	public abstract class Parameter : IParameterDefinition
 	{
-		public Parameter this[string typeOfParameter]
-		{
-			get
-			{
-				foreach (Parameter par in SubParameters)
-				{
-					if (par.GetType().Name == typeOfParameter)
-					{
-						return par;
-					}
-				}
-				return null;
-			}
-			set
-			{
-
-			}
-		}
-
-		Dictionary<Type,Parameter> subParameters=null;
-		public Dictionary<Type, Parameter> SubParameters
-		{
-			get { return subParameters; }
-			set { subParameters = value; }
-		}
-
-
+		
 		internal string name;
 		public string Name
 		{
@@ -129,40 +103,40 @@ namespace FilterSimulation.Classes
 
 	public static class MyReflection
 	{
-		public static List<ParametersTemplate> PrintParameters(object obj, Parameter parentObj)
-		{
-			Parameter tmpObj = obj as Parameter;
-			if (tmpObj == null) return null;
+		//public static List<ParametersTemplate> PrintParameters(object obj, Parameter parentObj)
+		//{
+		//	Parameter tmpObj = obj as Parameter;
+		//	if (tmpObj == null) return null;
 
 			
-			List<ParametersTemplate> res = new List<ParametersTemplate>();
+		//	List<ParametersTemplate> res = new List<ParametersTemplate>();
 
-			if (tmpObj.SubParameters!=null)
-			{
-				foreach(Parameter par in tmpObj.SubParameters.Values)
-				{
-					res.AddRange(PrintParameters(par,tmpObj));
-				}
+		//	if (tmpObj.SubParameters!=null)
+		//	{
+		//		foreach(Parameter par in tmpObj.SubParameters.Values)
+		//		{
+		//			res.AddRange(PrintParameters(par,tmpObj));
+		//		}
 				
-			}
-			else
-			{
-				if (tmpObj.Unit != string.Empty)
-				{					
-					res.Add(new ParametersTemplate()
-					{
-						Parameter = ((parentObj!=null)?parentObj.Name :"") + " "+ tmpObj.Name+" ["+ tmpObj.Symbol + "]" ,
-						Units = tmpObj.Unit,
-						Value = tmpObj.Value.ToString()
-					});
-				}
-			}
+		//	}
+		//	else
+		//	{
+		//		if (tmpObj.Unit != string.Empty)
+		//		{					
+		//			res.Add(new ParametersTemplate()
+		//			{
+		//				Parameter = ((parentObj!=null)?parentObj.Name :"") + " "+ tmpObj.Name+" ["+ tmpObj.Symbol + "]" ,
+		//				Units = tmpObj.Unit,
+		//				Value = tmpObj.Value.ToString()
+		//			});
+		//		}
+		//	}
 
-			return res;
-		}
+		//	return res;
+		//}
 
 
-		public static List<ParametersTemplate> PrintNewLeadSet(object obj)
+		public static List<ParametersTemplate> PrintNewLeadSet(Parameter obj, Parameter parentObject=null)
 		{
 			if (obj == null) return null;
 
@@ -171,42 +145,55 @@ namespace FilterSimulation.Classes
 			Type t = obj.GetType();
 
 			PropertyInfo[] pi = t.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+
+
 			foreach (PropertyInfo propinfo in pi)
 			{
-				if (propinfo.PropertyType.Name.IndexOf("[]") > 0)
+				Parameter subObj = propinfo.GetValue(obj) as Parameter;
+				if (subObj == null) continue;
+
+				bool isSubparameter = subObj != null && (subObj.Symbol == null || subObj.Unit == null);
+				if (isSubparameter)
 				{
-					
-					foreach (var element in propinfo.GetValue(obj, null) as Array)
-					{
-						if (element != null && element is Parameter)
-						{
-							Parameter tmppar = (Parameter)element;
-							res.Add(new ParametersTemplate()
-							{
-								Parameter = propinfo.Name + " " + tmppar.Name,
-								Units = tmppar.Unit,
-								Value = tmppar.ToString()
-							});
-						}
-						else
-							break;
-					}
-					
-					//res.Add(new string[] { propinfo.Name, s });
+					res.AddRange(PrintNewLeadSet(subObj, obj));
 				}
 				else
 				{
-					if (propinfo.GetValue(obj, null) !=null)
-					res.Add(new ParametersTemplate()
+					if (propinfo.PropertyType.Name.IndexOf("[]") > 0)
 					{
-						Parameter =t.Name+" "+ propinfo.Name,
-						Units = "",
-						Value = propinfo.GetValue(obj, null).ToString()
-					});
-					//res.Add(new string[] { propinfo.Name,propinfo.GetValue(obj, null).ToString() });
+
+						foreach (var element in propinfo.GetValue(obj, null) as Array)
+						{
+							if (element != null && element is Parameter)
+							{
+								Parameter tmppar = (Parameter)element;
+								res.Add(new ParametersTemplate()
+								{
+									Parameter = propinfo.Name + " " + tmppar.Name,
+									Units = tmppar.Unit,
+									Value = tmppar.ToString()
+								});
+							}
+							else
+								break;
+						}
+
+						//res.Add(new string[] { propinfo.Name, s });
+					}
+					else
+					{
+						bool isPrintableParameter = propinfo.GetValue(obj, null) != null ;
+						if (isPrintableParameter)
+							res.Add(new ParametersTemplate()
+							{
+								Parameter = parentObject!=null?parentObject.Name:"" + " " + propinfo.Name,
+								Units = (propinfo.GetValue(obj, null) as Parameter).Unit,
+								Value = (propinfo.GetValue(obj, null) as Parameter).Value.ToString()
+							});
+						//res.Add(new string[] { propinfo.Name,propinfo.GetValue(obj, null).ToString() });
+					}
 				}
 			}
-
 			return res;
 		}
 	}

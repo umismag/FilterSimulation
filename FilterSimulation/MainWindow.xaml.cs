@@ -61,7 +61,7 @@ namespace FilterSimulation
 
 		private void LiquidSelectCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			WashingLiquidParametersDataGrid.ItemsSource = MyReflection.PrintParameters(LiquidSelectComboBox.SelectedItem,null);
+			WashingLiquidParametersDataGrid.ItemsSource = MyReflection.PrintNewLeadSet(LiquidSelectComboBox.SelectedItem as Parameter,null);
 			//new object[] { LiquidSelectComboBox.SelectedItem };
 		}
 
@@ -72,8 +72,8 @@ namespace FilterSimulation
 					
 		private void WashingSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			WasingParametersDataGrid.ItemsSource = MyReflection.PrintParameters(WashingSelectComboBox.SelectedItem, null);
-			LiquidSelectComboBox.SelectedItem = ((Washing)WashingSelectComboBox.SelectedItem).SubParameters[0];
+			WasingParametersDataGrid.ItemsSource = MyReflection.PrintNewLeadSet(WashingSelectComboBox.SelectedItem as Parameter, null);
+			LiquidSelectComboBox.SelectedItem = ((Washing)WashingSelectComboBox.SelectedItem).Liquid;
 		}
 	}
 

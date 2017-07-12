@@ -8,24 +8,58 @@ namespace FilterSimulation.Classes
 {
 	class Washing : Parameter
 	{
+		WashingLiquid liquid;
+		public WashingLiquid Liquid
+		{
+			get { return liquid; }
+			set { liquid = value; }
+		}
+
+		Max_wash_out max_wash_out;
+		public Max_wash_out Max_wash_out
+		{
+			get { return max_wash_out; }
+			set { max_wash_out = value; }
+		}
+
+		Min_wash_out min_wash_out;
+		public Min_wash_out Min_wash_out
+		{
+			get { return min_wash_out; }
+			set { min_wash_out = value; }
+		}
+
+		Adaptation_ParameterA adaptation_ParameterA;
+		public Adaptation_ParameterA Adaptation_ParameterA
+		{
+			get { return adaptation_ParameterA; }
+			set { adaptation_ParameterA = value; }
+		}
+
+		Adaptation_ParameterB adaptation_ParameterB;
+		public Adaptation_ParameterB Adaptation_ParameterB
+		{
+			get { return adaptation_ParameterB; }
+			set { adaptation_ParameterB = value; }
+		}
+
 		public Washing(string name, WashingLiquid liquid, Max_wash_out max_wash_out, Min_wash_out min_wash_out, Adaptation_ParameterA adaptation_ParameterA, Adaptation_ParameterB adaptation_ParameterB)
 		{
 			Name = name;
-			SubParameters = new Dictionary<Type, Parameter>();
-			SubParameters.Add(liquid.GetType(), liquid);
-			SubParameters.Add(max_wash_out.GetType(), max_wash_out);
-			SubParameters.Add(min_wash_out.GetType(),min_wash_out);
-			SubParameters.Add(adaptation_ParameterA.GetType(), adaptation_ParameterA);
-			SubParameters.Add(adaptation_ParameterB.GetType(),adaptation_ParameterB);
-			
+			Liquid = liquid;
+			Max_wash_out = max_wash_out;
+			Min_wash_out = min_wash_out;
+			Adaptation_ParameterA = adaptation_ParameterA;
+			Adaptation_ParameterB = adaptation_ParameterB;
 		}
 
-		public Volume GetWashLiquidVolume()
+		public Volume GetWashLiquidVolume(Cake cake, )
 		{
 			WashingLiquid wl = new WashingLiquid("tmpLiquid", new Viscosity(),new Density(),new Volume());
 			Volume vl = new Volume();
-			wl.SubParameters[vl.GetType()] = vl;
-			return null;
+			
+
+			return vl;
 		}
 	}
 
@@ -71,19 +105,38 @@ namespace FilterSimulation.Classes
 
 	class WashingLiquid : Parameter
 	{
+		Viscosity viscosity;
+		public Viscosity Viscosity
+		{
+			get { return viscosity; }
+			set { viscosity = value; }
+		}
+
+		Density density;
+		public Density Density
+		{
+			get { return density; }
+			set { density = value; }
+		}
+
+		Volume volume;
+		public Volume Volume
+		{
+			get { return volume; }
+			set { volume = value; }
+		}
 
 		public WashingLiquid(string name, Viscosity viscosity, Density density)
 		{
 			Name = name;
-			SubParameters = new Dictionary<Type, Parameter>();
-			SubParameters.Add(viscosity.GetType(), viscosity);
-			SubParameters.Add(density.GetType(), density);
+			Viscosity = viscosity;
+			Density = density;			
 		}
 
 		public WashingLiquid(string name, Viscosity viscosity, Density density, Volume volume):this(name,viscosity,density)
 		{
 			volume.SymbolSuffix = "w";
-			SubParameters.Add(volume.GetType(),volume);
+			Volume = volume;
 		}
 
 		public override string ToString()
