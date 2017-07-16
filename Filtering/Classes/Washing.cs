@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilterSimulation.Classes
+namespace Filtering
 {
 	class Washing : Parameter
 	{

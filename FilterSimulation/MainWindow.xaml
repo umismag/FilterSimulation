@@ -9,7 +9,13 @@
 	x:Class="FilterSimulation.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="573.897" Width="900.735">
-
+	<Window.Resources>
+		<ObjectDataProvider x:Key="GetWashLiquidVolumeObjectDataProvider" MethodName="GetWashLiquidVolume">
+			<ObjectDataProvider.MethodParameters>
+				
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+	</Window.Resources>
 
 
 	<Grid Margin="1,1,1,1">
@@ -90,13 +96,20 @@
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 			<StackPanel Orientation="Vertical">
-				<GroupBox Name="CakeFormationGroupBox">
+				<GroupBox   Name="CakeFormationGroupBox">
 					<GroupBox.Header>
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="Cake Formation Parameters"/>
 							<ComboBox Text="Select ..." IsEditable="True" IsReadOnly="True"/>
 						</StackPanel>
 					</GroupBox.Header>
+					<StackPanel Orientation="Vertical">
+						<DataGrid Name="CakeFormationsDataGrid" AutoGenerateColumns="True" ItemsSource="{Binding NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
+						</DataGrid>
+						<TextBox Name="washingRatioTextBox" Text="{Binding Path=WashingRatio.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"/>
+						<TextBlock Name="WashLiquidVolume" Text="{Binding NotifyOnSourceUpdated=True,  Path=WashLiquidVolume.Value, Mode=OneWay}" Margin="1,0,-1,0"/>
+
+					</StackPanel>
 				</GroupBox>
 				<GroupBox x:Name="WashingGroupBox" Height="Auto" ScrollViewer.CanContentScroll="True" Padding="1,3,1,1" Margin="0,0,0,0">
 					<GroupBox.Header>

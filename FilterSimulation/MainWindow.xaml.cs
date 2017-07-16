@@ -25,7 +25,9 @@ namespace FilterSimulation
 	{
 		List<WashingLiquid> Liquids = new List<WashingLiquid>();
 		List<Washing> Washings = new List<Washing>();
+		List<CakeFormation> CakeFormations = new List<CakeFormation>();
 		//public ObservableCollection<Liquid> Liquids = new ObservableCollection<Liquid>();
+		
 
 		public MainWindow()
 		{
@@ -45,9 +47,22 @@ namespace FilterSimulation
 				new Washing("Washing4",Liquids[3],new Max_wash_out(50), new Min_wash_out(4), new Adaptation_ParameterA(3),new Adaptation_ParameterB(3)),
 				});
 
+			CakeFormations.Add(
+				new CakeFormation("CakeFormation1",new Suspension("Suspension1",null,new Density(1400),null,null), new Filter("Filter1",null,new MachineDiameter(400),new MachineWidth(200)),new Cake("Cake1",new Porosity(58),null,null,new Height(52)),new WashingRatio(2))
+			);
+
 			//LiquidSelectComboBox.ItemsSource = Liquids;
 			LiquidPropertiesExpander.DataContext = Liquids;
 			WashingGroupBox.DataContext = Washings;
+
+			//CakeFormationGroupBox.DataContext = MyReflection.PrintParamPropObject(CakeFormations[0], null);
+			CakeFormationGroupBox.DataContext = CakeFormations;
+			//CakeFormationGroupBox.DataContext = MyReflection.PrintParameters(CakeFormations[0], null);
+
+			//WashLiquidVolume.DataContext = CakeFormations[0];
+			//washingRatioTextBox.DataContext = CakeFormations[0];
+
+
 		}
 
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -61,7 +76,7 @@ namespace FilterSimulation
 
 		private void LiquidSelectCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			WashingLiquidParametersDataGrid.ItemsSource = MyReflection.PrintNewLeadSet(LiquidSelectComboBox.SelectedItem as Parameter,null);
+			WashingLiquidParametersDataGrid.ItemsSource = MyReflection.PrintParameters(LiquidSelectComboBox.SelectedItem as Parameter,null);
 			//new object[] { LiquidSelectComboBox.SelectedItem };
 		}
 
@@ -72,7 +87,7 @@ namespace FilterSimulation
 					
 		private void WashingSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			WasingParametersDataGrid.ItemsSource = MyReflection.PrintNewLeadSet(WashingSelectComboBox.SelectedItem as Parameter, null);
+			WasingParametersDataGrid.ItemsSource = MyReflection.PrintParameters(WashingSelectComboBox.SelectedItem as Parameter, null);
 			LiquidSelectComboBox.SelectedItem = ((Washing)WashingSelectComboBox.SelectedItem).Liquid;
 		}
 	}

@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Collections;
 
-namespace FilterSimulation.Classes
+namespace Filtering
 {
 	public interface IParameterDefinition
 	{

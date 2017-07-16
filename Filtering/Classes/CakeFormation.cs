@@ -4,9 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FilterSimulation.Classes;
 
-namespace FilterSimulation
+namespace Filtering
 {
 	class CakeFormation:Parameter,System.ComponentModel.INotifyPropertyChanged
 	{
