@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Windows.Data;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Filtering
 {
-	class CakeFormation:Parameter,System.ComponentModel.INotifyPropertyChanged
+	class CakeFormation:Parameter
 	{
 		Suspension suspension;
 		public Suspension Suspension
@@ -50,13 +52,15 @@ namespace Filtering
 		{
 			get
 			{
+				//WashLiquidVolume = GetWashLiquidVolume(washingRatio.Value);
+				
 				return washingRatio;
 			}
 			set
 			{
 				washingRatio = value;
 				WashLiquidVolume = GetWashLiquidVolume(WashingRatio.Value);
-				//PropertyChanged(this, new PropertyChangedEventArgs("WashingRatio"));
+				OnPropertyChanged("WashingRatio");
 			}
 		}
 
@@ -70,6 +74,7 @@ namespace Filtering
 			set
 			{
 				washLiquidvolume = value;
+				OnPropertyChanged("WashLiquidVolume");
 				//PropertyChanged(this, new PropertyChangedEventArgs("WashLiquidVolume"));
 			}
 		}
@@ -83,19 +88,6 @@ namespace Filtering
 			WashingRatio = washingRatio;
 		}
 
-		
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		//	= new PropertyChangedEventHandler((x,y)=> 
-		//{
-		//	if(y.PropertyName== "WashingRatio")
-		//	{
-				
-		//	}
-		//});
-
-		
-
 		public Volume GetWashLiquidVolume(double? washingRatio=1)
 		{
 			if (washingRatio == null) washingRatio = 3;
@@ -106,6 +98,27 @@ namespace Filtering
 			res = Cake.Porosity.Value * Filter.Area.Value * SpecificCakeVolume.Value * washingRatio/100;
 			Volume vl = new Volume(res);
 			return vl;
+		}
+	}
+
+	[ValueConversion(typeof(WashingRatio), typeof(double))]
+	public class WashingRatio2DoubleConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			WashingRatio tmp = value as WashingRatio;
+			if (tmp != null)
+				return tmp.Value;
+			else
+				return value;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			if (value != null)
+				return new WashingRatio(double.Parse(value.ToString()));
+			else
+				return null;
 		}
 	}
 
@@ -406,7 +419,7 @@ namespace Filtering
 			set { density = value; }
 		}
 
-		Filtrate(string name, Viscosity viscosity, Density density)
+		public Filtrate(string name, Viscosity viscosity, Density density)
 		{
 			Name = name;
 			Viscosity = viscosity;

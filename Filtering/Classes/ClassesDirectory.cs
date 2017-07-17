@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Collections;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Filtering
 {
@@ -22,9 +24,19 @@ namespace Filtering
 		string Value { get; set; }
 	}
 
-	public abstract class Parameter : IParameterDefinition
+	public abstract class Parameter : 
+										IParameterDefinition,
+										INotifyPropertyChanged //Класс изменяемого объекта должен реализовывать интерфейс INotifyPropertyChanged - https://metanit.com/sharp/wpf/11.2.php 
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public void OnPropertyChanged([CallerMemberName]string prop = "")
+		{
+			if (PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(prop));
+		}
 		
+
 		internal string name;
 		public string Name
 		{
@@ -57,6 +69,7 @@ namespace Filtering
 		double maxValue = double.MaxValue;
 
 		double? value=null;
+
 		public double? Value
 		{
 			get { return this.value; }
@@ -68,6 +81,7 @@ namespace Filtering
 					this.value = maxValue;
 				else
 					this.value = value;
+				//OnPropertyChanged(this.GetType().Name+".Value");
 			}
 		}
 

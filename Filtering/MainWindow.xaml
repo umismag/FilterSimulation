@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Filtering"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Filter Simulation" Height="350" Width="525" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:WashingRatio2DoubleConverter x:Key="WashingRatio2DoubleConverter"/>
+	</Window.Resources>
     <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
@@ -16,8 +19,15 @@
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-		<GroupBox Grid.Row="0" Grid.Column="0" Header="Cake Formation" >
-			
+		<GroupBox Name="CakeFormationGroupBox" Grid.Row="0" Grid.Column="0" Header="Cake Formation" >
+			<StackPanel Orientation="Vertical">
+				<DataGrid Name="CakeFormationDataGrid" ItemsSource="{Binding NotifyOnSourceUpdated=True, Converter={StaticResource WashingRatio2DoubleConverter}}" AutoGenerateColumns="True" RowDetailsVisibilityMode="VisibleWhenSelected" >
+					
+				</DataGrid>
+				<TextBox Text="{Binding Path=WashingRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+					NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, Converter={StaticResource WashingRatio2DoubleConverter}}"/>
+				<TextBlock Text="{Binding Path=WashLiquidVolume.Value, Mode=OneWay, NotifyOnSourceUpdated=True}"/>
+			</StackPanel>
 		</GroupBox>
 		
 	</Grid>
