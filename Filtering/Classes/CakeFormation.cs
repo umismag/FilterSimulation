@@ -106,6 +106,8 @@ namespace Filtering
 				return;
 		}
 
+
+
 		public CakeFormation(string name, Suspension suspension, Filter filter, Cake cake, WashingRatio washingRatio)
 		{
 			Name = name;
