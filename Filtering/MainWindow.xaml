@@ -5,30 +5,116 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Filtering"
         mc:Ignorable="d"
-        Title="Filter Simulation" Height="350" Width="525" Loaded="Window_Loaded">
+        Title="Filter Simulation" Height="550" Width="625.5" Loaded="Window_Loaded">
 	<Window.Resources>
-		<local:WashingRatio2DoubleConverter x:Key="WashingRatio2DoubleConverter"/>
+		<!--<local:WashingRatio2DoubleConverter x:Key="WashingRatio2DoubleConverter"/>-->
+		<!--<local:CakeFormation2ListOfParametersConverter x:Key="CakeFormation2ListOfParametersConverter"/>-->
+		<!--<local:CakeFormation2ObjWithListOfParametersConverter x:Key="CakeFormation2ObjWithListOfParametersConverter"/>-->
+		<local:CakeFormations x:Key="CakeFormationsCollection"/>
+
 	</Window.Resources>
-    <Grid>
+	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="*"/>
-			
+
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-		<GroupBox Name="CakeFormationGroupBox" Grid.Row="0" Grid.Column="0" Header="Cake Formation" >
+		<!--<GroupBox Name="CakeFormationGroupBox" Grid.Row="0" Grid.Column="0" Header="Cake Formation" DataContext="{Binding Source={StaticResource CakeFormationsCollection}, Mode=OneWay}">
 			<StackPanel Orientation="Vertical">
-				<DataGrid Name="CakeFormationDataGrid" ItemsSource="{Binding NotifyOnSourceUpdated=True, Converter={StaticResource WashingRatio2DoubleConverter}}" AutoGenerateColumns="True" RowDetailsVisibilityMode="VisibleWhenSelected" >
-					
+
+				<DataGrid x:Name="CakeFormationDataGrid" ItemsSource="{Binding 
+					 Converter={StaticResource CakeFormation2ListOfParametersConverter},
+					NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True }" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SourceUpdated="CakeFormationDataGrid_SourceUpdated" TargetUpdated="CakeFormationDataGrid_TargetUpdated" CellEditEnding="CakeFormationDataGrid_CellEditEnding">
+
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Parameter" Binding="{Binding Name}"/>
+						<DataGridTextColumn Header="Unit" Binding="{Binding Unit}"/>
+						<DataGridTextColumn Header="Value"  Binding="{Binding Value, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+					</DataGrid.Columns>
+
 				</DataGrid>
-				<TextBox Text="{Binding Path=WashingRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
-					NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, Converter={StaticResource WashingRatio2DoubleConverter}}"/>
-				<TextBlock Text="{Binding Path=WashLiquidVolume.Value, Mode=OneWay, NotifyOnSourceUpdated=True}"/>
+
+				<TextBox Text="{Binding WashingRatio, Converter={StaticResource WashingRatio2DoubleConverter}, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+				<TextBlock Text="{Binding WashLiquidVolume.Value, Mode=OneWay}"/>
+			</StackPanel>
+		</GroupBox>-->
+		<GroupBox Name="FiltrGeometricalParameters" Header="Filter Geometrical Parameters" Grid.Row="0" Grid.Column="0">
+			
+		</GroupBox>
+
+		<GroupBox Name="MaterialParameters" Header="Material Parameters" Grid.Row="1" Grid.Column="0">
+
+		</GroupBox>
+
+		<GroupBox Name="CakeFormation2GroupBox" Header="Filter Setting Parameters" Grid.Row="0" Grid.Column="1">
+			<StackPanel Orientation="Vertical" Name="CakeFormation2GroupBoxStackPanel">
+				<!--<Grid DataContext="{Binding}" SnapsToDevicePixels="True">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="2*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+
+					<Label Content="Parameter" Grid.Column="0" Grid.Row="0" Padding="5,0" UseLayoutRounding="False" Grid.IsSharedSizeScope="True">
+						<Label.Background>
+							<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+						</Label.Background>
+					</Label>
+					<Label Content="Unit" Grid.Column="1" Grid.Row="0" Grid.IsSharedSizeScope="True" Padding="5,0">
+						<Label.Background>
+							<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+						</Label.Background>
+					</Label>
+					<Label Content="Value" Grid.Column="2" Grid.Row="0" Grid.IsSharedSizeScope="True" Padding="5,0,5,1">
+						<Label.Background>
+							<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+						</Label.Background>
+					</Label>
+
+					<StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+						<TextBlock Text="{Binding Path=WashingRatio.Name }" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text=" ["/>
+						<TextBlock Text="{Binding Path=WashingRatio.Symbol }"/>
+						<TextBlock Text="]"/>
+					</StackPanel>
+					<TextBlock Text="{Binding WashingRatio.Unit}" Grid.Column="1" Grid.Row="1" TextOptions.TextFormattingMode="Display"/>
+					<TextBox Text="{Binding Path=WashingRatio, Converter={StaticResource WashingRatio2DoubleConverter}}" Grid.Column="2" Grid.Row="1"/>
+
+					<StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+						<TextBlock Text="{Binding Path=WashLiquidVolume.Name }" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text=" [" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text="{Binding Path=WashLiquidVolume.Symbol }" SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text="]"/>
+					</StackPanel>
+					<TextBlock Text="{Binding Path=WashLiquidVolume.Unit}" Grid.Column="1" Grid.Row="2" TextOptions.TextFormattingMode="Display"/>
+					<TextBox Text="{Binding Path=WashLiquidVolume.Value}" Grid.Column="2" Grid.Row="2"/>
+
+					<StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+						<TextBlock Text="{Binding Path=Suspension.Name }" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text=" [" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text="{Binding Path=Suspension.Symbol }" SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display"/>
+						<TextBlock Text="]"/>
+					</StackPanel>
+					<TextBlock Text="{Binding Path=Suspension.Unit}" Grid.Column="1" Grid.Row="3" TextOptions.TextFormattingMode="Display"/>
+					<TextBox Text="{Binding Path=Suspension.Value}" Grid.Column="2" Grid.Row="3"/>
+				</Grid>
+
+				<TextBox Text="{Binding WashingRatio, 
+					Converter={StaticResource WashingRatio2DoubleConverter}, 
+					Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+				<TextBlock Text="{Binding WashLiquidVolume.Value, Mode=OneWay}"/>-->
+
 			</StackPanel>
 		</GroupBox>
-		
 	</Grid>
 </Window>
