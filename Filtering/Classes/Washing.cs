@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Globalization;
+using System.ComponentModel;
 
 namespace Filtering
 {
-	public class Washing : Parameter
+	public class Washing : Parameter, IWashingProcess
 	{
 		WashingLiquid liquid;
 		public WashingLiquid Liquid
@@ -45,9 +46,105 @@ namespace Filtering
 			set { adaptation_ParameterB = value; }
 		}
 
+		CakeHeightForCakeWashing cakeHeightForCakeWashing = new CakeHeightForCakeWashing();
+		public CakeHeightForCakeWashing CakeHeightForCakeWashing
+		{
+			get { return cakeHeightForCakeWashing; }
+			set
+			{
+				cakeHeightForCakeWashing = value;
+				OnPropertyChanged("CakeHeightForCakeWashing");
+			}
+		}
 
+		PressureDifferenceCakeWashing pressureDifferenceCakeWashing=new PressureDifferenceCakeWashing();
+		public PressureDifferenceCakeWashing PressureDifferenceCakeWashing
+		{
+			get { return pressureDifferenceCakeWashing; }
+			set
+			{
+				pressureDifferenceCakeWashing = value;
+				OnPropertyChanged("PressureDifferenceCakeWashing");
+			}
+		}
 
-		public Washing(string name, WashingLiquid liquid, Max_wash_out max_wash_out, Min_wash_out min_wash_out, Adaptation_ParameterA adaptation_ParameterA, Adaptation_ParameterB adaptation_ParameterB)
+		WashingTime washingTime=new WashingTime();
+		public WashingTime WashingTime
+		{
+			get { return washingTime; }
+			set
+			{
+				washingTime = value;
+				OnPropertyChanged("WashingTime");
+			}
+		}
+
+		WashingRatio washingRatio=new WashingRatio();
+		public WashingRatio WashingRatio
+		{
+			get
+			{
+				return washingRatio;
+			}
+			set
+			{
+				washingRatio = value;
+				OnPropertyChanged("WashingRatio");
+			}
+		}
+
+		WashLiquidVolume washLiquidVolume=new WashLiquidVolume();
+		public WashLiquidVolume WashLiquidVolume
+		{
+			get { return washLiquidVolume; }
+			set
+			{
+				washLiquidVolume = value;
+				OnPropertyChanged("WashLiquidVolume");
+			}
+		}
+
+		CakeFormation cakeFormation;
+		public CakeFormation CakeFormation
+		{
+			get => cakeFormation;
+			set => cakeFormation=value;
+		}
+
+		Washing IWashingProcess.Washing
+		{
+			get => this;
+			set { }
+		}
+
+		void WashLiquidVolumeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "WashingRatio, Area, SpecificCakeVolume, Porosity";
+			if (IsNeedToUpdate(dependentParameters, prop, WashLiquidVolume, GetWashLiquidVolume, sender))
+			{
+					WashLiquidVolume = GetWashLiquidVolume();
+			}
+			else
+				return;
+		}
+
+		public WashLiquidVolume GetWashLiquidVolume()
+		{
+			double? res;
+
+			res = CakeFormation.Cake.Porosity.Value * CakeFormation.Filter.Area.Value * CakeFormation.SpecificCakeVolume.Value * WashingRatio.Value / 100;
+			WashLiquidVolume vl = new WashLiquidVolume(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+			return vl;
+		}
+
+		public Washing(ICakeFormationProcess cakeFormationProcess)
+		{
+			CakeFormation = cakeFormationProcess.CakeFormation;
+			
+			PropertyChangedStatic += WashLiquidVolumeDependentParametersChanged;
+		}
+
+		public Washing(string name, WashingLiquid liquid, Max_wash_out max_wash_out, Min_wash_out min_wash_out, Adaptation_ParameterA adaptation_ParameterA, Adaptation_ParameterB adaptation_ParameterB, PressureDifferenceCakeWashing pressureDifferenceCakeWashing, ICakeFormationProcess cakeFormationProcess) :this(cakeFormationProcess)
 		{
 			Name = name;
 			Liquid = liquid;
@@ -55,6 +152,52 @@ namespace Filtering
 			Min_wash_out = min_wash_out;
 			Adaptation_ParameterA = adaptation_ParameterA;
 			Adaptation_ParameterB = adaptation_ParameterB;
+			PressureDifferenceCakeWashing = pressureDifferenceCakeWashing;
+		}
+	}
+
+	public class CakeHeightForCakeWashing:Height
+	{
+		public CakeHeightForCakeWashing()
+		{
+			Name = "Cake Height for Cake Washing";
+			SymbolSuffix = "w";
+			converter = new Param2DoubleConverter<CakeHeightForCakeWashing>();
+		}
+
+		public CakeHeightForCakeWashing(double? value):this()
+		{
+			Value = value;
+		}
+	}
+
+	public class WashingTime : Time
+	{
+		public WashingTime()
+		{
+			Name = "Washing Time";
+			SymbolSuffix = "w";
+			converter = new Param2DoubleConverter<WashingTime>();
+		}
+
+		public WashingTime(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class PressureDifferenceCakeWashing: PressureDifferenceCakeFormation
+	{
+		public PressureDifferenceCakeWashing()
+		{
+			Name = "Pressure Difference Cake Washing";
+			SymbolSuffix = "w";
+			converter = new Param2DoubleConverter<PressureDifferenceCakeWashing>();
+		}
+
+		public PressureDifferenceCakeWashing(double? value):this()
+		{
+			Value = value;
 		}
 	}
 
@@ -83,6 +226,21 @@ namespace Filtering
 			}
 		}
 
+	}
+
+	public class WashLiquidVolume:Volume
+	{
+		public WashLiquidVolume()
+		{
+			Name = "Wash liquid volume";
+			SymbolSuffix = "w";
+			converter = new Param2DoubleConverter<WashLiquidVolume>();
+		}
+
+		public WashLiquidVolume(double? value):this()
+		{
+			Value = value;
+		}
 	}
 
 	public class Volume :Parameter

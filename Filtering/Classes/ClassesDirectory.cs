@@ -93,26 +93,17 @@ namespace Filtering
 
 		public double? Value
 		{
-			get { return this.value; }
+			get { return this.value ; }
 			set
 			{
-				if (value < minValue)
-					this.value = minValue;
-				else if (value > maxValue)
-					this.value = maxValue;
+				if (value < 0) //minValue)
+					this.value = null; //minValue;
+				else if (value > 10000) //maxValue)
+					this.value = null; //maxValue;
 				else
 					this.value = value;
 				//OnPropertyChanged(this.GetType().Name);// +".Value");
-			}
-		}
-
-		int[] groupNumber=new int[3];//(1,2,3) - номер групи-1, порядковий номер в групі-2, 
-		public int[] GroupNumber
-		{
-			get { return groupNumber; }
-			set
-			{
-				groupNumber = value;
+				//callersCount++;
 			}
 		}
 
@@ -145,7 +136,8 @@ namespace Filtering
 
 			public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 			{
-				if (value != null)
+				bool IsNeedConvert = (value != null) &&(value.ToString()!="")&& value.ToString()[value.ToString().Length-1]!='.' && value.ToString()[value.ToString().Length - 1] != ',';
+				if (IsNeedConvert)
 				{
 					T tmp = new T();
 					double res;
@@ -164,7 +156,7 @@ namespace Filtering
 					return tmp;
 				}
 				else
-					return null;
+					return value;
 			}
 		}
 
@@ -221,8 +213,30 @@ namespace Filtering
 					return null;
 			}
 		}
+
+		static int callersCount = 0;
+
+		protected bool IsNeedToUpdate(string dependedParametersString, PropertyChangedEventArgs prop, Parameter parameter, Func<Parameter> function, object sender)
+		{
+			//callersCount++;
+			bool IsNeed= 
+				dependedParametersString.Contains(prop.PropertyName) &&
+				function().Value.HasValue && 
+				!double.IsNaN(function().Value.Value) && 
+				!double.IsInfinity(function().Value.Value)&&
+				(!parameter.Value.HasValue || 
+				double.IsNaN(parameter.Value.Value) || 
+				double.IsInfinity(parameter.Value.Value) ||
+				Math.Abs((parameter.Value ?? 0) - (function().Value ?? 0)) > double.Epsilon);
+			
+			
+			return IsNeed;
+		}
+
 	}	
-	   
+
+	
+
 	public class ParametersTemplate
 	{
 		string parameter;
@@ -407,20 +421,20 @@ namespace Filtering
 				//Grid.SetColumn(TextBlockName, 0);
 				//Grid.SetRow(TextBlockName, res.RowDefinitions.Count - 1);
 				Grid.SetColumn(NameBorder, 0);
-				Grid.SetRow(NameBorder, param.GroupNumber - 1);//res.RowDefinitions.Count - 1);
+				Grid.SetRow(NameBorder,res.RowDefinitions.Count - 1); //param.GroupNumber - 1);
 
 				TextBlock TextBlockUnit = new TextBlock();
 				TextBlockUnit.Text = param.Unit;
 				TextBlockUnit.TextAlignment = TextAlignment.Center;
 				TextOptions.SetTextFormattingMode(TextBlockUnit, TextFormattingMode.Display);
 				Grid.SetColumn(UnitBorder, 1);
-				Grid.SetRow(UnitBorder, param.GroupNumber - 1);// res.RowDefinitions.Count - 1);
+				Grid.SetRow(UnitBorder, res.RowDefinitions.Count - 1);//param.GroupNumber - 1); 
 
 				Binding binding = new Binding();
 				binding.Source = parent;
 				binding.Path = new PropertyPath(param.Name);
 				binding.Converter = param.Converter;
-				binding.Delay = 300;
+				//binding.Delay = 300;
 				binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
 				TextBox TextBoxValue = new TextBox();
@@ -430,7 +444,7 @@ namespace Filtering
 				TextOptions.SetTextFormattingMode(TextBoxValue, TextFormattingMode.Display);
 				//TextBoxValue
 				Grid.SetColumn(TextBoxValue, 2);
-				Grid.SetRow(TextBoxValue, param.GroupNumber - 1);// res.RowDefinitions.Count - 1);
+				Grid.SetRow(TextBoxValue, res.RowDefinitions.Count - 1);// param.GroupNumber - 1);
 
 				NameBorder.Child = TextBlockName;
 				res.Children.Add(NameBorder);

@@ -11,15 +11,17 @@
 		<!--<local:CakeFormation2ListOfParametersConverter x:Key="CakeFormation2ListOfParametersConverter"/>-->
 		<!--<local:CakeFormation2ObjWithListOfParametersConverter x:Key="CakeFormation2ObjWithListOfParametersConverter"/>-->
 		<local:CakeFormations x:Key="CakeFormationsCollection"/>
-
+		<local:Filtration x:Key="Filtration"/>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="*"/>
+			<!--<RowDefinition Height="*"/>-->
 
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
@@ -42,16 +44,20 @@
 				<TextBlock Text="{Binding WashLiquidVolume.Value, Mode=OneWay}"/>
 			</StackPanel>
 		</GroupBox>-->
-		<GroupBox Name="FiltrGeometricalParameters" Header="Filter Geometrical Parameters" Grid.Row="0" Grid.Column="0">
-			
+		<GroupBox Name="MaterialParameters" Header="Material Parameters" Grid.Row="0" Grid.Column="0">
+			<StackPanel Name="MaterialParametersStackPanel" Orientation="Vertical">
+
+			</StackPanel>
 		</GroupBox>
 
-		<GroupBox Name="MaterialParameters" Header="Material Parameters" Grid.Row="1" Grid.Column="0">
+		<GroupBox Name="CakeFormationGroupBox" Header="Cake Formation" Grid.Row="0" Grid.Column="1">
+			<StackPanel Name="CakeFormationStackPanel" Orientation="Vertical">
 
+			</StackPanel>
 		</GroupBox>
 
-		<GroupBox Name="CakeFormation2GroupBox" Header="Filter Setting Parameters" Grid.Row="0" Grid.Column="1">
-			<StackPanel Orientation="Vertical" Name="CakeFormation2GroupBoxStackPanel">
+		<GroupBox Name="WashingGroupBox" Header="Washing" Grid.Row="0" Grid.Column="2">
+			<StackPanel Orientation="Vertical" Name="WashingStackPanel">
 				<!--<Grid DataContext="{Binding}" SnapsToDevicePixels="True">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="3*"/>
@@ -116,5 +122,18 @@
 
 			</StackPanel>
 		</GroupBox>
+
+		<StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3">
+			<GroupBox Name="DeliquoringGroupBox" Header="Deliquoring">
+				<StackPanel Name="DeliquoringStackPanel" Orientation="Vertical">
+
+				</StackPanel>
+			</GroupBox>
+			<GroupBox Name="ResultGroupBox" Header="Result">
+				<StackPanel Name="ResultStackPanel" Orientation="Vertical">
+
+				</StackPanel>
+			</GroupBox>
+		</StackPanel>
 	</Grid>
 </Window>

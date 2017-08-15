@@ -56,6 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="Classes\CakeFormation.cs" />
     <Compile Include="Classes\ClassesDirectory.cs" />
+    <Compile Include="Classes\Deliquoring.cs" />
+    <Compile Include="Classes\Grouping.cs" />
+    <Compile Include="Classes\Processes.cs" />
     <Compile Include="Classes\Washing.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +90,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

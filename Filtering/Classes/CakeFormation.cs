@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace Filtering
 {
-	public class CakeFormation:Parameter
+	public class CakeFormation : Parameter, ICakeFormationProcess
 	{
 		Suspension suspension;
 		public Suspension Suspension
@@ -25,7 +25,7 @@ namespace Filtering
 			get { return filter; }
 			set { filter = value; }
 		}
-		
+
 		Cake cake;
 		public Cake Cake
 		{
@@ -38,7 +38,7 @@ namespace Filtering
 		{
 			get
 			{
-				if (specificCakeVolume == null)
+				if (specificCakeVolume == null || specificCakeVolume.Value == null)
 					specificCakeVolume = GetSpecificCakeVolume();
 				return specificCakeVolume;
 			}
@@ -49,17 +49,56 @@ namespace Filtering
 			}
 		}
 
+		PressureDifferenceCakeFormation pressureDifferenceCakeFormation = new PressureDifferenceCakeFormation();
+		public PressureDifferenceCakeFormation PressureDifferenceCakeFormation
+		{
+			get { return pressureDifferenceCakeFormation; }
+			set
+			{
+				pressureDifferenceCakeFormation = value;
+				OnPropertyChanged("PressureDifferenceCakeFormation");
+			}
+		}
+
+		FiltrationTime filtrationTime = new FiltrationTime();
+		public FiltrationTime FiltrationTime
+		{
+			get { return filtrationTime; }
+			set
+			{
+				filtrationTime = value;
+				OnPropertyChanged("FiltrationTime");
+			}
+		}
+
+		MassOfSuspension massOfSuspension = new MassOfSuspension();
+		public MassOfSuspension MassOfSuspension
+		{
+			get { return massOfSuspension; }
+			set
+			{
+				massOfSuspension = value;
+				OnPropertyChanged("MassOfSuspension");
+			}
+		}
+
+		CakeFormation ICakeFormationProcess.CakeFormation
+		{
+			get => this;
+			set { }
+		}
+
 		SpecificCakeVolume GetSpecificCakeVolume()
 		{
-			double? res = Cake.Height.Value * (1 - Cake.Height.Value / Filter.MachineDiameter.Value);
+			double? res = Cake.CakeHeigth.Value * (1 - Cake.CakeHeigth.Value / Filter.MachineDiameter.Value);
 
-			return new SpecificCakeVolume(res) { SourceOfParameterChanging=SourceOfChanging.AutomaticallyByCore};
+			return new SpecificCakeVolume(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
 		}
 
 		void SpecificCakeVolumeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
 		{
-			string dependentParameters = "Cake.Height, Filter.MachineDiameter";
-			if (dependentParameters.Contains(prop.PropertyName))
+			string dependentParameters = "Cake.CakeHeigth, Filter.MachineDiameter";
+			if (IsNeedToUpdate(dependentParameters, prop, SpecificCakeVolume, GetSpecificCakeVolume, sender))
 			{
 				SpecificCakeVolume = GetSpecificCakeVolume();
 			}
@@ -67,68 +106,390 @@ namespace Filtering
 				return;
 		}
 
-		WashingRatio washingRatio;
-		public WashingRatio WashingRatio
+		// F1.1
+		CakeHeigth GetCakeHeight()
 		{
-			get
-			{				
-				return washingRatio;
-			}
-			set
+			double? res;
+			try
 			{
-				washingRatio = value;
-				OnPropertyChanged("WashingRatio");
+				res = Math.Sqrt(
+					Math.Pow(
+						(Cake.InitialHeight.Value ?? double.NaN) +
+						(Filter.SpecificFilterMediumResistance.Value ?? double.NaN)
+						, 2) +
+						2 * Cake.CakePermeability.Value ?? double.NaN *
+						(Suspension.SolidsVolumeFraction.Value ?? double.NaN) /
+						(
+						1 - (Cake.Porosity.Value ?? double.NaN) -
+						(Suspension.SolidsVolumeFraction.Value ?? double.NaN)
+						) *
+						(PressureDifferenceCakeFormation.Value ?? double.NaN) *
+						(FiltrationTime.Value ?? double.NaN) /
+						(Suspension.MotherLiquid.MotherLiquidViscosity.Value ?? double.NaN)
+						) -
+						(Filter.SpecificFilterMediumResistance.Value ?? double.NaN);
 			}
+			catch
+			{
+				return new CakeHeigth() { Value = null };
+			}
+			return new CakeHeigth(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
 		}
 
-		Volume washLiquidvolume;
-		public Volume WashLiquidVolume
+		void CakeHeightDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
 		{
-			get
+			string dependentParameters = "Cake.InitialHeight, Filter.SpecificFilterMediumResistance, Cake.CakePermeability, Suspension.SolidsVolumeFraction, Cake.Porosity, Suspension.SolidsVolumeFraction, PressureDifferenceCakeFormation, FiltrationTime, Suspension.MotherLiquid.MotherLiquidViscosity";
+			if (IsNeedToUpdate(dependentParameters, prop, Cake.CakeHeigth, GetCakeHeight, sender))
 			{
-				return washLiquidvolume=GetWashLiquidVolume();
-			}
-			set
-			{
-				washLiquidvolume = value;
-				OnPropertyChanged("WashLiquidVolume");
-			}
-		}
-
-		void WashLiquidVolumeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "WashingRatio, Area, SpecificCakeVolume, Porosity";
-			if (dependentParameters.Contains(prop.PropertyName) )
-			{
-				WashLiquidVolume= GetWashLiquidVolume();
+				Cake.CakeHeigth = GetCakeHeight();
 			}
 			else
 				return;
 		}
+		// F1.1
+
+		// F1.2
+		FiltrationTime GetFiltrationTime()
+		{
+			double? res, kappa;
+			try
+			{
+				kappa = (Suspension.SolidsVolumeFraction.Value ?? double.NaN) /
+						(
+							1 - (Cake.Porosity.Value ?? double.NaN) -
+							(Suspension.SolidsVolumeFraction.Value ?? double.NaN)
+						);
+				res =
+					(Suspension.MotherLiquid.MotherLiquidViscosity.Value ?? double.NaN) *
+					(
+					(Cake.CakeHeigth.Value ?? double.NaN) -
+					(Cake.InitialHeight.Value ?? double.NaN)
+					) * (
+					(Cake.CakeHeigth.Value ?? double.NaN) +
+					(Cake.InitialHeight.Value ?? double.NaN) +
+					2 * (Filter.SpecificFilterMediumResistance.Value ?? double.NaN)
+					) /
+					(
+						2 * (Cake.CakePermeability.Value ?? double.NaN) *
+						kappa *
+					(PressureDifferenceCakeFormation.Value ?? double.NaN)
+					)
+					;
+			}
+			catch
+			{
+				return new FiltrationTime() { Value = null };
+			}
+			return new FiltrationTime(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void FiltrationTimeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.MotherLiquid.MotherLiquidViscosity, Cake.CakeHeigth, Cake.InitialHeight, Filter.SpecificFilterMediumResistance, Cake.CakePermeability, Suspension.SolidsVolumeFraction, Cake.Porosity, PressureDifferenceCakeFormation";
+			if (IsNeedToUpdate(dependentParameters, prop, FiltrationTime, GetFiltrationTime, sender))
+			{
+				FiltrationTime = GetFiltrationTime();
+			}
+			else
+				return;
+		}
+		// F1.2
+
+		//F 2.1
+		MassOfSuspension GetMassOfSuspension()
+		{
+			double? res, kappa;
+			try
+			{
+				kappa = (Suspension.SolidsVolumeFraction.Value ?? double.NaN) /
+						(
+							1 - (Cake.Porosity.Value ?? double.NaN) -
+							(Suspension.SolidsVolumeFraction.Value ?? double.NaN)
+						);
+				res =
+					(Suspension.SuspensionDensity.Value ?? double.NaN) *
+					(Filter.Area.Value ?? double.NaN) *
+					(
+					(Cake.CakeHeigth.Value ?? double.NaN) -
+					(Cake.InitialHeight.Value ?? double.NaN)
+					) *
+					(1 + kappa) / kappa
+					;
+			}
+			catch
+			{
+				return new MassOfSuspension() { Value = null };
+			}
+			return new MassOfSuspension(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void MassOfSuspensionDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.SuspensionDensity, Filter.Area, Cake.CakeHeigth, Cake.InitialHeight, Suspension.SolidsVolumeFraction, Cake.Porosity, Suspension.SolidsVolumeFraction";
+			if (IsNeedToUpdate(dependentParameters, prop, MassOfSuspension, GetMassOfSuspension, sender))
+			{
+				MassOfSuspension = GetMassOfSuspension();
+			}
+			else
+				return;
+		}
+		// F2.1
+
+		// F2.2
+		CakeHeigth GetCakeHeight_With_Msus()
+		{
+			double? res, kappa;
+			try
+			{
+				kappa = (Suspension.SolidsVolumeFraction.Value ?? double.NaN) /
+						(
+							1 - (Cake.Porosity.Value ?? double.NaN) -
+							(Suspension.SolidsVolumeFraction.Value ?? double.NaN)
+						);
+				res =
+					(Cake.InitialHeight.Value ?? double.NaN) +
+					(MassOfSuspension.Value ?? double.NaN) /
+					(Suspension.SuspensionDensity.Value ?? double.NaN) /
+					(Filter.Area.Value ?? double.NaN) *
+					kappa / (1 + kappa)
+					;
+			}
+			catch
+			{
+				return new CakeHeigth() { Value = null };
+			}
+			return new CakeHeigth(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void CakeHeight_With_MsusDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.SolidsVolumeFraction, Cake.Porosity, Cake.InitialHeight, MassOfSuspension, Suspension.SuspensionDensity, Filter.Area";
+			if (IsNeedToUpdate(dependentParameters, prop, Cake.CakeHeigth, GetCakeHeight_With_Msus, sender))
+			{
+				Cake.CakeHeigth = GetCakeHeight_With_Msus();
+			}
+			else
+				return;
+		}
+		// F2.2
 
 
+		// F3
+		CakePermeability GetCakePermeability()
+		{
+			double? res;
+			try
+			{
+				res =
+					(Cake.StandardCakePermeability.Value ?? double.NaN) *
+					Math.Pow(
+						(PressureDifferenceCakeFormation.Value ?? double.NaN)
+						, -(Cake.Compressibility.Value ?? double.NaN)
+						)
+					;
+			}
+			catch
+			{
+				return new CakePermeability() { Value = null };
+			}
+			return new CakePermeability(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
 
-		public CakeFormation(string name, Suspension suspension, Filter filter, Cake cake, WashingRatio washingRatio)
+		void CakePermeabilityDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Cake.StandardCakePermeability, PressureDifferenceCakeFormation, Cake.Compressibility";
+			if (IsNeedToUpdate(dependentParameters, prop, Cake.CakePermeability, GetCakePermeability, sender))
+			{
+				Cake.CakePermeability = GetCakePermeability();
+			}
+			else
+				return;
+		}
+		// F3
+
+		// F5
+		SolidsVolumeFraction GetSolidsVolumeFraction()
+		{
+			double? res;
+			try
+			{
+				res =
+					(Suspension.SolidsMassFraction.Value) /
+					(
+						(Suspension.SolidDensity.Value) /
+						Suspension.MotherLiquid.MotherLiquidDensity.Value *
+						(
+							1 - Suspension.SolidsMassFraction.Value
+						) +
+						Suspension.SolidsMassFraction.Value
+					)
+					;
+			}
+			catch
+			{
+				return new SolidsVolumeFraction() { Value = null };
+			}
+			return new SolidsVolumeFraction(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void SolidsVolumeFractionDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.SolidsMassFraction, Suspension.SolidDensity, Suspension.MotherLiquid.MotherLiquidDensity, Suspension.SolidsMassFraction";
+			if (IsNeedToUpdate(dependentParameters, prop, Suspension.SolidsVolumeFraction, GetSolidsVolumeFraction, sender))
+			{
+				Suspension.SolidsVolumeFraction = GetSolidsVolumeFraction();
+			}
+			else
+				return;
+		}
+		// F5
+
+		// F6
+		Porosity GetPorosity()
+		{
+			double? res;
+			try
+			{
+				res =
+					Cake.StandardPorosity.Value *
+					Math.Pow(
+					(PressureDifferenceCakeFormation.Value ?? double.NaN),
+					-(Cake.Compressibility.Value ?? double.NaN)
+					)
+					;
+			}
+			catch
+			{
+				return new Porosity() { Value = null };
+			}
+			return new Porosity(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void PorosityDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Cake.StandardPorosity, PressureDifferenceCakeFormation, Cake.Compressibility";
+			if (IsNeedToUpdate(dependentParameters, prop, Cake.Porosity, GetPorosity, sender))
+			{
+				Cake.Porosity = GetPorosity();
+			}
+			else
+				return;
+		}
+		// F6
+
+		//F 7.1
+		SuspensionDensity GetSuspensionDensity()
+		{
+			double? res;
+			try
+			{
+				res = (1 - Suspension.SolidsVolumeFraction.Value) *
+					Suspension.MotherLiquid.MotherLiquidDensity.Value +
+					Suspension.SolidsVolumeFraction.Value *
+					Suspension.SolidDensity.Value
+					;
+			}
+			catch
+			{
+				return new SuspensionDensity() { Value = null };
+			}
+			return new SuspensionDensity(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void SuspensionDensityDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.SolidsVolumeFraction, Suspension.MotherLiquid.MotherLiquidDensity, Suspension.SolidDensity";
+			if (IsNeedToUpdate(dependentParameters, prop, Suspension.SuspensionDensity, GetSuspensionDensity, sender))
+			{
+				Suspension.SuspensionDensity = GetSuspensionDensity();
+			}
+			else
+				return;
+		}
+		//F 7.1
+
+		//F 7.2
+		SolidDensity GetSolidDensity()
+		{
+			double? res;
+			try
+			{
+				res =
+					(
+					Suspension.SuspensionDensity.Value -
+					(1 - Suspension.SolidsVolumeFraction.Value) *
+					Suspension.MotherLiquid.MotherLiquidDensity.Value
+					)/
+					Suspension.SolidsVolumeFraction.Value
+					;
+			}
+			catch
+			{
+				return new SolidDensity() { Value = null };
+			}
+			return new SolidDensity(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void SolidDensityDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.SuspensionDensity, Suspension.SolidsVolumeFraction, Suspension.MotherLiquid.MotherLiquidDensity";
+			if (IsNeedToUpdate(dependentParameters, prop, Suspension.SolidDensity, GetSolidDensity, sender))
+			{
+				Suspension.SolidDensity = GetSolidDensity();
+			}
+			else
+				return;
+		}
+		//F 7.2
+
+		//F 8
+		SolidsVolumeFraction GetSolidsVolumeFraction_Without_Cm()
+		{
+			double? res;
+			try
+			{
+				res =
+					Suspension.SolidConcentration.Value/
+					Suspension.SolidDensity.Value
+					;
+			}
+			catch
+			{
+				return new SolidsVolumeFraction() { Value = null };
+			}
+			return new SolidsVolumeFraction(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
+		}
+
+		void SolidsVolumeFraction_Without_Cm_DependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "Suspension.SolidConcentration, Suspension.SolidDensity";
+			if (IsNeedToUpdate(dependentParameters, prop, Suspension.SolidsVolumeFraction, GetSolidsVolumeFraction_Without_Cm, sender))
+			{
+				Suspension.SolidsVolumeFraction = GetSolidsVolumeFraction_Without_Cm();
+			}
+			else
+				return;
+		}
+		//F 8
+
+		public CakeFormation(string name, Suspension suspension, Filter filter, Cake cake)
 		{
 			Name = name;
 			Suspension = suspension;
 			Filter = filter;
 			Cake = cake;
-			WashingRatio = washingRatio;
-			//PropertyChanged += WashingRatioPropertyChanged;
+
 			PropertyChangedStatic += SpecificCakeVolumeDependentParametersChanged;
-			PropertyChangedStatic += WashLiquidVolumeDependentParametersChanged;
-		}
-
-		public Volume GetWashLiquidVolume()
-		{
-			//WashingLiquid wl = new WashingLiquid("tmpLiquid", new Viscosity(), new Density(), new Volume());
-
-			double? res;
-
-			res = Cake.Porosity.Value * Filter.Area.Value * SpecificCakeVolume.Value * WashingRatio.Value / 100;
-			Volume vl = new Volume(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
-			return vl;
+			PropertyChangedStatic += CakeHeightDependentParametersChanged;
+			PropertyChangedStatic += FiltrationTimeDependentParametersChanged;
+			PropertyChangedStatic += MassOfSuspensionDependentParametersChanged;
+			PropertyChangedStatic += CakeHeight_With_MsusDependentParametersChanged;
+			PropertyChangedStatic += CakePermeabilityDependentParametersChanged;
+			PropertyChangedStatic += SolidsVolumeFractionDependentParametersChanged;
+			PropertyChangedStatic += PorosityDependentParametersChanged;
+			PropertyChangedStatic += SuspensionDensityDependentParametersChanged;
+			PropertyChangedStatic += SolidDensityDependentParametersChanged;
+			PropertyChangedStatic += SolidsVolumeFraction_Without_Cm_DependentParametersChanged;
 		}
 	}
 
@@ -183,40 +544,135 @@ namespace Filtering
 	//	}
 	//}
 
-	public class SpecificCakeVolume:Parameter
+
+
+	public class FiltrationTime : Time
+	{
+		public FiltrationTime()
+		{
+			Name = "Filtration time";
+			SymbolSuffix = "f";
+			converter = new Param2DoubleConverter<FiltrationTime>();
+		}
+
+		public FiltrationTime(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Time : Parameter
+	{
+		public Time()
+		{
+			Name = "Time";
+			Unit = "s";
+			Symbol = "t";
+			converter = new Param2DoubleConverter<Time>();
+		}
+
+		public Time(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class MassOfSuspension : Mass
+	{
+		public MassOfSuspension()
+		{
+			Name = "Mass of Suspension";
+			SymbolSuffix = "sus";
+			converter = new Param2DoubleConverter<MassOfSuspension>();
+		}
+
+		public MassOfSuspension(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Mass : Parameter
+	{
+		public Mass()
+		{
+			Name = "Mass";
+			Unit = "kg";
+			Symbol = "M";
+			converter = new Param2DoubleConverter<Mass>();
+		}
+
+		public Mass(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class PressureDifferenceCakeFormation : Parameter
+	{
+		public PressureDifferenceCakeFormation()
+		{
+			Name = "Pressure difference Cake formation";
+			Unit = "bar";
+			Symbol = "Dp";
+			converter = new Param2DoubleConverter<PressureDifferenceCakeFormation>();
+		}
+
+		public PressureDifferenceCakeFormation(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class SpecificCakeVolume : Parameter
 	{
 		public SpecificCakeVolume()
 		{
-			
+
 			Name = "Specific Cake Volume";
 			Unit = "l/m2";
 			Symbol = "vc";
 			converter = new Param2DoubleConverter<SpecificCakeVolume>();
 		}
 
-		public SpecificCakeVolume(double? value):this()
+		public SpecificCakeVolume(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class Suspension :Parameter
+	public class Suspension : Parameter
 	{
-		Filtrate filtrate;
-		public Filtrate Filtrate
+		MotherLiquid motherLiquid;
+		public MotherLiquid MotherLiquid
 		{
-			get { return filtrate; }
-			set { filtrate = value; }
+			get { return motherLiquid; }
+			set
+			{
+				motherLiquid = value;
+				OnPropertyChanged("MotherLiquid");
+			}
 		}
 
-		Density solidDensity;
-		public Density SolidDensity
+		SolidDensity solidDensity;
+		public SolidDensity SolidDensity
 		{
 			get { return solidDensity; }
 			set
 			{
 				solidDensity = value;
 				OnPropertyChanged("SolidDensity");
+			}
+		}
+
+		SuspensionDensity suspensionDensity = new SuspensionDensity();
+		public SuspensionDensity SuspensionDensity
+		{
+			get { return suspensionDensity; }
+			set
+			{
+				suspensionDensity = value;
+				OnPropertyChanged("SuspensionDensity");
 			}
 		}
 
@@ -231,33 +687,86 @@ namespace Filtering
 			}
 		}
 
-		Compressibility compressibility;
-		public Compressibility Compressibility
+		SolidsMassFraction solidsMassFraction;
+		public SolidsMassFraction SolidsMassFraction
 		{
-			get { return compressibility; }
+			get { return solidsMassFraction; }
 			set
 			{
-				compressibility = value;
-				OnPropertyChanged("Compressibility");
+				solidsMassFraction = value;
+				OnPropertyChanged("SolidsMassFraction");
 			}
 		}
 
-		public Suspension(string name, Filtrate filtrate, Density solidDensity, SolidConcentration solidConcentration, Compressibility compressibility)
+		SolidsVolumeFraction solidsVolumeFraction;
+		public SolidsVolumeFraction SolidsVolumeFraction
+		{
+			get { return solidsVolumeFraction; }
+			set
+			{
+				solidsVolumeFraction = value;
+				OnPropertyChanged("SolidsVolumeFraction");
+			}
+		}
+
+		public Suspension(string name, MotherLiquid motherLiquid, SolidDensity solidDensity, SuspensionDensity suspensionDensity, SolidConcentration solidConcentration, SolidsMassFraction solidsMassFraction, SolidsVolumeFraction solidsVolumeFraction)
 		{
 			Name = name;
-			solidDensity.SymbolSuffix = " s";
 
-			Filtrate = filtrate;
+			MotherLiquid = motherLiquid;
 			SolidDensity = solidDensity;
+			SuspensionDensity = suspensionDensity;
 			SolidConcentration = solidConcentration;
-			Compressibility = compressibility;
+			SolidsMassFraction = solidsMassFraction;
+			SolidsVolumeFraction = solidsVolumeFraction;
 		}
 	}
 
-	public class Filter :Parameter
+	public class SuspensionDensity : Density
 	{
-		Resistance mediumResistance;
-		public Resistance MediumResistance
+		public SuspensionDensity()
+		{
+			Name = "Suspension Density";
+			SymbolSuffix = "sus";
+			converter = new Param2DoubleConverter<SuspensionDensity>();
+		}
+
+		public SuspensionDensity(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class SolidDensity : Density
+	{
+		public SolidDensity()
+		{
+			Name = "Solid Density";
+			SymbolSuffix = "s";
+			converter = new Param2DoubleConverter<SolidDensity>();
+		}
+
+		public SolidDensity(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Filter : Parameter
+	{
+		SpecificFilterMediumResistance specificFilterMediumResistance = new SpecificFilterMediumResistance();
+		public SpecificFilterMediumResistance SpecificFilterMediumResistance
+		{
+			get { return specificFilterMediumResistance; }
+			set
+			{
+				specificFilterMediumResistance = value;
+				OnPropertyChanged("SpecificFilterMediumResistance");
+			}
+		}
+
+		MediumResistance mediumResistance = new MediumResistance();
+		public MediumResistance MediumResistance
 		{
 			get { return mediumResistance; }
 			set
@@ -267,12 +776,12 @@ namespace Filtering
 			}
 		}
 
-		Area area;
+		Area area = new Area();
 		public Area Area
 		{
 			get
 			{
-				if (area == null)
+				if (area == null || area.Value == null)
 					return GetArea();
 				else
 					return area;
@@ -284,7 +793,7 @@ namespace Filtering
 			}
 		}
 
-		MachineDiameter machineDiameter;
+		MachineDiameter machineDiameter = new MachineDiameter();
 		public MachineDiameter MachineDiameter
 		{
 			get { return machineDiameter; }
@@ -295,7 +804,7 @@ namespace Filtering
 			}
 		}
 
-		MachineWidth machineWidth;
+		MachineWidth machineWidth = new MachineWidth();
 		public MachineWidth MachineWidth
 		{
 			get { return machineWidth; }
@@ -308,10 +817,13 @@ namespace Filtering
 
 		void AreaDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
 		{
-			if(prop.PropertyName.Contains("MachineDiameter")||prop.PropertyName.Contains("MachineWidth"))
+			string dependentParameters = "MachineDiameter, MachineWidth";
+			if (IsNeedToUpdate(dependentParameters, prop, Area, GetArea, sender))
 			{
 				Area = GetArea();
 			}
+			else
+				return;
 		}
 
 		Area GetArea()
@@ -320,13 +832,14 @@ namespace Filtering
 			return new Area(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
 		}
 
-		public Filter(string name, Resistance filterMediumResistance)
+		public Filter(string name, SpecificFilterMediumResistance specificFilterMediumResistance, MediumResistance mediumResistance)
 		{
 			Name = name;
-			MediumResistance = filterMediumResistance;
+			SpecificFilterMediumResistance = specificFilterMediumResistance;
+			MediumResistance = mediumResistance;
 		}
 
-		public Filter(string name, Resistance filterMediumResistance, MachineDiameter machineDiameter, MachineWidth machineWidth):this(name,filterMediumResistance)
+		public Filter(string name, SpecificFilterMediumResistance specificFilterMediumResistance, MediumResistance mediumResistance, MachineDiameter machineDiameter, MachineWidth machineWidth) : this(name, specificFilterMediumResistance, mediumResistance)
 		{
 			MachineDiameter = machineDiameter;
 			MachineWidth = machineWidth;
@@ -334,7 +847,7 @@ namespace Filtering
 		}
 	}
 
-	public class MachineDiameter :Parameter
+	public class MachineDiameter : Parameter
 	{
 		public MachineDiameter()
 		{
@@ -344,7 +857,7 @@ namespace Filtering
 			converter = new Param2DoubleConverter<MachineDiameter>();
 		}
 
-		public MachineDiameter(double? value):this()
+		public MachineDiameter(double? value) : this()
 		{
 			if (value != null)
 				Value = value;
@@ -353,7 +866,7 @@ namespace Filtering
 		}
 	}
 
-	public class MachineWidth :Parameter
+	public class MachineWidth : Parameter
 	{
 		public MachineWidth()
 		{
@@ -363,7 +876,7 @@ namespace Filtering
 			converter = new Param2DoubleConverter<MachineWidth>();
 		}
 
-		public MachineWidth(double? value):this()
+		public MachineWidth(double? value) : this()
 		{
 			Value = value;
 		}
@@ -387,7 +900,7 @@ namespace Filtering
 
 	public class Cake : Parameter
 	{
-		Porosity porosity;
+		Porosity porosity = new Porosity();
 		public Porosity Porosity
 		{
 			get { return porosity; }
@@ -398,18 +911,51 @@ namespace Filtering
 			}
 		}
 
-		Permeability permeability;
-		public Permeability Permeability
+		StandardPorosity standardPorosity = new StandardPorosity();
+		public StandardPorosity StandardPorosity
 		{
-			get { return permeability; }
+			get { return standardPorosity; }
 			set
 			{
-				permeability = value;
-				OnPropertyChanged("Permeability");
+				standardPorosity = value;
+				OnPropertyChanged("StandardPorosity");
 			}
 		}
 
-		Compressibility compressibility;
+		PorosityReductionFactor porosityReductionFactor = new PorosityReductionFactor();
+		public PorosityReductionFactor PorosityReductionFactor
+		{
+			get { return porosityReductionFactor; }
+			set
+			{
+				porosityReductionFactor = value;
+				OnPropertyChanged("PorosityReductionFactor");
+			}
+		}
+
+		CakePermeability cakePermeability = new CakePermeability();
+		public CakePermeability CakePermeability
+		{
+			get { return cakePermeability; }
+			set
+			{
+				cakePermeability = value;
+				OnPropertyChanged("CakePermeability");
+			}
+		}
+
+		StandardCakePermeability standardCakePermeability = new StandardCakePermeability();
+		public StandardCakePermeability StandardCakePermeability
+		{
+			get { return standardCakePermeability; }
+			set
+			{
+				standardCakePermeability = value;
+				OnPropertyChanged("StandardCakePermeability");
+			}
+		}
+
+		Compressibility compressibility = new Compressibility();
 		public Compressibility Compressibility
 		{
 			get { return compressibility; }
@@ -420,36 +966,82 @@ namespace Filtering
 			}
 		}
 
-		Height height;
-		public Height Height
+		CakeHeigth cakeHeigth = new CakeHeigth();
+		public CakeHeigth CakeHeigth
 		{
 			get
 			{
-				return height;
+				return cakeHeigth;
 			}
 			set
 			{
-				height = value;
-				OnPropertyChanged("Height");
+				cakeHeigth = value;
+				OnPropertyChanged("CakeHeigth");
 			}
 		}
 
-		public Cake(string name, Porosity porosity, Permeability permeability, Compressibility compressibility)
+		InitialHeight initialHeight = new InitialHeight();
+		public InitialHeight InitialHeight
 		{
-			Name = name;
-			if(permeability!=null) permeability.SymbolSuffix = "c0";
-			Porosity = porosity;
-			Permeability = permeability;
-			Compressibility = compressibility;
+			get { return initialHeight; }
+			set
+			{
+				initialHeight = value;
+				OnPropertyChanged("InitialHeight");
+			}
 		}
 
-		public Cake(string name, Porosity porosity, Permeability permeability, Compressibility compressibility, Height height):this(name,porosity,permeability,compressibility)
+		public Cake(string name, Porosity porosity, StandardPorosity standardPorosity, PorosityReductionFactor porosityReductionFactor, CakePermeability cakePermeability, StandardCakePermeability standardCakePermeability, Compressibility compressibility, CakeHeigth cakeHeigth)
 		{
-			Height = height;
+			Name = name;
+
+			Porosity = porosity;
+			StandardPorosity = standardPorosity;
+			PorosityReductionFactor = porosityReductionFactor;
+			CakePermeability = cakePermeability;
+			StandardCakePermeability = standardCakePermeability;
+			Compressibility = compressibility;
+			CakeHeigth = cakeHeigth;
+
+		}
+
+		public Cake(string name, Porosity porosity, StandardPorosity standardPorosity, PorosityReductionFactor porosityReductionFactor, CakePermeability cakePermeability, StandardCakePermeability standardCakePermeability, Compressibility compressibility, CakeHeigth cakeHeigth, InitialHeight initialHeight = null) : this(name, porosity, standardPorosity, porosityReductionFactor, cakePermeability, standardCakePermeability, compressibility, cakeHeigth)
+		{
+			InitialHeight = initialHeight;
 		}
 	}
 
-	public class Height :Parameter
+	public class InitialHeight : Height
+	{
+		public InitialHeight()
+		{
+			Name = "Initial Height";
+			SymbolSuffix = "0";
+			converter = new Param2DoubleConverter<InitialHeight>();
+		}
+
+		public InitialHeight(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class CakeHeigth : Height
+	{
+		public CakeHeigth()
+		{
+			Name = "Cake Heigth";
+			SymbolSuffix = "";
+			converter = new Param2DoubleConverter<CakeHeigth>();
+		}
+
+		public CakeHeigth(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Height : Parameter
 	{
 		public Height()
 		{
@@ -459,28 +1051,44 @@ namespace Filtering
 			converter = new Param2DoubleConverter<Height>();
 		}
 
-		public Height(double? value):this()
+		public Height(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class Resistance :Parameter
+	public class SpecificFilterMediumResistance : Parameter
 	{
-		public Resistance()
+		public SpecificFilterMediumResistance()
 		{
-			Name = "Resistance";
-			Unit = "mm";
+			Name = "Specific Filter Medium Resistance";
+			Unit = "m";
 			Symbol = "hce";
-			converter = new Param2DoubleConverter<Resistance>();
+			converter = new Param2DoubleConverter<SpecificFilterMediumResistance>();
 		}
-		public Resistance(double? value):this()
+		public SpecificFilterMediumResistance(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class Compressibility :Parameter
+	public class MediumResistance : Parameter
+	{
+		public MediumResistance()
+		{
+			Name = "Medium Resistance";
+			Unit = "m-1";
+			Symbol = "Rm";
+			converter = new Param2DoubleConverter<MediumResistance>();
+		}
+
+		public MediumResistance(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Compressibility : Parameter
 	{
 		public Compressibility()
 		{
@@ -490,13 +1098,43 @@ namespace Filtering
 			converter = new Param2DoubleConverter<Compressibility>();
 		}
 
-		public Compressibility(double? value):this()
+		public Compressibility(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class Permeability :Parameter
+	public class StandardCakePermeability : Permeability
+	{
+		public StandardCakePermeability()
+		{
+			Name = "Standard Cake Permeability";
+			SymbolSuffix = "c0";
+			converter = new Param2DoubleConverter<StandardCakePermeability>();
+		}
+
+		public StandardCakePermeability(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class CakePermeability : Permeability
+	{
+		public CakePermeability()
+		{
+			Name = "Cake Permeability";
+			SymbolSuffix = "c";
+			converter = new Param2DoubleConverter<CakePermeability>();
+		}
+
+		public CakePermeability(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Permeability : Parameter
 	{
 		public Permeability()
 		{
@@ -506,13 +1144,44 @@ namespace Filtering
 			converter = new Param2DoubleConverter<Permeability>();
 		}
 
-		public Permeability(double? value):this()
+		public Permeability(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class Porosity :Parameter
+	public class StandardPorosity : Porosity
+	{
+		public StandardPorosity()
+		{
+			Name = "Standard Cake porosity";
+			SymbolSuffix = "0";
+			converter = new Param2DoubleConverter<StandardPorosity>();
+		}
+
+		public StandardPorosity(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class PorosityReductionFactor : Parameter
+	{
+		public PorosityReductionFactor()
+		{
+			Name = "Porosity reduction factor";
+			Unit = "--";
+			Symbol = "ne";
+			converter = new Param2DoubleConverter<PorosityReductionFactor>();
+		}
+
+		public PorosityReductionFactor(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class Porosity : Parameter
 	{
 		public Porosity()
 		{
@@ -522,57 +1191,119 @@ namespace Filtering
 			converter = new Param2DoubleConverter<Porosity>();
 		}
 
-		public Porosity(double? value):this()
+		public Porosity(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class SolidConcentration :Parameter
+	public class SolidsVolumeFraction : SolidConcentration
+	{
+		public SolidsVolumeFraction()
+		{
+			Name = "Solids volume fraction";
+			SymbolSuffix = "v";
+			Unit = "--";
+			converter = new Param2DoubleConverter<SolidsVolumeFraction>();
+		}
+
+		public SolidsVolumeFraction(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class SolidsMassFraction : SolidConcentration
+	{
+		public SolidsMassFraction()
+		{
+			Name = "Solids mass fraction";
+			Unit = "--";
+			SymbolSuffix = "m";
+			converter = new Param2DoubleConverter<SolidsMassFraction>();
+		}
+
+		public SolidsMassFraction(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class SolidConcentration : Parameter
 	{
 		public SolidConcentration()
 		{
 			Name = "Solid Concentration";
-			Unit = "%";
-			Symbol = "Cm";
+			Unit = "kg/m3";
+			Symbol = "C";
 			converter = new Param2DoubleConverter<SolidConcentration>();
 		}
 
-		public SolidConcentration(double? value):this()
+		public SolidConcentration(double? value) : this()
 		{
 			Value = value;
 		}
 	}
 
-	public class Filtrate :Parameter
+	public class MotherLiquid : Parameter
 	{
-		Viscosity viscosity;
-		public Viscosity Viscosity
+		MotherLiquidViscosity motherLiquidViscosity;
+		public MotherLiquidViscosity MotherLiquidViscosity
 		{
-			get { return viscosity; }
+			get { return motherLiquidViscosity; }
 			set
 			{
-				viscosity = value;
-				OnPropertyChanged("Viscosity");
+				motherLiquidViscosity = value;
+				OnPropertyChanged("MotherLiquidViscosity");
 			}
 		}
 
-		Density density;
-		public Density Density
+		MotherLiquidDensity motherLiquidDensity;
+		public MotherLiquidDensity MotherLiquidDensity
 		{
-			get { return density; }
+			get { return motherLiquidDensity; }
 			set
 			{
-				density = value;
-				OnPropertyChanged("Density");
+				motherLiquidDensity = value;
+				OnPropertyChanged("MotherLiquidDensity");
 			}
 		}
 
-		public Filtrate(string name, Viscosity viscosity, Density density)
+		public MotherLiquid(string name, MotherLiquidViscosity motherLiquidViscosity, MotherLiquidDensity motherLiquidDensity)
 		{
 			Name = name;
-			Viscosity = viscosity;
-			Density = density;
+			MotherLiquidViscosity = motherLiquidViscosity;
+			MotherLiquidDensity = motherLiquidDensity;
+		}
+	}
+
+	public class MotherLiquidDensity : Density
+	{
+		public MotherLiquidDensity()
+		{
+			Name = "Density mother liquid";
+			SymbolSuffix = "f";
+			converter = new Param2DoubleConverter<MotherLiquidDensity>();
+		}
+
+		public MotherLiquidDensity(double? value) : this()
+		{
+			Value = value;
+		}
+	}
+
+	public class MotherLiquidViscosity : Viscosity
+	{
+		public MotherLiquidViscosity()
+		{
+			Name = "Viscosity mother liquid";
+			SymbolSuffix = "f";
+			converter = new Param2DoubleConverter<MotherLiquidViscosity>();
+		}
+
+		public MotherLiquidViscosity(double? value) : this()
+		{
+			Value = value;
 		}
 	}
 }
