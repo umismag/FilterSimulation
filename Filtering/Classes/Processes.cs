@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows;
-using System.Windows.Data;
 using System.ComponentModel;
-using System.Globalization;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 
 namespace Filtering
 {
@@ -39,7 +35,7 @@ namespace Filtering
 
 	public class ResultParameter : Parameter, IWashingDeliquoringProcess
 	{
-		TechnicalTime technicalTime = new TechnicalTime();
+		TechnicalTime technicalTime;// = new TechnicalTime();
 		public TechnicalTime TechnicalTime
 		{
 			get
@@ -55,13 +51,13 @@ namespace Filtering
 			}
 		}
 
-		CycleTime cycleTime = new CycleTime();
+		CycleTime cycleTime;// = new CycleTime();
 		public CycleTime CycleTime
 		{
 			get
 			{
-				if (cycleTime.Value == null)
-					cycleTime = GetCycleTime_Without_SolidsThroughput() ?? GetCycleTime_With_SolidsThroughput();
+				//if (cycleTime.Value == null)
+				//	cycleTime.Value = cycleTime.GetCycleTime_Without_SolidsThroughput() ?? cycleTime.GetCycleTime_With_SolidsThroughput();
 				return cycleTime;
 			}
 			set
@@ -71,13 +67,13 @@ namespace Filtering
 			}
 		}
 
-		SolidsThroughput solidsThroughput = new SolidsThroughput();
+		SolidsThroughput solidsThroughput;// = new SolidsThroughput();
 		public SolidsThroughput SolidsThroughput
 		{
 			get
 			{
-				if (solidsThroughput.Value == null)
-					solidsThroughput = GetSolidsThroughput();
+				//if (solidsThroughput.Value == null)
+				//	solidsThroughput.Value = solidsThroughput.GetSolidsThroughput();
 				return solidsThroughput;
 			}
 			set
@@ -118,120 +114,11 @@ namespace Filtering
 		{
 			get => this;
 			set { }
-		}
-
-		CycleTime GetCycleTime_Without_SolidsThroughput()
-		{
-			double? res;
-			try
-			{
-				res =
-					(CakeFormation.FiltrationTime.Value ?? 0) +
-					(Washing.WashingTime.Value ?? 0) +
-					(Deliquoring.DeliquoringTime.Value ?? 0) +
-					(TechnicalTime.Value ?? 0);
-			}
-			catch
-			{
-				return new CycleTime() { Value = null };
-			}
-			return new CycleTime(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
-		}
-
-		void CycleTime_Without_SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime, TechnicalTime";
-
-			if (IsNeedToUpdate(dependentParameters, prop, CycleTime, GetCycleTime_Without_SolidsThroughput, sender))
-				CycleTime = GetCycleTime_Without_SolidsThroughput();
-		}
-
-		CycleTime GetCycleTime_With_SolidsThroughput()
-		{
-			double? res;
-			try
-			{
-				res = (CakeFormation.Filter.Area.Value ?? double.NaN) *
-				(CakeFormation.Suspension.SolidDensity.Value ?? double.NaN) *
-				(1 - (CakeFormation.Cake.Porosity.Value ?? double.NaN)) *
-				(CakeFormation.Cake.CakeHeigth.Value ?? double.NaN) /
-				(SolidsThroughput.Value ?? double.NaN);
-			}
-			catch
-			{
-				return new CycleTime() { Value = null };
-			}
-			return new CycleTime(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
-		}
-
-		void CycleTime_With_SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth, SolidsThroughput";
-
-			if (IsNeedToUpdate(dependentParameters, prop, CycleTime, GetCycleTime_With_SolidsThroughput, sender))
-				CycleTime = GetCycleTime_With_SolidsThroughput();
-		}
-
-		TechnicalTime GetTechnicalTime()
-		{
-			double? res;
-			try
-			{
-				res = (CycleTime.Value ?? 0) -
-					(
-					(CakeFormation.FiltrationTime.Value ?? 0) +
-					(Washing.WashingTime.Value ?? 0) +
-					(Deliquoring.DeliquoringTime.Value ?? 0)
-					);
-			}
-			catch
-			{
-				return new TechnicalTime() { Value = null };
-			}
-			return new TechnicalTime(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
-		}
-
-		void TechnicalTimeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CycleTime, CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime";
-
-			if (IsNeedToUpdate(dependentParameters, prop, TechnicalTime, GetTechnicalTime, sender))
-				TechnicalTime = GetTechnicalTime();
-		}
-
-		SolidsThroughput GetSolidsThroughput()
-		{
-			double? res;
-			try
-			{
-				res = (CakeFormation.Filter.Area.Value ?? double.NaN) *
-				(CakeFormation.Suspension.SolidDensity.Value ?? double.NaN) *
-				(1 - (CakeFormation.Cake.Porosity.Value ?? double.NaN)) *
-				(CakeFormation.Cake.CakeHeigth.Value ?? double.NaN) /
-				(CycleTime.Value ?? double.NaN);
-			}
-			catch
-			{
-				return new SolidsThroughput() { Value = null };
-			}
-			return new SolidsThroughput(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
-		}
-
-		void SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CycleTime, CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth";
-
-			if (IsNeedToUpdate(dependentParameters, prop, SolidsThroughput, GetSolidsThroughput, sender))
-				SolidsThroughput = GetSolidsThroughput();
-
-		}
+		}		
 
 		public ResultParameter()
 		{
-			PropertyChangedStatic += CycleTime_Without_SolidsThroughputDependentParametersChanged;
-			PropertyChangedStatic += CycleTime_With_SolidsThroughputDependentParametersChanged;
-			PropertyChangedStatic += TechnicalTimeDependentParametersChanged;
-			PropertyChangedStatic += SolidsThroughputDependentParametersChanged;
+			
 		}
 
 		public ResultParameter(IDeliquoringProcess deliquoringProcess) : this()
@@ -239,6 +126,74 @@ namespace Filtering
 			CakeFormation = deliquoringProcess.CakeFormation;
 			Washing = deliquoringProcess.Washing;
 			Deliquoring = deliquoringProcess.Deliquoring;
+
+			
+		}
+	}
+
+	public class CycleTime : Time
+	{
+		public CycleTime()
+		{
+			Name = "Cycle Time";
+			SymbolSuffix = "c";
+			converter = new Param2DoubleConverter<CycleTime>();
+			PropertyChangedStatic += CycleTime_Without_SolidsThroughputDependentParametersChanged;
+			PropertyChangedStatic += CycleTime_With_SolidsThroughputDependentParametersChanged;
+		}
+
+		public CycleTime(double? value) : this()
+		{
+			Value = value;
+		}
+
+		public double? GetCycleTime_Without_SolidsThroughput()
+		{
+			double? res;
+			try
+			{
+				res =
+					(process.CakeFormation.FiltrationTime.Value ?? 0) +
+					(process.Washing.WashingTime.Value ?? 0) +
+					(process.Deliquoring.DeliquoringTime.Value ?? 0) +
+					(process.ResultParameter.TechnicalTime.Value ?? 0);
+			}
+			catch
+			{
+				res = null;
+			}
+			return res;
+		}
+
+		void CycleTime_Without_SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime, TechnicalTime";
+			IfNeedThenUpdate(dependentParameters, prop, this, GetCycleTime_Without_SolidsThroughput);
+		}
+
+		public double? GetCycleTime_With_SolidsThroughput()
+		{
+			double? res;
+			try
+			{
+				res = (process.CakeFormation.Filter.Area.Value ?? double.NaN) *
+				(process.CakeFormation.Suspension.SolidDensity.Value ?? double.NaN) *
+				(1 - (process.CakeFormation.Cake.Porosity.Value ?? double.NaN)) *
+				(process.CakeFormation.Cake.CakeHeigth.Value ?? double.NaN) /
+				(process.ResultParameter.SolidsThroughput.Value ?? double.NaN);
+			}
+			catch
+			{
+				res = null;
+			}
+			return res;
+		}
+
+		void CycleTime_With_SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth, SolidsThroughput";
+
+			IfNeedThenUpdate(dependentParameters, prop, this, GetCycleTime_With_SolidsThroughput);
 		}
 	}
 
@@ -287,13 +242,6 @@ namespace Filtering
 			}
 		}
 
-		//Parameter commonProcess=new ;
-		//public Parameter CommonProcess
-		//{
-		//	get => commonProcess;
-		//	set => commonProcess=value;
-		//}
-
 		public FilteringProcess()
 		{
 
@@ -306,6 +254,13 @@ namespace Filtering
 			Washing = washing;
 			Deliquoring = deliquoring;
 			ResultParameter = resultParameter;
+
+			Parameter.process = this;
+			ResultParameter.ThatContainsObj = this;
+			CakeFormation.SetAllThatContainsObj();
+			Washing.SetAllThatContainsObj();
+			Deliquoring.SetAllThatContainsObj();
+			ResultParameter.SetAllThatContainsObj();
 		}
 
 		public Grid GetParametersTable(Func<IWashingDeliquoringProcess, GroupsOfParameters> func)
@@ -314,6 +269,7 @@ namespace Filtering
 			if (obj == null) return null;
 			Grid res = new Grid();
 
+			#region Шапка 
 			//---------- Шапка ------------------------\\
 			ColumnDefinition cd0 = new ColumnDefinition();
 			cd0.Width = new System.Windows.GridLength(0.5, System.Windows.GridUnitType.Star);
@@ -372,6 +328,7 @@ namespace Filtering
 			res.Children.Add(lb2);
 			res.Children.Add(lb3);
 			//---------- Шапка ------------------------\\
+#endregion
 			SolidColorBrush backColor;
 
 			void AddRowToRes(DisplayParameter dispParam)
@@ -515,21 +472,6 @@ namespace Filtering
 		}
 	}
 
-	public class CycleTime : Time
-	{
-		public CycleTime()
-		{
-			Name = "Cycle Time";
-			SymbolSuffix = "c";
-			converter = new Param2DoubleConverter<CycleTime>();
-		}
-
-		public CycleTime(double? value) : this()
-		{
-			Value = value;
-		}
-	}
-
 	public class TechnicalTime : Time
 	{
 		public TechnicalTime()
@@ -537,11 +479,38 @@ namespace Filtering
 			Name = "Technical Time";
 			SymbolSuffix = "_tech";
 			converter = new Param2DoubleConverter<TechnicalTime>();
+			PropertyChangedStatic += TechnicalTimeDependentParametersChanged;
 		}
 
 		public TechnicalTime(double? value) : this()
 		{
 			Value = value;
+		}
+
+		public double? GetTechnicalTime()
+		{
+			double? res;
+			try
+			{
+				res = (process.ResultParameter.CycleTime.Value ?? 0) -
+					(
+					(process.CakeFormation.FiltrationTime.Value ?? 0) +
+					(process.Washing.WashingTime.Value ?? 0) +
+					(process.Deliquoring.DeliquoringTime.Value ?? 0)
+					);
+			}
+			catch
+			{
+				res = null;
+			}
+			return res;
+		}
+
+		void TechnicalTimeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "CycleTime, CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime";
+
+			IfNeedThenUpdate(dependentParameters, prop, this, GetTechnicalTime);
 		}
 	}
 
@@ -553,11 +522,38 @@ namespace Filtering
 			Symbol = "Qms";
 			Unit = "kgs-1";
 			converter = new Param2DoubleConverter<SolidsThroughput>();
+			PropertyChangedStatic += SolidsThroughputDependentParametersChanged;
 		}
 
 		public SolidsThroughput(double? value) : this()
 		{
 			Value = value;
+		}
+
+		public double? GetSolidsThroughput()
+		{
+			double? res;
+			try
+			{
+				res = (process.CakeFormation.Filter.Area.Value ?? double.NaN) *
+				(process.CakeFormation.Suspension.SolidDensity.Value ?? double.NaN) *
+				(1 - (process.CakeFormation.Cake.Porosity.Value ?? double.NaN)) *
+				(process.CakeFormation.Cake.CakeHeigth.Value ?? double.NaN) /
+				(process.ResultParameter.CycleTime.Value ?? double.NaN);
+			}
+			catch
+			{
+				res = null;
+			}
+			return res;
+		}
+
+		void SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			string dependentParameters = "CycleTime, CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth";
+
+			IfNeedThenUpdate(dependentParameters, prop, this, GetSolidsThroughput);
+
 		}
 	}
 }

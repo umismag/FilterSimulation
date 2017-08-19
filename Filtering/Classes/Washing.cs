@@ -46,7 +46,7 @@ namespace Filtering
 			set { adaptation_ParameterB = value; }
 		}
 
-		CakeHeightForCakeWashing cakeHeightForCakeWashing = new CakeHeightForCakeWashing();
+		CakeHeightForCakeWashing cakeHeightForCakeWashing;// = new CakeHeightForCakeWashing();
 		public CakeHeightForCakeWashing CakeHeightForCakeWashing
 		{
 			get { return cakeHeightForCakeWashing; }
@@ -57,7 +57,7 @@ namespace Filtering
 			}
 		}
 
-		PressureDifferenceCakeWashing pressureDifferenceCakeWashing=new PressureDifferenceCakeWashing();
+		PressureDifferenceCakeWashing pressureDifferenceCakeWashing;//=new PressureDifferenceCakeWashing();
 		public PressureDifferenceCakeWashing PressureDifferenceCakeWashing
 		{
 			get { return pressureDifferenceCakeWashing; }
@@ -68,7 +68,7 @@ namespace Filtering
 			}
 		}
 
-		WashingTime washingTime=new WashingTime();
+		WashingTime washingTime;//=new WashingTime();
 		public WashingTime WashingTime
 		{
 			get { return washingTime; }
@@ -79,7 +79,7 @@ namespace Filtering
 			}
 		}
 
-		WashingRatio washingRatio=new WashingRatio();
+		WashingRatio washingRatio;//=new WashingRatio();
 		public WashingRatio WashingRatio
 		{
 			get
@@ -93,7 +93,7 @@ namespace Filtering
 			}
 		}
 
-		WashLiquidVolume washLiquidVolume=new WashLiquidVolume();
+		WashLiquidVolume washLiquidVolume;//=new WashLiquidVolume();
 		public WashLiquidVolume WashLiquidVolume
 		{
 			get { return washLiquidVolume; }
@@ -117,25 +117,32 @@ namespace Filtering
 			set { }
 		}
 
+		// F
 		void WashLiquidVolumeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
 		{
 			string dependentParameters = "WashingRatio, Area, SpecificCakeVolume, Porosity";
-			if (IsNeedToUpdate(dependentParameters, prop, WashLiquidVolume, GetWashLiquidVolume, sender))
-			{
-					WashLiquidVolume = GetWashLiquidVolume();
-			}
-			else
-				return;
+			IfNeedThenUpdate(dependentParameters, prop, WashLiquidVolume, GetWashLiquidVolume);
 		}
 
-		public WashLiquidVolume GetWashLiquidVolume()
+		public double? GetWashLiquidVolume()
 		{
 			double? res;
-
-			res = CakeFormation.Cake.Porosity.Value * CakeFormation.Filter.Area.Value * CakeFormation.SpecificCakeVolume.Value * WashingRatio.Value / 100;
-			WashLiquidVolume vl = new WashLiquidVolume(res) { SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore };
-			return vl;
+			try
+			{
+				res =
+					process.CakeFormation.Cake.Porosity.Value *
+					process.CakeFormation.Filter.Area.Value *
+					process.CakeFormation.SpecificCakeVolume.Value *
+					process.Washing.WashingRatio.Value / 100;
+			}
+			catch
+			{
+				res = null;
+			}
+			return res;
 		}
+		//F
+
 
 		public Washing(ICakeFormationProcess cakeFormationProcess)
 		{

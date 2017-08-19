@@ -20,7 +20,7 @@ namespace Filtering
 	{
 		string Name { get; }
 		string Unit { get; }
-		string Symbol { get; }	
+		string Symbol { get; }
 	}
 
 	//public interface IParameter
@@ -36,12 +36,13 @@ namespace Filtering
 		AutomaticallyByConstructor
 	}
 
-	public abstract class Parameter : 
+	public abstract class Parameter :
 										IParameterDefinition,
 										INotifyPropertyChanged //Класс изменяемого объекта должен реализовывать интерфейс INotifyPropertyChanged - https://metanit.com/sharp/wpf/11.2.php 
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 		public static event PropertyChangedEventHandler PropertyChangedStatic;
+
 
 		public void OnPropertyChanged(/*[CallerMemberName]*/string prop = "")
 		{
@@ -50,6 +51,10 @@ namespace Filtering
 			if (PropertyChangedStatic != null)
 				PropertyChangedStatic(this, new PropertyChangedEventArgs(prop));
 		}
+
+		public static IWashingDeliquoringProcess process;
+		public object ThatContainsObj;
+
 
 		SourceOfChanging? sourceOfParameterChanging = SourceOfChanging.AutomaticallyByConstructor;
 		public SourceOfChanging? SourceOfParameterChanging
@@ -75,7 +80,7 @@ namespace Filtering
 		string symbol;
 		public string Symbol
 		{
-			get { return symbol+SymbolSuffix; }
+			get { return symbol + SymbolSuffix; }
 			internal set { symbol = value; }
 		}
 
@@ -89,11 +94,11 @@ namespace Filtering
 		double minValue = double.MinValue;
 		double maxValue = double.MaxValue;
 
-		protected double? value=null;
+		protected double? value = null;
 
 		public double? Value
 		{
-			get { return this.value ; }
+			get { return this.value; }
 			set
 			{
 				if (value < 0) //minValue)
@@ -112,18 +117,40 @@ namespace Filtering
 			return Value.ToString();
 		}
 
+		public void SetAllThatContainsObj()
+		{
+			Type T = GetType();
+			PropertyInfo[] pis = T.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public);
+			foreach (PropertyInfo pi in pis)
+			{
+				if (pi.PropertyType.IsSubclassOf(typeof(Parameter)))
+				{
+					if ((Parameter)pi.GetValue(this) == null)
+					{
+						Type ct = pi.PropertyType;
+						ConstructorInfo ci = ct.GetConstructor(Type.EmptyTypes);
+						MethodInfo mi = pi.SetMethod;
+						mi.Invoke(this, new object[] { ci.Invoke(Type.EmptyTypes) });
+					}
+					((Parameter)pi.GetValue(this)).ThatContainsObj = this;
+					((Parameter)pi.GetValue(this)).SetAllThatContainsObj();
+				}
+			}
+		}
+
+
 		protected Parameter()
 		{
 			SourceOfParameterChanging2BrushConverter = new SourceOfParameterChanging2BrushConverterClass();
 		}
 
-		protected IValueConverter converter=null;
+		protected IValueConverter converter = null;
 		public IValueConverter Converter
 		{
 			get { return converter; }
 		}
 
-		public class Param2DoubleConverter<T>  : IValueConverter where T : Parameter, new()
+		public class Param2DoubleConverter<T> : IValueConverter where T : Parameter, new()
 		{
 			public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 			{
@@ -136,12 +163,12 @@ namespace Filtering
 
 			public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 			{
-				bool IsNeedConvert = (value != null) &&(value.ToString()!="")&& value.ToString()[value.ToString().Length-1]!='.' && value.ToString()[value.ToString().Length - 1] != ',';
+				bool IsNeedConvert = (value != null) && (value.ToString() != "") && value.ToString()[value.ToString().Length - 1] != '.' && value.ToString()[value.ToString().Length - 1] != ',';
 				if (IsNeedConvert)
 				{
 					T tmp = new T();
 					double res;
-					if (double.TryParse(value.ToString().Replace('.',','), out res))
+					if (double.TryParse(value.ToString().Replace('.', ','), out res))
 					{
 						tmp.Value = res;
 						tmp.SourceOfParameterChanging = SourceOfChanging.ManuallyByUser;
@@ -150,7 +177,7 @@ namespace Filtering
 					{
 						tmp.Value = null;
 					}
-						
+
 					//Type t = tmp.GetType();
 					//tmp.OnPropertyChanged(t.BaseType.Name+"."+tmp.GetType().Name);
 					return tmp;
@@ -167,7 +194,7 @@ namespace Filtering
 			internal set { sourceOfParameterChanging2BrushConverter = value; }
 		}
 
-		public class SourceOfParameterChanging2BrushConverterClass : IValueConverter 
+		public class SourceOfParameterChanging2BrushConverterClass : IValueConverter
 		{
 			public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 			{
@@ -179,11 +206,11 @@ namespace Filtering
 					{
 						case SourceOfChanging.ManuallyByUser:
 							{
-								br.Color = new Color() { R= 0, G=255, B = 0, A = 128};
+								br.Color = new Color() { R = 0, G = 255, B = 0, A = 128 };
 								return br;
 								//break;
 							}
-		
+
 						case SourceOfChanging.AutomaticallyByCore:
 							{
 								br.Color = new Color() { R = 0, G = 0, B = 255, A = 128 };
@@ -210,32 +237,87 @@ namespace Filtering
 
 			public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 			{
-					return null;
+				return null;
 			}
 		}
 
 		static int callersCount = 0;
 
+		protected void IfNeedThenUpdate(string dependedParametersString, PropertyChangedEventArgs prop, Parameter parameter, Func<double?> function)
+		{
+			callersCount++;
+			Parameter obj=null;
+			Type T1;
+			PropertyInfo pi1;
+			if (parameter!=null && parameter.ThatContainsObj != null)
+			{
+				T1 = parameter.ThatContainsObj.GetType();
+				pi1 = T1.GetProperty(parameter.GetType().Name, parameter.GetType());
+				obj = pi1.GetValue(parameter.ThatContainsObj) as Parameter;
+			}
+			else
+			{
+				//obj = parameter;
+				return;
+			}
+
+			bool IsNeed =
+				obj != null &&
+				obj.ThatContainsObj != null &&
+				obj.SourceOfParameterChanging != SourceOfChanging.ManuallyByUser &&
+				dependedParametersString.Contains(prop.PropertyName) &&
+				function().HasValue &&
+				!double.IsNaN(function().Value) &&
+				!double.IsInfinity(function().Value) &&
+				(!obj.Value.HasValue ||
+				double.IsNaN(obj.Value.Value) ||
+				double.IsInfinity(obj.Value.Value) ||
+				Math.Abs((obj.Value ?? 0) - (function() ?? 0)) > double.Epsilon);
+
+			if (IsNeed)
+			{
+				
+				//Type T = obj./*ThatContainsObj.*/GetType();
+				//PropertyInfo pi = T.GetProperty(obj.GetType().Name, obj.GetType());
+				//MethodInfo mi = pi1.SetMethod; 
+				obj.value = function();
+				obj.SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore;
+				(obj.ThatContainsObj as Parameter).OnPropertyChanged(obj.GetType().Name);
+				//mi.Invoke(obj, new object[] { obj });
+				//SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore
+			}
+			else
+			{
+				return;
+			}
+		}
+
 		protected bool IsNeedToUpdate(string dependedParametersString, PropertyChangedEventArgs prop, Parameter parameter, Func<Parameter> function, object sender)
 		{
 			//callersCount++;
-			bool IsNeed= 
+			bool IsNeed =
 				dependedParametersString.Contains(prop.PropertyName) &&
-				function().Value.HasValue && 
-				!double.IsNaN(function().Value.Value) && 
-				!double.IsInfinity(function().Value.Value)&&
-				(!parameter.Value.HasValue || 
-				double.IsNaN(parameter.Value.Value) || 
+				function().Value.HasValue &&
+				!double.IsNaN(function().Value.Value) &&
+				!double.IsInfinity(function().Value.Value) &&
+				(!parameter.Value.HasValue ||
+				double.IsNaN(parameter.Value.Value) ||
 				double.IsInfinity(parameter.Value.Value) ||
 				Math.Abs((parameter.Value ?? 0) - (function().Value ?? 0)) > double.Epsilon);
-			
-			
+
+			//if (IsNeed)
+			//{
+			//	Type T = sender.GetType();
+			//	PropertyInfo pi = T.GetProperty(parameter.GetType().Name, parameter.GetType());
+			//	MethodInfo mi = pi.SetMethod;
+
+			//	mi.Invoke(sender, new object[] { function() });
+			//}
 			return IsNeed;
 		}
+	}
 
-	}	
 
-	
 
 	public class ParametersTemplate
 	{
@@ -261,7 +343,7 @@ namespace Filtering
 		}
 	}
 
-	public class ObjWithParametersList:Parameter
+	public class ObjWithParametersList : Parameter
 	{
 		public List<Parameter> ParametersList = new List<Parameter>();
 
@@ -273,7 +355,7 @@ namespace Filtering
 			}
 		}
 
-		
+
 
 		public Parameter this[int i]
 		{
@@ -330,7 +412,7 @@ namespace Filtering
 			if (obj == null) return null;
 
 			Grid res = new Grid();
-			
+
 			if (parentObject == null)
 			{
 				//res.ShowGridLines = true;
@@ -393,7 +475,7 @@ namespace Filtering
 				Binding backGroundColorBinding = new Binding();
 				backGroundColorBinding.Source = parent;
 				backGroundColorBinding.Mode = BindingMode.OneWay;
-				backGroundColorBinding.Path = new PropertyPath(param.Name+".SourceOfParameterChanging");
+				backGroundColorBinding.Path = new PropertyPath(param.Name + ".SourceOfParameterChanging");
 				backGroundColorBinding.Converter = param.SourceOfParameterChanging2BrushConverter;
 				backGroundColorBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
@@ -415,13 +497,13 @@ namespace Filtering
 				TextBlock TextBlockName = new TextBlock();
 				TextBlockName.TextWrapping = TextWrapping.Wrap;
 				TextBlockName.TextTrimming = TextTrimming.None;
-				
-				TextBlockName.Text = (parentObject!=null?parent.GetType().Name+" ":"")+ param.Name + " [" + param.Symbol + "]";
-				TextOptions.SetTextFormattingMode(TextBlockName,TextFormattingMode.Display);
+
+				TextBlockName.Text = (parentObject != null ? parent.GetType().Name + " " : "") + param.Name + " [" + param.Symbol + "]";
+				TextOptions.SetTextFormattingMode(TextBlockName, TextFormattingMode.Display);
 				//Grid.SetColumn(TextBlockName, 0);
 				//Grid.SetRow(TextBlockName, res.RowDefinitions.Count - 1);
 				Grid.SetColumn(NameBorder, 0);
-				Grid.SetRow(NameBorder,res.RowDefinitions.Count - 1); //param.GroupNumber - 1);
+				Grid.SetRow(NameBorder, res.RowDefinitions.Count - 1); //param.GroupNumber - 1);
 
 				TextBlock TextBlockUnit = new TextBlock();
 				TextBlockUnit.Text = param.Unit;
@@ -453,13 +535,13 @@ namespace Filtering
 				res.Children.Add(UnitBorder);
 				//res.Children.Add(TextBlockUnit);
 				res.Children.Add(TextBoxValue);
-				
+
 			}
 
 			Type t = obj.GetType();
 
 			PropertyInfo[] pi = t.GetProperties(BindingFlags.Instance | BindingFlags.Public);
-			
+
 			foreach (PropertyInfo propinfo in pi)
 			{
 				Parameter subObj = propinfo.GetValue(obj) as Parameter;
@@ -477,25 +559,25 @@ namespace Filtering
 					}
 					grd.Children.Clear();
 					int i = 0;
-					foreach(UIElement el in elements)
+					foreach (UIElement el in elements)
 					{
 						if (i % 3 == 0)
 						{
 							RowDefinition rd = new RowDefinition();
 							res.RowDefinitions.Add(rd);
 						}
-						Grid.SetRow(el, res.RowDefinitions.Count-1);
+						Grid.SetRow(el, res.RowDefinitions.Count - 1);
 						res.Children.Add(el);
 						i++;
 					}
-					
+
 				}
 				else
 				{
 					bool isPrintableParameter = propinfo.GetValue(obj, null) != null;
 					if (isPrintableParameter)
 					{
-							AddRowToRes(subObj, obj);
+						AddRowToRes(subObj, obj);
 					}
 				}
 			}
@@ -523,7 +605,7 @@ namespace Filtering
 				{
 					//foreach (Parameter el in PrintObjWithParamList(subObj, obj))
 					for (int i = 0;
-						i < PrintObjWithParamList(subObj, obj).ItemsCount; 
+						i < PrintObjWithParamList(subObj, obj).ItemsCount;
 						i++)
 						res.AddParameter(PrintObjWithParamList(subObj, obj)[i]);
 				}
@@ -561,15 +643,15 @@ namespace Filtering
 				}
 				else
 				{
-						bool isPrintableParameter = propinfo.GetValue(obj, null) != null;
-						if (isPrintableParameter)
-							res.Add(subObj);
+					bool isPrintableParameter = propinfo.GetValue(obj, null) != null;
+					if (isPrintableParameter)
+						res.Add(subObj);
 				}
 			}
 			return res;
 		}
 
-		public static List<ParametersTemplate> PrintParameters(Parameter obj, Parameter parentObject=null)
+		public static List<ParametersTemplate> PrintParameters(Parameter obj, Parameter parentObject = null)
 		{
 			if (obj == null) return null;
 
@@ -615,11 +697,11 @@ namespace Filtering
 					}
 					else
 					{
-						bool isPrintableParameter = propinfo.GetValue(obj, null) != null ;
+						bool isPrintableParameter = propinfo.GetValue(obj, null) != null;
 						if (isPrintableParameter)
 							res.Add(new ParametersTemplate()
 							{
-								Parameter = obj.Name+" " + subObj.Name,
+								Parameter = obj.Name + " " + subObj.Name,
 								Units = subObj.Unit,
 								Value = subObj.Value.ToString()
 							});
