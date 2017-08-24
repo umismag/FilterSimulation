@@ -43,25 +43,53 @@ namespace Filtering
 		public event PropertyChangedEventHandler PropertyChanged;
 		public static event PropertyChangedEventHandler PropertyChangedStatic;
 
+		public static event PropertyChangedEventHandler MaterialParametersPropertyChangedStatic;
+		public static event PropertyChangedEventHandler CakeFormationPropertyChangedStatic;
+		public static event PropertyChangedEventHandler WashingPropertyChangedStatic;
+		public static event PropertyChangedEventHandler DeliquoringPropertyChangedStatic;
+		public static event PropertyChangedEventHandler ResultParametersPropertyChangedStatic;
 
 		public void OnPropertyChanged(/*[CallerMemberName]*/string prop = "")
 		{
 			if (PropertyChanged != null)
 				PropertyChanged(this, new PropertyChangedEventArgs(prop));
-			if (PropertyChangedStatic != null)
-				PropertyChangedStatic(this, new PropertyChangedEventArgs(prop));
+
+			MaterialParametersPropertyChangedStatic?.Invoke(this, new PropertyChangedEventArgs(prop));
+			CakeFormationPropertyChangedStatic?.Invoke(this, new PropertyChangedEventArgs(prop));
+			WashingPropertyChangedStatic?.Invoke(this, new PropertyChangedEventArgs(prop));
+			DeliquoringPropertyChangedStatic?.Invoke(this, new PropertyChangedEventArgs(prop));
+			ResultParametersPropertyChangedStatic?.Invoke(this, new PropertyChangedEventArgs(prop));
+			PropertyChangedStatic?.Invoke(this, new PropertyChangedEventArgs(prop));
 		}
 
 		public static IWashingDeliquoringProcess process;
 		public object ThatContainsObj;
 
+		public string dependentParameters, dependent2Parameters;
+
+		public virtual double? GetUpdatedParameter() { return null; }
+		public virtual double? Get2UpdatedParameter() { return null; }
+
+		public virtual void DependentParametersChanged(object sender, PropertyChangedEventArgs prop)
+		{
+			if (dependentParameters != null)
+				IfNeedThenUpdate(dependentParameters, prop, this, GetUpdatedParameter);
+			if (dependent2Parameters != null)
+				IfNeedThenUpdate(dependent2Parameters, prop, this, Get2UpdatedParameter);
+		}
 
 		SourceOfChanging? sourceOfParameterChanging = SourceOfChanging.AutomaticallyByConstructor;
 		public SourceOfChanging? SourceOfParameterChanging
 		{
 			get { return sourceOfParameterChanging; }
-			set { sourceOfParameterChanging = value; }
+			set
+			{
+				sourceOfParameterChanging = value;
+				//OnPropertyChanged("SourceOfParameterChanging");
+			}
 		}
+
+		protected SourceOfChanging? sourceOfMinMaxChanging = SourceOfChanging.AutomaticallyByConstructor;
 
 		internal string name;
 		public string Name
@@ -91,14 +119,49 @@ namespace Filtering
 			internal set { symbolSuffix = value; }
 		}
 
-		double minValue = double.MinValue;
-		double maxValue = double.MaxValue;
+		double? minValue;// = double.MinValue;
+		public double? MinValue
+		{
+			get { return minValue; }
+			set { minValue = value; }
+		}
+
+		double? maxValue;// = double.MaxValue;
+		public double? MaxValue
+		{
+			get { return maxValue; }
+			set { maxValue = value; }
+		}
+
+		protected static CalculateMode calculateMode = CalculateMode.Normal;
 
 		protected double? value = null;
-
 		public double? Value
 		{
-			get { return this.value; }
+			get
+			{
+				switch (calculateMode)
+				{
+					case CalculateMode.Normal:
+						return this.value;
+						//break;
+					case CalculateMode.Min:
+						if (SourceOfParameterChanging == SourceOfChanging.ManuallyByUser)
+							return value;
+						else
+							return MinValue;
+						//break;
+					case CalculateMode.Max:
+						if (SourceOfParameterChanging == SourceOfChanging.ManuallyByUser)
+							return value;
+						else
+							return MaxValue;
+						//break;
+					default:
+						return this.value;
+						//break;
+				}
+			}
 			set
 			{
 				if (value < 0) //minValue)
@@ -138,6 +201,7 @@ namespace Filtering
 			}
 		}
 
+		protected enum CalculateMode { Normal, Min, Max};
 
 		protected Parameter()
 		{
@@ -154,8 +218,7 @@ namespace Filtering
 		{
 			public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 			{
-				T tmp = value as T;
-				if (tmp != null)
+				if (value is T tmp)
 					return tmp.Value;
 				else
 					return value;
@@ -163,24 +226,23 @@ namespace Filtering
 
 			public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 			{
-				bool IsNeedConvert = (value != null) && (value.ToString() != "") && value.ToString()[value.ToString().Length - 1] != '.' && value.ToString()[value.ToString().Length - 1] != ',';
+				bool IsNeedConvert = (value != null) && parameter is DisplayParameter && (value.ToString() != "") && value.ToString()[value.ToString().Length - 1] != '.' && value.ToString()[value.ToString().Length - 1] != ',';
 				if (IsNeedConvert)
 				{
-					T tmp = new T();
+					DisplayParameter dispParam = parameter as DisplayParameter;
 					double res;
 					if (double.TryParse(value.ToString().Replace('.', ','), out res))
 					{
-						tmp.Value = res;
-						tmp.SourceOfParameterChanging = SourceOfChanging.ManuallyByUser;
+						dispParam.Parameter.Value = res;
+
 					}
 					else
 					{
-						tmp.Value = null;
+						dispParam.Parameter.Value = null;
 					}
-
-					//Type t = tmp.GetType();
-					//tmp.OnPropertyChanged(t.BaseType.Name+"."+tmp.GetType().Name);
-					return tmp;
+					//dispParam.Parameter.SourceOfParameterChanging = SourceOfChanging.ManuallyByUser;
+					dispParam.paramInGroup.SetRepresentateForGroup(dispParam);
+					return dispParam.Parameter;
 				}
 				else
 					return value;
@@ -206,31 +268,33 @@ namespace Filtering
 					{
 						case SourceOfChanging.ManuallyByUser:
 							{
-								br.Color = new Color() { R = 0, G = 255, B = 0, A = 128 };
-								return br;
-								//break;
+								br.Color = new Color() { R = 0, G = 0, B = 255, A = 255 };
+								break;
 							}
 
 						case SourceOfChanging.AutomaticallyByCore:
 							{
-								br.Color = new Color() { R = 0, G = 0, B = 255, A = 128 };
-								return br;
-								//break;
+								br.Color = new Color() { R = 0, G = 0, B = 0, A = 255 };
+								//return br;
+								break;
 							}
 						case SourceOfChanging.AutomaticallyByConstructor:
 							{
-								br.Color = new Color() { R = 128, G = 128, B = 128, A = 128 };
-								return br;
-								//break;
+								br.Color = new Color() { R = 255, G = 0, B = 0, A = 200 };
+								//return br;
+								break;
 							}
 						default:
 							{
-								br.Color = new Color() { R = 255, G = 0, B = 0, A = 128 };
-								return br;
-								//break;
+								br.Color = new Color() { R = 255, G = 0, B = 0, A = 200 };
+								//return br;
+								break;
 							}
 					}
+					//(parameter as DisplayParameter).Parameter.GetType().Name);
+					return br;
 				}
+				
 				else
 					return value;
 			}
@@ -246,10 +310,10 @@ namespace Filtering
 		protected void IfNeedThenUpdate(string dependedParametersString, PropertyChangedEventArgs prop, Parameter parameter, Func<double?> function)
 		{
 			callersCount++;
-			Parameter obj=null;
+			Parameter obj = null;
 			Type T1;
 			PropertyInfo pi1;
-			if (parameter!=null && parameter.ThatContainsObj != null)
+			if (parameter != null && parameter.ThatContainsObj != null)
 			{
 				T1 = parameter.ThatContainsObj.GetType();
 				pi1 = T1.GetProperty(parameter.GetType().Name, parameter.GetType());
@@ -276,44 +340,24 @@ namespace Filtering
 
 			if (IsNeed)
 			{
-				
-				//Type T = obj./*ThatContainsObj.*/GetType();
-				//PropertyInfo pi = T.GetProperty(obj.GetType().Name, obj.GetType());
-				//MethodInfo mi = pi1.SetMethod; 
 				obj.value = function();
-				obj.SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore;
 				(obj.ThatContainsObj as Parameter).OnPropertyChanged(obj.GetType().Name);
-				//mi.Invoke(obj, new object[] { obj });
-				//SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore
+
+				if (sourceOfMinMaxChanging != SourceOfChanging.ManuallyByUser)
+				{
+					calculateMode = CalculateMode.Min;
+					obj.MinValue = function();
+
+					calculateMode = CalculateMode.Max;
+					obj.MaxValue = function();
+
+					calculateMode = CalculateMode.Normal;
+				}
 			}
 			else
 			{
 				return;
 			}
-		}
-
-		protected bool IsNeedToUpdate(string dependedParametersString, PropertyChangedEventArgs prop, Parameter parameter, Func<Parameter> function, object sender)
-		{
-			//callersCount++;
-			bool IsNeed =
-				dependedParametersString.Contains(prop.PropertyName) &&
-				function().Value.HasValue &&
-				!double.IsNaN(function().Value.Value) &&
-				!double.IsInfinity(function().Value.Value) &&
-				(!parameter.Value.HasValue ||
-				double.IsNaN(parameter.Value.Value) ||
-				double.IsInfinity(parameter.Value.Value) ||
-				Math.Abs((parameter.Value ?? 0) - (function().Value ?? 0)) > double.Epsilon);
-
-			//if (IsNeed)
-			//{
-			//	Type T = sender.GetType();
-			//	PropertyInfo pi = T.GetProperty(parameter.GetType().Name, parameter.GetType());
-			//	MethodInfo mi = pi.SetMethod;
-
-			//	mi.Invoke(sender, new object[] { function() });
-			//}
-			return IsNeed;
 		}
 	}
 
@@ -367,8 +411,7 @@ namespace Filtering
 
 		public void AddParameter(Parameter parameter)
 		{
-			Parameter tmp = parameter as Parameter;
-			if (tmp != null)
+			if (parameter is Parameter tmp)
 				ParametersList.Add(tmp);
 		}
 	}
@@ -407,182 +450,186 @@ namespace Filtering
 		//	return res;
 		//}
 
-		public static Grid PrintGridWithParamList(Parameter obj, Parameter parentObject = null)
-		{
-			if (obj == null) return null;
+		//public static Grid PrintGridWithParamList(Parameter obj, Parameter parentObject = null)
+		//{
+		//	if (obj == null) return null;
 
-			Grid res = new Grid();
+		//	Grid res = new Grid();
 
-			if (parentObject == null)
-			{
-				//res.ShowGridLines = true;
-				ColumnDefinition cd1 = new ColumnDefinition();
-				cd1.Width = new System.Windows.GridLength(3, System.Windows.GridUnitType.Star);
+		//	if (parentObject == null)
+		//	{
+		//		//res.ShowGridLines = true;
+		//		ColumnDefinition cd1 = new ColumnDefinition()
+		//		{
+		//			Width = new System.Windows.GridLength(3, System.Windows.GridUnitType.Star)
+		//		};
 
-				ColumnDefinition cd2 = new ColumnDefinition();
-				cd2.Width = new System.Windows.GridLength(1, System.Windows.GridUnitType.Star);
+		//		ColumnDefinition cd2 = new ColumnDefinition();
+		//		cd2.Width = new System.Windows.GridLength(1, System.Windows.GridUnitType.Star);
 
-				ColumnDefinition cd3 = new ColumnDefinition();
-				cd3.Width = new System.Windows.GridLength(2, System.Windows.GridUnitType.Star);
+		//		ColumnDefinition cd3 = new ColumnDefinition();
+		//		cd3.Width = new System.Windows.GridLength(2, System.Windows.GridUnitType.Star);
 
-				res.ColumnDefinitions.Add(cd1);
-				res.ColumnDefinitions.Add(cd2);
-				res.ColumnDefinitions.Add(cd3);
+		//		res.ColumnDefinitions.Add(cd1);
+		//		res.ColumnDefinitions.Add(cd2);
+		//		res.ColumnDefinitions.Add(cd3);
 
-				RowDefinition Rd = new RowDefinition();
-				res.RowDefinitions.Add(Rd);
+		//		RowDefinition Rd = new RowDefinition();
+		//		res.RowDefinitions.Add(Rd);
 
-				Label lb1 = new Label();
-				lb1.Background = new SolidColorBrush(SystemColors.GradientInactiveCaptionColor);
-				lb1.Content = "Parameter";
-				lb1.BorderThickness = new Thickness(1, 1, 0, 1);
-				lb1.BorderBrush = Brushes.Black;
-				Grid.SetColumn(lb1, 0);
-				Grid.SetRow(lb1, 0);
+		//		Label lb1 = new Label()
+		//		{
+		//			Background = new SolidColorBrush(SystemColors.GradientInactiveCaptionColor),
+		//			Content = "Parameter",
+		//			BorderThickness = new Thickness(1, 1, 0, 1),
+		//			BorderBrush = Brushes.Black
+		//		};
+		//		Grid.SetColumn(lb1, 0);
+		//		Grid.SetRow(lb1, 0);
 
-				Label lb2 = new Label();
-				lb2.Background = lb1.Background;
-				lb2.Content = "Unit";
-				lb2.BorderThickness = new Thickness(1, 1, 1, 1);
-				lb2.BorderBrush = Brushes.Black;
-				Grid.SetColumn(lb2, 1);
-				Grid.SetRow(lb2, 0);
+		//		Label lb2 = new Label();
+		//		lb2.Background = lb1.Background;
+		//		lb2.Content = "Unit";
+		//		lb2.BorderThickness = new Thickness(1, 1, 1, 1);
+		//		lb2.BorderBrush = Brushes.Black;
+		//		Grid.SetColumn(lb2, 1);
+		//		Grid.SetRow(lb2, 0);
 
-				Label lb3 = new Label();
-				lb3.Background = lb1.Background;
-				lb3.Content = "Value";
-				lb3.BorderThickness = new Thickness(0, 1, 1, 1);
-				lb3.BorderBrush = Brushes.Black;
-				Grid.SetColumn(lb3, 2);
-				Grid.SetRow(lb3, 0);
+		//		Label lb3 = new Label();
+		//		lb3.Background = lb1.Background;
+		//		lb3.Content = "Value";
+		//		lb3.BorderThickness = new Thickness(0, 1, 1, 1);
+		//		lb3.BorderBrush = Brushes.Black;
+		//		Grid.SetColumn(lb3, 2);
+		//		Grid.SetRow(lb3, 0);
 
-				res.Children.Add(lb1);
-				res.Children.Add(lb2);
-				res.Children.Add(lb3);
-			}
+		//		res.Children.Add(lb1);
+		//		res.Children.Add(lb2);
+		//		res.Children.Add(lb3);
+		//	}
 
-			void AddRowToRes(Parameter param, Parameter parent)
-			{
-				//Binding groupNumberBinding = new Binding();
-				//groupNumberBinding.Source = parent;
-				//groupNumberBinding.Mode = BindingMode.OneWay;
-				//groupNumberBinding.Path = new PropertyPath(param.Name + ".GroupNumber");
-				//groupNumberBinding.Converter = 
-				//groupNumberBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+		//	void AddRowToRes(Parameter param, Parameter parent)
+		//	{
+		//		//Binding groupNumberBinding = new Binding();
+		//		//groupNumberBinding.Source = parent;
+		//		//groupNumberBinding.Mode = BindingMode.OneWay;
+		//		//groupNumberBinding.Path = new PropertyPath(param.Name + ".GroupNumber");
+		//		//groupNumberBinding.Converter = 
+		//		//groupNumberBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
 
 
-				Binding backGroundColorBinding = new Binding();
-				backGroundColorBinding.Source = parent;
-				backGroundColorBinding.Mode = BindingMode.OneWay;
-				backGroundColorBinding.Path = new PropertyPath(param.Name + ".SourceOfParameterChanging");
-				backGroundColorBinding.Converter = param.SourceOfParameterChanging2BrushConverter;
-				backGroundColorBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+		//		Binding backGroundColorBinding = new Binding();
+		//		backGroundColorBinding.Source = parent;
+		//		backGroundColorBinding.Mode = BindingMode.OneWay;
+		//		backGroundColorBinding.Path = new PropertyPath(param.Name + ".SourceOfParameterChanging");
+		//		backGroundColorBinding.Converter = param.SourceOfParameterChanging2BrushConverter;
+		//		backGroundColorBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
-				Border NameBorder = new Border();
-				NameBorder.BorderBrush = Brushes.Black;
-				NameBorder.BorderThickness = new Thickness(1, 0, 0, 1);
-				NameBorder.Padding = new Thickness(2, 2, 2, 2);
-				NameBorder.Margin = new Thickness(0, -1, 0, 0);
+		//		Border NameBorder = new Border();
+		//		NameBorder.BorderBrush = Brushes.Black;
+		//		NameBorder.BorderThickness = new Thickness(1, 0, 0, 1);
+		//		NameBorder.Padding = new Thickness(2, 2, 2, 2);
+		//		NameBorder.Margin = new Thickness(0, -1, 0, 0);
 
-				Border UnitBorder = new Border();
-				UnitBorder.BorderBrush = Brushes.Black;
-				UnitBorder.BorderThickness = new Thickness(1, 0, 0, 1);
-				UnitBorder.Padding = NameBorder.Padding;
-				UnitBorder.Margin = NameBorder.Margin;
+		//		Border UnitBorder = new Border();
+		//		UnitBorder.BorderBrush = Brushes.Black;
+		//		UnitBorder.BorderThickness = new Thickness(1, 0, 0, 1);
+		//		UnitBorder.Padding = NameBorder.Padding;
+		//		UnitBorder.Margin = NameBorder.Margin;
 
-				RowDefinition rd = new RowDefinition();
-				res.RowDefinitions.Add(rd);
+		//		RowDefinition rd = new RowDefinition();
+		//		res.RowDefinitions.Add(rd);
 
-				TextBlock TextBlockName = new TextBlock();
-				TextBlockName.TextWrapping = TextWrapping.Wrap;
-				TextBlockName.TextTrimming = TextTrimming.None;
+		//		TextBlock TextBlockName = new TextBlock();
+		//		TextBlockName.TextWrapping = TextWrapping.Wrap;
+		//		TextBlockName.TextTrimming = TextTrimming.None;
 
-				TextBlockName.Text = (parentObject != null ? parent.GetType().Name + " " : "") + param.Name + " [" + param.Symbol + "]";
-				TextOptions.SetTextFormattingMode(TextBlockName, TextFormattingMode.Display);
-				//Grid.SetColumn(TextBlockName, 0);
-				//Grid.SetRow(TextBlockName, res.RowDefinitions.Count - 1);
-				Grid.SetColumn(NameBorder, 0);
-				Grid.SetRow(NameBorder, res.RowDefinitions.Count - 1); //param.GroupNumber - 1);
+		//		TextBlockName.Text = (parentObject != null ? parent.GetType().Name + " " : "") + param.Name + " [" + param.Symbol + "]";
+		//		TextOptions.SetTextFormattingMode(TextBlockName, TextFormattingMode.Display);
+		//		//Grid.SetColumn(TextBlockName, 0);
+		//		//Grid.SetRow(TextBlockName, res.RowDefinitions.Count - 1);
+		//		Grid.SetColumn(NameBorder, 0);
+		//		Grid.SetRow(NameBorder, res.RowDefinitions.Count - 1); //param.GroupNumber - 1);
 
-				TextBlock TextBlockUnit = new TextBlock();
-				TextBlockUnit.Text = param.Unit;
-				TextBlockUnit.TextAlignment = TextAlignment.Center;
-				TextOptions.SetTextFormattingMode(TextBlockUnit, TextFormattingMode.Display);
-				Grid.SetColumn(UnitBorder, 1);
-				Grid.SetRow(UnitBorder, res.RowDefinitions.Count - 1);//param.GroupNumber - 1); 
+		//		TextBlock TextBlockUnit = new TextBlock();
+		//		TextBlockUnit.Text = param.Unit;
+		//		TextBlockUnit.TextAlignment = TextAlignment.Center;
+		//		TextOptions.SetTextFormattingMode(TextBlockUnit, TextFormattingMode.Display);
+		//		Grid.SetColumn(UnitBorder, 1);
+		//		Grid.SetRow(UnitBorder, res.RowDefinitions.Count - 1);//param.GroupNumber - 1); 
 
-				Binding binding = new Binding();
-				binding.Source = parent;
-				binding.Path = new PropertyPath(param.Name);
-				binding.Converter = param.Converter;
-				//binding.Delay = 300;
-				binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+		//		Binding binding = new Binding();
+		//		binding.Source = parent;
+		//		binding.Path = new PropertyPath(param.Name);
+		//		binding.Converter = param.Converter;
+		//		//binding.Delay = 300;
+		//		binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
-				TextBox TextBoxValue = new TextBox();
-				TextBoxValue.Foreground = Brushes.Blue;
-				TextBoxValue.SetBinding(TextBox.TextProperty, binding);
-				TextBoxValue.SetBinding(TextBox.BackgroundProperty, backGroundColorBinding);
-				TextOptions.SetTextFormattingMode(TextBoxValue, TextFormattingMode.Display);
-				//TextBoxValue
-				Grid.SetColumn(TextBoxValue, 2);
-				Grid.SetRow(TextBoxValue, res.RowDefinitions.Count - 1);// param.GroupNumber - 1);
+		//		TextBox TextBoxValue = new TextBox();
+		//		TextBoxValue.Foreground = Brushes.Blue;
+		//		TextBoxValue.SetBinding(TextBox.TextProperty, binding);
+		//		TextBoxValue.SetBinding(TextBox.BackgroundProperty, backGroundColorBinding);
+		//		TextOptions.SetTextFormattingMode(TextBoxValue, TextFormattingMode.Display);
+		//		//TextBoxValue
+		//		Grid.SetColumn(TextBoxValue, 2);
+		//		Grid.SetRow(TextBoxValue, res.RowDefinitions.Count - 1);// param.GroupNumber - 1);
 
-				NameBorder.Child = TextBlockName;
-				res.Children.Add(NameBorder);
-				//res.Children.Add(TextBlockName);
-				UnitBorder.Child = TextBlockUnit;
-				res.Children.Add(UnitBorder);
-				//res.Children.Add(TextBlockUnit);
-				res.Children.Add(TextBoxValue);
+		//		NameBorder.Child = TextBlockName;
+		//		res.Children.Add(NameBorder);
+		//		//res.Children.Add(TextBlockName);
+		//		UnitBorder.Child = TextBlockUnit;
+		//		res.Children.Add(UnitBorder);
+		//		//res.Children.Add(TextBlockUnit);
+		//		res.Children.Add(TextBoxValue);
 
-			}
+		//	}
 
-			Type t = obj.GetType();
+		//	Type t = obj.GetType();
 
-			PropertyInfo[] pi = t.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+		//	PropertyInfo[] pi = t.GetProperties(BindingFlags.Instance | BindingFlags.Public);
 
-			foreach (PropertyInfo propinfo in pi)
-			{
-				Parameter subObj = propinfo.GetValue(obj) as Parameter;
-				if (subObj == null) continue;
-				subObj.Name = propinfo.Name;
+		//	foreach (PropertyInfo propinfo in pi)
+		//	{
+		//		Parameter subObj = propinfo.GetValue(obj) as Parameter;
+		//		if (subObj == null) continue;
+		//		subObj.Name = propinfo.Name;
 
-				bool isSubparameter = subObj.Symbol == null || subObj.Unit == null;
-				if (isSubparameter)
-				{
-					List<UIElement> elements = new List<UIElement>();
-					Grid grd = PrintGridWithParamList(subObj, obj);      //!!!!
-					foreach (UIElement el in grd.Children)
-					{
-						elements.Add(el);
-					}
-					grd.Children.Clear();
-					int i = 0;
-					foreach (UIElement el in elements)
-					{
-						if (i % 3 == 0)
-						{
-							RowDefinition rd = new RowDefinition();
-							res.RowDefinitions.Add(rd);
-						}
-						Grid.SetRow(el, res.RowDefinitions.Count - 1);
-						res.Children.Add(el);
-						i++;
-					}
+		//		bool isSubparameter = subObj.Symbol == null || subObj.Unit == null;
+		//		if (isSubparameter)
+		//		{
+		//			List<UIElement> elements = new List<UIElement>();
+		//			Grid grd = PrintGridWithParamList(subObj, obj);      //!!!!
+		//			foreach (UIElement el in grd.Children)
+		//			{
+		//				elements.Add(el);
+		//			}
+		//			grd.Children.Clear();
+		//			int i = 0;
+		//			foreach (UIElement el in elements)
+		//			{
+		//				if (i % 3 == 0)
+		//				{
+		//					RowDefinition rd = new RowDefinition();
+		//					res.RowDefinitions.Add(rd);
+		//				}
+		//				Grid.SetRow(el, res.RowDefinitions.Count - 1);
+		//				res.Children.Add(el);
+		//				i++;
+		//			}
 
-				}
-				else
-				{
-					bool isPrintableParameter = propinfo.GetValue(obj, null) != null;
-					if (isPrintableParameter)
-					{
-						AddRowToRes(subObj, obj);
-					}
-				}
-			}
-			return res;
-		}
+		//		}
+		//		else
+		//		{
+		//			bool isPrintableParameter = propinfo.GetValue(obj, null) != null;
+		//			if (isPrintableParameter)
+		//			{
+		//				AddRowToRes(subObj, obj);
+		//			}
+		//		}
+		//	}
+		//	return res;
+		//}
 
 		public static ObjWithParametersList PrintObjWithParamList(Parameter obj, Parameter parentObject = null)
 		{

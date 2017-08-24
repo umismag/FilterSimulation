@@ -25,8 +25,8 @@ namespace Filtering
 		//List<CakeFormation> CakeFormationList = new List<CakeFormation>();
 		//ObservableCollection<Parameter> CakeFormationList = new ObservableCollection<Parameter>();
 		//List<WashingLiquid> Liquids = new List<WashingLiquid>();
-		CakeFormations myCakeFormations;
-		ICollectionView myCakeFormationsView, myFiltrationView;
+		//CakeFormations myCakeFormations;
+		//ICollectionView myCakeFormationsView, myFiltrationView;
 		public CakeFormation CurrentCakeFormation;
 		//Filtration FLTR = new Filtration();
 		Filtration FLTR;
@@ -106,6 +106,12 @@ namespace Filtering
 			//(sender as DataGrid).CommitEdit();
 			//(sender as DataGrid).Items.Refresh();
 		}
+
+		private void ResultStackPanel_Error(object sender, ValidationErrorEventArgs e)
+		{
+			if (e.Action == ValidationErrorEventAction.Added)
+				MessageBox.Show(e.Error.ErrorContent.ToString());
+		}
 	}
 
 	public class Filtration
@@ -119,7 +125,7 @@ namespace Filtering
 				new Filter("Filter1", new SpecificFilterMediumResistance(), new MediumResistance(15), new MachineDiameter(400), new MachineWidth(200)),
 				new Cake("Cake1", new Porosity(58), new StandardPorosity(), new PorosityReductionFactor(), new CakePermeability(25), new StandardCakePermeability(), new Compressibility(35), new CakeHeigth(52)));
 
-			Washing wng = new Washing("Washing1", new WashingLiquid("Water", new Viscosity(0.894), new Density(1000)), new Max_wash_out(90), new Min_wash_out(5), new Adaptation_ParameterA(5), new Adaptation_ParameterB(), new PressureDifferenceCakeWashing(2),cf);
+			Washing wng = new Washing("Washing1", new WashingLiquid("Water", new Viscosity(0.894), new Density(1000)), new Max_wash_out(90), new Min_wash_out(5), new Adaptation_ParameterA(5), new Adaptation_ParameterB(), new PressureDifferenceCakeWashing(2), cf);
 
 			Deliquoring dlng = new Deliquoring(wng)
 			{
@@ -137,7 +143,7 @@ namespace Filtering
 				//SolidsThroughput=new SolidsThroughput()
 			};
 
-			FP = new FilteringProcess(ResParam, cf, wng, dlng);
+			FP = new FilteringProcess(ResParam/*, cf, wng, dlng*/);
 			//FP.CakeFormation = cf;
 			//FP.Washing = wng;
 			//FP.Deliquoring = dlng;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Filtering
 {
@@ -15,16 +16,6 @@ namespace Filtering
 			set
 			{
 				parameter = value;
-			}
-		}
-
-		Parameter parent;
-		public Parameter Parent
-		{
-			get { return parent; }
-			set
-			{
-				parent = value;
 			}
 		}
 
@@ -58,10 +49,11 @@ namespace Filtering
 			}
 		}
 
-		public DisplayParameter(Parameter parameter, Parameter parent, int groupNumber, int subGroupNumber, bool isAlwaysDisplay = false)
+		public GroupsOfParameters paramInGroup;
+
+		public DisplayParameter(Parameter parameter, int groupNumber, int subGroupNumber, bool isAlwaysDisplay = false)
 		{
 			Parameter = parameter;
-			Parent = parent;
 			GroupNumber = groupNumber;
 			SubGroupNumber = subGroupNumber;
 			IsAlwaysDisplay = isAlwaysDisplay;
@@ -73,6 +65,22 @@ namespace Filtering
 
 	public class GroupsOfParameters : SortedList<int, List<DisplayParameter>>
 	{
+		public void SetRepresentateForGroup(DisplayParameter dispPar)
+		{
+			foreach(DisplayParameter dp in Values[dispPar.GroupNumber-1])
+			{
+				if (dp==dispPar)
+				{
+					dp.Parameter.SourceOfParameterChanging = SourceOfChanging.ManuallyByUser;
+				}
+				else
+				{
+					dp.Parameter.SourceOfParameterChanging = SourceOfChanging.AutomaticallyByCore;
+					dp.Parameter.OnPropertyChanged("SourceOfParameterChanging");
+				}
+			}
+		}
+
 		CalculationTypes calculationType;
 		public CalculationTypes CalculationType
 		{
@@ -92,40 +100,24 @@ namespace Filtering
 				option = value;
 			}
 		}
-
-		//public GroupsOfParameters()
-		//{
-
-		//}
 	}
 
 	public static class TableOfGroupsOfParameters
 	{
 		public static GroupsOfParameters Get_FOnly_ParametersTableStandard1(ICakeFormationProcess cakeFormationProcess)
 		{
-			GroupsOfParameters res= new GroupsOfParameters();
+			GroupsOfParameters res = new GroupsOfParameters();
 			res.CalculationType = CalculationTypes.StandardCalculation;
 			res.Option = 1;
 
-			DisplayParameter A = new DisplayParameter(cakeFormationProcess.CakeFormation.Filter.Area, cakeFormationProcess.CakeFormation.Filter, 1, 1, true);
-			res.Add(1, new List<DisplayParameter>() { A});
+			AddGroup2Table(TableType.FOnly_ParametersTableStandard1, ref res, 1, new KeyValuePair<Parameter, bool>(cakeFormationProcess.CakeFormation.Filter.Area, true));
 
-			DisplayParameter Dp = new DisplayParameter(cakeFormationProcess.CakeFormation.PressureDifferenceCakeFormation, cakeFormationProcess.CakeFormation, 2, 1, true);
-			res.Add(2, new List<DisplayParameter>() { Dp });
+			AddGroup2Table(TableType.FOnly_ParametersTableStandard1, ref res, 2, new KeyValuePair<Parameter, bool>(cakeFormationProcess.CakeFormation.PressureDifferenceCakeFormation, true));
 
-			DisplayParameter hc0 = new DisplayParameter(cakeFormationProcess.CakeFormation.Cake.InitialHeight, cakeFormationProcess.CakeFormation.Cake, 3, 1, true);
-			res.Add(3, new List<DisplayParameter>() { hc0 });
+			AddGroup2Table(TableType.FOnly_ParametersTableStandard1, ref res,3 , new KeyValuePair<Parameter, bool>(cakeFormationProcess.CakeFormation.Cake.InitialHeight, true));
 
-			DisplayParameter tf = new DisplayParameter(cakeFormationProcess.CakeFormation.FiltrationTime, cakeFormationProcess.CakeFormation, 4, 1, true);
-			DisplayParameter hc = new DisplayParameter(cakeFormationProcess.CakeFormation.Cake.CakeHeigth, cakeFormationProcess.CakeFormation.Cake,   4, 2, true);
-			res.Add(4, new List<DisplayParameter>() { tf,hc });
+			AddGroup2Table(TableType.FOnly_ParametersTableStandard1, ref res, 4 , new KeyValuePair<Parameter, bool>(cakeFormationProcess.CakeFormation.FiltrationTime, true), new KeyValuePair<Parameter, bool>(cakeFormationProcess.CakeFormation.Cake.CakeHeigth, true));
 
-			//DisplayParameter t_tech = new DisplayParameter(cakeFormationProcess.ResultParameter.TechnicalTime, cakeFormationProcess.ResultParameter,			5, 1 , true);
-			//DisplayParameter tc = new DisplayParameter(cakeFormationProcess.ResultParameter.CycleTime, cakeFormationProcess.ResultParameter,			5, 2, true);
-			//DisplayParameter Qms = new DisplayParameter(cakeFormationProcess.ResultParameter.SolidsThroughput, cakeFormationProcess.ResultParameter,			5, 3, true);
-			//res.Add(5, new List<DisplayParameter>() {t_tech, tc, Qms});
-
-			
 			return res;
 		}
 
@@ -135,44 +127,87 @@ namespace Filtering
 			res.CalculationType = CalculationTypes.StandardCalculation;
 			res.Option = 1;
 
-			DisplayParameter A = new DisplayParameter(f_w_d_process.CakeFormation.Filter.Area, f_w_d_process.CakeFormation.Filter, 1, 1, true);
+			DisplayParameter A = new DisplayParameter(f_w_d_process.CakeFormation.Filter.Area, 1, 1, true);
 			res.Add(1, new List<DisplayParameter>() { A });
 
-			DisplayParameter Dp = new DisplayParameter(f_w_d_process.CakeFormation.PressureDifferenceCakeFormation, f_w_d_process.CakeFormation, 2, 1, true);
+			DisplayParameter Dp = new DisplayParameter(f_w_d_process.CakeFormation.PressureDifferenceCakeFormation, 2, 1, true);
 			res.Add(2, new List<DisplayParameter>() { Dp });
 
-			DisplayParameter hc0 = new DisplayParameter(f_w_d_process.CakeFormation.Cake.InitialHeight, f_w_d_process.CakeFormation.Cake, 3, 1, true);
+			DisplayParameter hc0 = new DisplayParameter(f_w_d_process.CakeFormation.Cake.InitialHeight, 3, 1, true);
 			res.Add(3, new List<DisplayParameter>() { hc0 });
 
-			DisplayParameter tf = new DisplayParameter(f_w_d_process.CakeFormation.FiltrationTime, f_w_d_process.CakeFormation, 4, 1, true);
-			DisplayParameter hc = new DisplayParameter(f_w_d_process.CakeFormation.Cake.CakeHeigth, f_w_d_process.CakeFormation.Cake,        4, 2, true);
-			DisplayParameter Msus = new DisplayParameter(f_w_d_process.CakeFormation.MassOfSuspension, f_w_d_process.CakeFormation, 4, 3, true);
+			DisplayParameter tf = new DisplayParameter(f_w_d_process.CakeFormation.FiltrationTime, 4, 1, true);
+			DisplayParameter hc = new DisplayParameter(f_w_d_process.CakeFormation.Cake.CakeHeigth, 4, 2, true);
+			DisplayParameter Msus = new DisplayParameter(f_w_d_process.CakeFormation.MassOfSuspension, 4, 3, true);
 			res.Add(4, new List<DisplayParameter>() { tf, hc, Msus });
 
 
-			DisplayParameter Dpw = new DisplayParameter(f_w_d_process.Washing.PressureDifferenceCakeWashing, f_w_d_process.Washing, 5, 1, true);
+			DisplayParameter Dpw = new DisplayParameter(f_w_d_process.Washing.PressureDifferenceCakeWashing, 5, 1, true);
 			res.Add(5, new List<DisplayParameter>() { Dpw });
 
-			DisplayParameter tw = new DisplayParameter(f_w_d_process.Washing.WashingTime, f_w_d_process.Washing,   6, 1, true);
-			DisplayParameter w = new DisplayParameter(f_w_d_process.Washing.WashingRatio, f_w_d_process.Washing,   6, 2);
-			DisplayParameter Vw = new DisplayParameter(f_w_d_process.Washing.WashLiquidVolume, f_w_d_process.Washing, 6, 3);
-			res.Add(6, new List<DisplayParameter>() { tw,w, Vw });
+			DisplayParameter tw = new DisplayParameter(f_w_d_process.Washing.WashingTime, 6, 1, true);
+			DisplayParameter w = new DisplayParameter(f_w_d_process.Washing.WashingRatio, 6, 2);
+			DisplayParameter Vw = new DisplayParameter(f_w_d_process.Washing.WashLiquidVolume, 6, 3);
+			res.Add(6, new List<DisplayParameter>() { tw, w, Vw });
 
-			DisplayParameter Dpd = new DisplayParameter(f_w_d_process.Deliquoring.PressureDifferenceCakeDeliquoring, f_w_d_process.Deliquoring, 7, 1, true);
+			DisplayParameter Dpd = new DisplayParameter(f_w_d_process.Deliquoring.PressureDifferenceCakeDeliquoring, 7, 1, true);
 			res.Add(7, new List<DisplayParameter>() { Dpd });
 
-			DisplayParameter td = new DisplayParameter(f_w_d_process.Deliquoring.DeliquoringTime, f_w_d_process.Deliquoring,   8, 1, true);
-			DisplayParameter K = new DisplayParameter(f_w_d_process.Deliquoring.DeliquoringIndex, f_w_d_process.Deliquoring,   8, 2);
-			DisplayParameter S = new DisplayParameter(f_w_d_process.Deliquoring.CakeSaturation, f_w_d_process.Deliquoring,       8, 3);
-			DisplayParameter Rf = new DisplayParameter(f_w_d_process.Deliquoring.CakeMoistureContent, f_w_d_process.Deliquoring, 8, 4);
+			DisplayParameter td = new DisplayParameter(f_w_d_process.Deliquoring.DeliquoringTime, 8, 1, true);
+			DisplayParameter K = new DisplayParameter(f_w_d_process.Deliquoring.DeliquoringIndex, 8, 2);
+			DisplayParameter S = new DisplayParameter(f_w_d_process.Deliquoring.CakeSaturation, 8, 3);
+			DisplayParameter Rf = new DisplayParameter(f_w_d_process.Deliquoring.CakeMoistureContent, 8, 4);
 			res.Add(8, new List<DisplayParameter>() { td, K, S, Rf });
 
-			DisplayParameter t_tech = new DisplayParameter(f_w_d_process.ResultParameter.TechnicalTime, f_w_d_process.ResultParameter,	9, 1, true);
-			DisplayParameter tc = new DisplayParameter(f_w_d_process.ResultParameter.CycleTime, f_w_d_process.ResultParameter,			9, 2, true);
-			DisplayParameter Qms = new DisplayParameter(f_w_d_process.ResultParameter.SolidsThroughput, f_w_d_process.ResultParameter,	9, 3, true);
+			DisplayParameter t_tech = new DisplayParameter(f_w_d_process.ResultParameter.TechnicalTime, 9, 1, true);
+			DisplayParameter tc = new DisplayParameter(f_w_d_process.ResultParameter.CycleTime, 9, 2, true);
+			DisplayParameter Qms = new DisplayParameter(f_w_d_process.ResultParameter.SolidsThroughput, 9, 3, true);
 			res.Add(9, new List<DisplayParameter>() { t_tech, tc, Qms });
 
 			return res;
+		}
+
+		enum TableType { Materials_ParametersTable, FOnly_ParametersTableStandard1, Washing_ParametersTable, Deliquoring_ParametersTable, Result_ParametersTable }
+
+		static void AddGroup2Table(TableType tableType, ref GroupsOfParameters groupOfParam, int group, params KeyValuePair<Parameter, bool>[] parameters)
+		{
+			List<DisplayParameter> paramInGroup = new List<DisplayParameter>();
+			int subGroupNum = 1;
+			foreach (KeyValuePair<Parameter, bool> param in parameters)
+			{
+				DisplayParameter dp = new DisplayParameter(param.Key, group, subGroupNum, param.Value);
+				paramInGroup.Add(dp);
+				dp.paramInGroup = groupOfParam;
+				subGroupNum++;
+			}
+
+
+			for(int i=parameters.Length-1;i>=0;i--)
+			{
+				switch (tableType)
+				{
+					case TableType.Materials_ParametersTable:
+						Parameter.MaterialParametersPropertyChangedStatic += parameters[i].Key.DependentParametersChanged;
+						break;
+					case TableType.FOnly_ParametersTableStandard1:
+						Parameter.CakeFormationPropertyChangedStatic += parameters[i].Key.DependentParametersChanged;
+						break;
+					case TableType.Washing_ParametersTable:
+						Parameter.WashingPropertyChangedStatic += parameters[i].Key.DependentParametersChanged;
+						break;
+					case TableType.Deliquoring_ParametersTable:
+						Parameter.DeliquoringPropertyChangedStatic += parameters[i].Key.DependentParametersChanged;
+						break;
+					case TableType.Result_ParametersTable:
+						Parameter.ResultParametersPropertyChangedStatic += parameters[i].Key.DependentParametersChanged;
+						break;
+					default: Parameter.PropertyChangedStatic += parameters[i].Key.DependentParametersChanged;
+						break;
+				}
+				
+			}
+
+			groupOfParam.Add(group, paramInGroup);
 		}
 
 		public static GroupsOfParameters Get_Materials_ParametersTable(IWashingDeliquoringProcess f_w_d_process)
@@ -181,38 +216,23 @@ namespace Filtering
 			res.CalculationType = CalculationTypes.StandardCalculation;
 			//res.Option = 1;
 
-			DisplayParameter Etaf = new DisplayParameter(f_w_d_process.CakeFormation.Suspension.MotherLiquid.MotherLiquidViscosity, f_w_d_process.CakeFormation.Suspension.MotherLiquid, 1, 1, true);
-			res.Add(1, new List<DisplayParameter>() {Etaf});
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 1, new KeyValuePair<Parameter, bool>(f_w_d_process.CakeFormation.Suspension.MotherLiquid.MotherLiquidViscosity, true));
 
-			DisplayParameter Rhof = new DisplayParameter(f_w_d_process.CakeFormation.Suspension.MotherLiquid.MotherLiquidDensity, f_w_d_process.CakeFormation.Suspension.MotherLiquid, 2, 1, true);
-			res.Add(2, new List<DisplayParameter>() { Rhof });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 2, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Suspension.MotherLiquid.MotherLiquidDensity, true));
 
-			DisplayParameter Rhos= new DisplayParameter(f_w_d_process.CakeFormation.Suspension.SolidDensity, f_w_d_process.CakeFormation.Suspension, 3, 1, true);
-			DisplayParameter Rhosus = new DisplayParameter(f_w_d_process.CakeFormation.Suspension.SuspensionDensity, f_w_d_process.CakeFormation.Suspension, 3, 2, true);
-			res.Add(3, new List<DisplayParameter>() { Rhos,Rhosus });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 3, new KeyValuePair<Parameter, bool>(f_w_d_process.CakeFormation.Suspension.SolidDensity, true), new KeyValuePair<Parameter, bool>(f_w_d_process.CakeFormation.Suspension.SuspensionDensity, true));
 
-			DisplayParameter Cm= new DisplayParameter(f_w_d_process.CakeFormation.Suspension.SolidsMassFraction, f_w_d_process.CakeFormation.Suspension, 4, 1, true);
-			DisplayParameter Cv = new DisplayParameter(f_w_d_process.CakeFormation.Suspension.SolidsVolumeFraction, f_w_d_process.CakeFormation.Suspension, 4, 2, true);
-			DisplayParameter C = new DisplayParameter(f_w_d_process.CakeFormation.Suspension.SolidConcentration, f_w_d_process.CakeFormation.Suspension, 4, 3, true);
-			res.Add(4, new List<DisplayParameter>() { Cm, Cv, C });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 4, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Suspension.SolidsMassFraction, true), new KeyValuePair<Parameter, bool>(f_w_d_process.CakeFormation.Suspension.SolidsVolumeFraction, true), new KeyValuePair<Parameter, bool>(f_w_d_process.CakeFormation.Suspension.SolidConcentration, true));
 
-			DisplayParameter Eps0 = new DisplayParameter(f_w_d_process.CakeFormation.Cake.StandardPorosity, f_w_d_process.CakeFormation.Cake, 5, 1, true);
-			DisplayParameter Eps = new DisplayParameter(f_w_d_process.CakeFormation.Cake.Porosity, f_w_d_process.CakeFormation.Cake, 5, 2, true);
-			res.Add(5, new List<DisplayParameter>() { Eps0, Eps });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 5, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Cake.StandardPorosity, true), new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Cake.Porosity, true));
 
-			DisplayParameter ne = new DisplayParameter(f_w_d_process.CakeFormation.Cake.PorosityReductionFactor, f_w_d_process.CakeFormation.Cake, 6, 1, true);
-			res.Add(6, new List<DisplayParameter>() { ne });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 6, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Cake.PorosityReductionFactor, true));
 
-			DisplayParameter Pc0 = new DisplayParameter(f_w_d_process.CakeFormation.Cake.StandardCakePermeability, f_w_d_process.CakeFormation.Cake, 7, 1, true);
-			DisplayParameter Pc = new DisplayParameter(f_w_d_process.CakeFormation.Cake.CakePermeability, f_w_d_process.CakeFormation.Cake, 7, 2, true);
-			res.Add(7, new List<DisplayParameter>() { Pc0, Pc });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 7, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Cake.StandardCakePermeability, true), new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Cake.CakePermeability, true));
 
-			DisplayParameter nc = new DisplayParameter(f_w_d_process.CakeFormation.Cake.Compressibility, f_w_d_process.CakeFormation.Cake, 8, 1, true);
-			res.Add(8, new List<DisplayParameter>() { nc });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 8, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Cake.Compressibility, true));
 
-			DisplayParameter hce = new DisplayParameter(f_w_d_process.CakeFormation.Filter.SpecificFilterMediumResistance, f_w_d_process.CakeFormation.Filter, 9, 1, true);
-			DisplayParameter Rm = new DisplayParameter(f_w_d_process.CakeFormation.Filter.MediumResistance, f_w_d_process.CakeFormation.Filter, 9, 2, true);
-			res.Add(9, new List<DisplayParameter>() { hce, Rm });
+			AddGroup2Table(TableType.Materials_ParametersTable, ref res, 9, new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Filter.SpecificFilterMediumResistance, true), new KeyValuePair<Parameter, bool>( f_w_d_process.CakeFormation.Filter.MediumResistance, true));
 
 			return res;
 		}
@@ -223,16 +243,11 @@ namespace Filtering
 			res.CalculationType = CalculationTypes.StandardCalculation;
 			//res.Option = 1;
 
-			DisplayParameter Dpw = new DisplayParameter(f_w_d_process.Washing.PressureDifferenceCakeWashing, f_w_d_process.Washing, 1, 1, true);
-			res.Add(1, new List<DisplayParameter>(){ Dpw});
+			AddGroup2Table(TableType.Washing_ParametersTable, ref res, 1, new KeyValuePair<Parameter, bool>(f_w_d_process.Washing.PressureDifferenceCakeWashing, true));
 
-			DisplayParameter hcw = new DisplayParameter(f_w_d_process.Washing.CakeHeightForCakeWashing, f_w_d_process.Washing, 2, 1, true);
-			res.Add(2, new List<DisplayParameter>(){ hcw });
+			AddGroup2Table(TableType.Washing_ParametersTable, ref res, 2, new KeyValuePair<Parameter, bool>(f_w_d_process.Washing.CakeHeightForCakeWashing, true));
 
-			DisplayParameter w = new DisplayParameter(f_w_d_process.Washing.WashingRatio, f_w_d_process.Washing, 3, 1, true);
-			DisplayParameter Vw = new DisplayParameter(f_w_d_process.Washing.WashLiquidVolume, f_w_d_process.Washing, 3, 2, true);
-			DisplayParameter tw = new DisplayParameter(f_w_d_process.Washing.WashingTime, f_w_d_process.Washing, 3, 3, true);
-			res.Add(3, new List<DisplayParameter>() { w, Vw, tw});
+			AddGroup2Table(TableType.Washing_ParametersTable, ref res, 3, new KeyValuePair<Parameter, bool>(f_w_d_process.Washing.WashingRatio, true), new KeyValuePair<Parameter, bool>(f_w_d_process.Washing.WashLiquidVolume, true), new KeyValuePair<Parameter, bool>(f_w_d_process.Washing.WashingTime, true));
 
 			return res;
 		}
@@ -243,17 +258,17 @@ namespace Filtering
 			res.CalculationType = CalculationTypes.StandardCalculation;
 			//res.Option = 1;
 
-			DisplayParameter Dpd = new DisplayParameter(f_w_d_process.Deliquoring.PressureDifferenceCakeDeliquoring, f_w_d_process.Deliquoring, 1, 1, true);
-			res.Add(1, new List<DisplayParameter>() { Dpd });
+			AddGroup2Table(TableType.Deliquoring_ParametersTable, ref res, 1, 
+				new KeyValuePair<Parameter, bool>(f_w_d_process.Deliquoring.PressureDifferenceCakeDeliquoring, true));
 
-			DisplayParameter hcd = new DisplayParameter(f_w_d_process.Deliquoring.CakeHeightForCakeDeliquoring, f_w_d_process.Deliquoring, 2, 1, true);
-			res.Add(2, new List<DisplayParameter>() { hcd });
+			AddGroup2Table(TableType.Deliquoring_ParametersTable, ref res, 2, 
+				new KeyValuePair<Parameter, bool>(f_w_d_process.Deliquoring.CakeHeightForCakeDeliquoring, true));
 
-			DisplayParameter S = new DisplayParameter(f_w_d_process.Deliquoring.CakeSaturation, f_w_d_process.Deliquoring, 3, 1, true);
-			DisplayParameter Rf = new DisplayParameter(f_w_d_process.Deliquoring.CakeMoistureContent, f_w_d_process.Deliquoring, 3, 2, true);
-			DisplayParameter K = new DisplayParameter(f_w_d_process.Deliquoring.DeliquoringIndex, f_w_d_process.Deliquoring, 3, 3, true);
-			DisplayParameter td = new DisplayParameter(f_w_d_process.Deliquoring.DeliquoringTime, f_w_d_process.Deliquoring, 3, 4, true);
-			res.Add(3, new List<DisplayParameter>() { S, Rf, K,td });
+			AddGroup2Table(TableType.Deliquoring_ParametersTable, ref res, 3,
+				new KeyValuePair<Parameter, bool>(f_w_d_process.Deliquoring.CakeSaturation, true), 
+				new KeyValuePair<Parameter, bool>(f_w_d_process.Deliquoring.CakeMoistureContent, true), 
+				new KeyValuePair<Parameter, bool>(f_w_d_process.Deliquoring.DeliquoringIndex, true), 
+				new KeyValuePair<Parameter, bool>(f_w_d_process.Deliquoring.DeliquoringTime, true));
 
 			return res;
 		}
@@ -264,10 +279,10 @@ namespace Filtering
 			res.CalculationType = CalculationTypes.StandardCalculation;
 			//res.Option = 1;
 
-			DisplayParameter t_tech = new DisplayParameter(f_w_d_process.ResultParameter.TechnicalTime, f_w_d_process.ResultParameter, 1, 1, true);
-			DisplayParameter tc = new DisplayParameter(f_w_d_process.ResultParameter.CycleTime, f_w_d_process.ResultParameter, 1, 2, true);
-			DisplayParameter Qms = new DisplayParameter(f_w_d_process.ResultParameter.SolidsThroughput, f_w_d_process.ResultParameter, 1, 3, true);
-			res.Add(1, new List<DisplayParameter>() { t_tech, tc, Qms });
+			AddGroup2Table(TableType.Result_ParametersTable, ref res, 1, 
+				new KeyValuePair<Parameter, bool>(f_w_d_process.ResultParameter.TechnicalTime, true),
+				new KeyValuePair<Parameter, bool>(f_w_d_process.ResultParameter.CycleTime, true),
+				new KeyValuePair<Parameter, bool>(f_w_d_process.ResultParameter.SolidsThroughput, true));
 
 			return res;
 		}

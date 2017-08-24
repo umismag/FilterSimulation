@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Text;
 
 namespace Filtering
 {
@@ -114,11 +116,11 @@ namespace Filtering
 		{
 			get => this;
 			set { }
-		}		
+		}
 
 		public ResultParameter()
 		{
-			
+
 		}
 
 		public ResultParameter(IDeliquoringProcess deliquoringProcess) : this()
@@ -126,8 +128,6 @@ namespace Filtering
 			CakeFormation = deliquoringProcess.CakeFormation;
 			Washing = deliquoringProcess.Washing;
 			Deliquoring = deliquoringProcess.Deliquoring;
-
-			
 		}
 	}
 
@@ -138,8 +138,8 @@ namespace Filtering
 			Name = "Cycle Time";
 			SymbolSuffix = "c";
 			converter = new Param2DoubleConverter<CycleTime>();
-			PropertyChangedStatic += CycleTime_Without_SolidsThroughputDependentParametersChanged;
-			PropertyChangedStatic += CycleTime_With_SolidsThroughputDependentParametersChanged;
+			dependentParameters = "CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime, TechnicalTime";
+			dependent2Parameters = "CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth, SolidsThroughput";
 		}
 
 		public CycleTime(double? value) : this()
@@ -147,7 +147,7 @@ namespace Filtering
 			Value = value;
 		}
 
-		public double? GetCycleTime_Without_SolidsThroughput()
+		public override double? GetUpdatedParameter()//public double? GetCycleTime_Without_SolidsThroughput()
 		{
 			double? res;
 			try
@@ -165,13 +165,7 @@ namespace Filtering
 			return res;
 		}
 
-		void CycleTime_Without_SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime, TechnicalTime";
-			IfNeedThenUpdate(dependentParameters, prop, this, GetCycleTime_Without_SolidsThroughput);
-		}
-
-		public double? GetCycleTime_With_SolidsThroughput()
+		public override double? Get2UpdatedParameter()//public double? GetCycleTime_With_SolidsThroughput()
 		{
 			double? res;
 			try
@@ -187,13 +181,6 @@ namespace Filtering
 				res = null;
 			}
 			return res;
-		}
-
-		void CycleTime_With_SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth, SolidsThroughput";
-
-			IfNeedThenUpdate(dependentParameters, prop, this, GetCycleTime_With_SolidsThroughput);
 		}
 	}
 
@@ -242,32 +229,53 @@ namespace Filtering
 			}
 		}
 
-		public FilteringProcess()
+		public FilteringProcess(ResultParameter resultParameter)
 		{
+			CakeFormation = resultParameter.CakeFormation;
 
+			Washing = resultParameter.Washing;
 
-		}
+			Deliquoring = resultParameter.Deliquoring;
 
-		public FilteringProcess(ResultParameter resultParameter, CakeFormation cakeFormation, Washing washing = null, Deliquoring deliquoring = null) : this()
-		{
-			CakeFormation = cakeFormation;
-			Washing = washing;
-			Deliquoring = deliquoring;
 			ResultParameter = resultParameter;
 
 			Parameter.process = this;
 			ResultParameter.ThatContainsObj = this;
+
 			CakeFormation.SetAllThatContainsObj();
 			Washing.SetAllThatContainsObj();
 			Deliquoring.SetAllThatContainsObj();
 			ResultParameter.SetAllThatContainsObj();
+
 		}
+
+		//public FilteringProcess(ResultParameter resultParameter, CakeFormation cakeFormation, Washing washing = null, Deliquoring deliquoring = null) /*: this()*/
+		//{
+		//	CakeFormation = cakeFormation;
+
+		//	Washing = washing;
+		//	Washing.CakeFormation = CakeFormation;
+
+		//	Deliquoring = deliquoring;
+		//	Deliquoring.CakeFormation = CakeFormation;
+		//	Deliquoring.Washing = Washing;
+
+		//	ResultParameter = resultParameter;
+		//	ResultParameter.CakeFormation = CakeFormation;
+		//	ResultParameter.Washing = Washing;
+		//	ResultParameter.Deliquoring = Deliquoring;
+
+
+		//}
+
+
 
 		public Grid GetParametersTable(Func<IWashingDeliquoringProcess, GroupsOfParameters> func)
 		{
 			IWashingDeliquoringProcess obj = this;
 			if (obj == null) return null;
 			Grid res = new Grid();
+			
 
 			#region Шапка 
 			//---------- Шапка ------------------------\\
@@ -328,13 +336,13 @@ namespace Filtering
 			res.Children.Add(lb2);
 			res.Children.Add(lb3);
 			//---------- Шапка ------------------------\\
-#endregion
+			#endregion
 			SolidColorBrush backColor;
 
 			void AddRowToRes(DisplayParameter dispParam)
 			{
 				Parameter param = dispParam.Parameter;
-				Parameter parent = dispParam.Parent;
+				Parameter parent = dispParam.Parameter.ThatContainsObj as Parameter;
 
 
 
@@ -346,18 +354,19 @@ namespace Filtering
 				//groupNumberBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
 				Binding backGroundColorBinding = new Binding();
-				if (parent != null)
-					backGroundColorBinding.Source = parent;
-				else
-					backGroundColorBinding.Source = this;
+				//if (parent != null)
+				backGroundColorBinding.Source = parent;
+				//else
+				//	backGroundColorBinding.Source = this;
 
-				//backGroundColorBinding.Source = param.GetType();
-				backGroundColorBinding.Mode = BindingMode.OneWay;
+				//backGroundColorBinding.Source = param;
+				//backGroundColorBinding.Mode = BindingMode.OneWay;
 				backGroundColorBinding.Path = new PropertyPath(
-					param.GetType().Name +
-					".SourceOfParameterChanging");
+					param.GetType().Name + "." +
+					"SourceOfParameterChanging");
 				backGroundColorBinding.Converter = param.SourceOfParameterChanging2BrushConverter;
 				backGroundColorBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+				backGroundColorBinding.ConverterParameter = dispParam;
 
 				Border NameBorder = new Border();
 				//NameBorder.Background = backColor;
@@ -402,18 +411,28 @@ namespace Filtering
 				binding.Source = parent;
 				binding.Path = new PropertyPath(param.GetType().Name);
 				binding.Converter = param.Converter;
+				binding.ConverterParameter = dispParam;
 				//binding.Delay = 50;
 				binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+				binding.ValidationRules.Add(new ValueForTabValidator( dispParam));
+				binding.ValidationRules.Add(new ExceptionValidationRule());
+				binding.NotifyOnValidationError = true;
+				
 
 				TextBox TextBoxValue = new TextBox();
 				TextBoxValue.BorderThickness = new Thickness(1, 0, 1, 1);
 				TextBoxValue.BorderBrush = Brushes.Black;
-				TextBoxValue.Foreground = Brushes.Blue;
+				TextBoxValue.FontWeight = FontWeights.Bold;
 				TextBoxValue.Background = backColor;
+				Validation.AddErrorHandler(TextBoxValue, GridValueValidateError);
+
+				TextBoxValue.Tag = dispParam;
+
 				TextBoxValue.SetBinding(TextBox.TextProperty, binding);
-				//TextBoxValue.SetBinding(TextBox.BackgroundProperty, backGroundColorBinding);
-				TextOptions.SetTextFormattingMode(TextBoxValue, TextFormattingMode.Display);
 				//TextBoxValue
+				TextBoxValue.SetBinding(Control.ForegroundProperty, backGroundColorBinding);
+				TextOptions.SetTextFormattingMode(TextBoxValue, TextFormattingMode.Display);
+				TextBoxValue.ToolTip = new ToolTip() { Content = GetDisplayParameterInfo(dispParam) };
 				Grid.SetColumn(TextBoxValue, 3);
 				Grid.SetRow(TextBoxValue, res.RowDefinitions.Count - 1);// param.GroupNumber - 1);
 
@@ -450,7 +469,7 @@ namespace Filtering
 				TextBlockGroupN.Padding = new Thickness(1, 1, 1, 1);
 				TextBlockGroupN.Background = backColor;
 				TextBlockGroupN.TextAlignment = TextAlignment.Center;
-				
+
 				TextOptions.SetTextFormattingMode(TextBlockGroupN, TextFormattingMode.Display);
 				Grid.SetColumn(GroupBorder, 0);
 				Grid.SetRow(GroupBorder, res.RowDefinitions.Count); //param.GroupNumber - 1);
@@ -462,13 +481,82 @@ namespace Filtering
 				}
 
 				Grid.SetRowSpan(GroupBorder, gr_dp.Value.Count);
-				
+
 
 				GroupBorder.Child = TextBlockGroupN;
 				res.Children.Add(GroupBorder);
 			}
 
 			return res;
+		}
+
+		private string GetDisplayParameterInfo(DisplayParameter dp)
+		{
+			if (dp != null)
+			{
+				StringBuilder s = new StringBuilder();
+				s.AppendLine("Parameter: " + dp.Parameter.Name);
+				s.AppendLine("Symbol: " + dp.Parameter.Symbol);
+				s.AppendLine("Unit: " + dp.Parameter.Unit);
+				s.AppendLine("Limits: " + dp.Parameter.MinValue + "(" + dp.Parameter.Unit + ")" + " <= " + dp.Parameter.Symbol + " >= " + dp.Parameter.MaxValue + "(" + dp.Parameter.Unit + ")");
+				return s.ToString();
+			}
+			else
+				return null;
+		}
+
+		private void GridValueValidateError(object sender, ValidationErrorEventArgs e)
+		{
+			ToolTip ValueToolTip = new ToolTip();
+			if (((BindingExpressionBase)e.Error.BindingInError).HasError)
+			{
+				ValueToolTip.Content = e.Error.ErrorContent.ToString();
+			}
+			else
+			{
+				DisplayParameter dp = (sender as TextBox).Tag as DisplayParameter;
+				ValueToolTip.Content = GetDisplayParameterInfo(dp);
+			}
+			(sender as TextBox).ToolTip = ValueToolTip;
+		}
+	}
+
+	public class ValueForTabValidator : ValidationRule
+	{
+		DisplayParameter DisplayParam;
+
+		public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+		{
+			Parameter Param = DisplayParam.Parameter;
+			Double DoubleValue;
+
+			if (!double.TryParse(value.ToString().Replace('.', ','), out DoubleValue))
+			{
+				return new ValidationResult(false, "Entered value must be a real number.");
+			}
+
+			if (Param == null)
+			{
+				return new ValidationResult(false, "Associated object for entered value is not assigned to.");
+			}
+
+			if (DoubleValue > Param.MaxValue)
+			{
+				return new ValidationResult(false, "Entered value is too big. It must be <= " + Param.MaxValue);
+			}
+
+			if (DoubleValue < Param.MinValue)
+			{
+				return new ValidationResult(false, "Entered value is too small. It must be >= " + Param.MinValue);
+			}
+
+			return new ValidationResult(true, null);
+
+		}
+
+		public ValueForTabValidator(DisplayParameter displayParam)
+		{
+			DisplayParam = displayParam;
 		}
 	}
 
@@ -479,7 +567,10 @@ namespace Filtering
 			Name = "Technical Time";
 			SymbolSuffix = "_tech";
 			converter = new Param2DoubleConverter<TechnicalTime>();
-			PropertyChangedStatic += TechnicalTimeDependentParametersChanged;
+			dependentParameters = "CycleTime, CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime";
+			MinValue = 300;
+			MaxValue = 1800;
+			sourceOfMinMaxChanging = SourceOfChanging.ManuallyByUser;
 		}
 
 		public TechnicalTime(double? value) : this()
@@ -487,7 +578,7 @@ namespace Filtering
 			Value = value;
 		}
 
-		public double? GetTechnicalTime()
+		public override double? GetUpdatedParameter()//public double? GetTechnicalTime()
 		{
 			double? res;
 			try
@@ -505,13 +596,6 @@ namespace Filtering
 			}
 			return res;
 		}
-
-		void TechnicalTimeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CycleTime, CakeFormation.FiltrationTime, Washing.WashingTime, Deliquoring.DeliquoringTime";
-
-			IfNeedThenUpdate(dependentParameters, prop, this, GetTechnicalTime);
-		}
 	}
 
 	public class SolidsThroughput : Parameter
@@ -522,7 +606,7 @@ namespace Filtering
 			Symbol = "Qms";
 			Unit = "kgs-1";
 			converter = new Param2DoubleConverter<SolidsThroughput>();
-			PropertyChangedStatic += SolidsThroughputDependentParametersChanged;
+			dependentParameters = "CycleTime, CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth";
 		}
 
 		public SolidsThroughput(double? value) : this()
@@ -530,7 +614,7 @@ namespace Filtering
 			Value = value;
 		}
 
-		public double? GetSolidsThroughput()
+		public override double? GetUpdatedParameter()//public double? GetSolidsThroughput()
 		{
 			double? res;
 			try
@@ -546,14 +630,6 @@ namespace Filtering
 				res = null;
 			}
 			return res;
-		}
-
-		void SolidsThroughputDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "CycleTime, CakeFormation.Filter.Area, CakeFormation.Suspension.SolidDensity, CakeFormation.Cake.Porosity, CakeFormation.Cake.CakeHeigth";
-
-			IfNeedThenUpdate(dependentParameters, prop, this, GetSolidsThroughput);
-
 		}
 	}
 }

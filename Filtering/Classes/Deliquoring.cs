@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Filtering
 {
@@ -95,6 +96,8 @@ namespace Filtering
 			set { }
 		}
 
+		
+
 		public Deliquoring(IWashingProcess washingProcess)
 		{
 			Washing = washingProcess.Washing;
@@ -180,13 +183,18 @@ namespace Filtering
 		}
 	}
 
-	public class PressureDifferenceCakeDeliquoring: PressureDifferenceCakeFormation
+	public class PressureDifferenceCakeDeliquoring: Parameter
 	{
 		public PressureDifferenceCakeDeliquoring()
 		{
 			Name = "Pressure difference cake deliquoring";
+			Unit = "bar";
+			Symbol = "Dp";
 			SymbolSuffix = "d";
 			converter = new Param2DoubleConverter<PressureDifferenceCakeDeliquoring>();
+			MinValue = 0.5;
+			MaxValue = 6;
+			sourceOfMinMaxChanging = SourceOfChanging.ManuallyByUser;
 		}
 
 		public PressureDifferenceCakeDeliquoring(double? value):this()

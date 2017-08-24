@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Globalization;
-using System.ComponentModel;
-
-namespace Filtering
+﻿namespace Filtering
 {
 	public class Washing : Parameter, IWashingProcess
 	{
@@ -117,38 +108,11 @@ namespace Filtering
 			set { }
 		}
 
-		// F
-		void WashLiquidVolumeDependentParametersChanged(object sender, PropertyChangedEventArgs prop)
-		{
-			string dependentParameters = "WashingRatio, Area, SpecificCakeVolume, Porosity";
-			IfNeedThenUpdate(dependentParameters, prop, WashLiquidVolume, GetWashLiquidVolume);
-		}
-
-		public double? GetWashLiquidVolume()
-		{
-			double? res;
-			try
-			{
-				res =
-					process.CakeFormation.Cake.Porosity.Value *
-					process.CakeFormation.Filter.Area.Value *
-					process.CakeFormation.SpecificCakeVolume.Value *
-					process.Washing.WashingRatio.Value / 100;
-			}
-			catch
-			{
-				res = null;
-			}
-			return res;
-		}
-		//F
-
+		
 
 		public Washing(ICakeFormationProcess cakeFormationProcess)
 		{
 			CakeFormation = cakeFormationProcess.CakeFormation;
-			
-			PropertyChangedStatic += WashLiquidVolumeDependentParametersChanged;
 		}
 
 		public Washing(string name, WashingLiquid liquid, Max_wash_out max_wash_out, Min_wash_out min_wash_out, Adaptation_ParameterA adaptation_ParameterA, Adaptation_ParameterB adaptation_ParameterB, PressureDifferenceCakeWashing pressureDifferenceCakeWashing, ICakeFormationProcess cakeFormationProcess) :this(cakeFormationProcess)
@@ -193,13 +157,18 @@ namespace Filtering
 		}
 	}
 
-	public class PressureDifferenceCakeWashing: PressureDifferenceCakeFormation
+	public class PressureDifferenceCakeWashing: Parameter
 	{
 		public PressureDifferenceCakeWashing()
 		{
 			Name = "Pressure Difference Cake Washing";
+			Unit = "bar";
+			Symbol = "Dp";
 			SymbolSuffix = "w";
 			converter = new Param2DoubleConverter<PressureDifferenceCakeWashing>();
+			MinValue = 0.5;
+			MaxValue = 6;
+			sourceOfMinMaxChanging = SourceOfChanging.ManuallyByUser;
 		}
 
 		public PressureDifferenceCakeWashing(double? value):this()
@@ -216,6 +185,9 @@ namespace Filtering
 			Unit = "-";
 			Symbol = "w";
 			converter = new Param2DoubleConverter<WashingRatio>();
+			MinValue = 0;
+			MaxValue = 5;
+			sourceOfMinMaxChanging = SourceOfChanging.ManuallyByUser;
 		}
 
 		public WashingRatio(double? value) : this()
@@ -242,12 +214,32 @@ namespace Filtering
 			Name = "Wash liquid volume";
 			SymbolSuffix = "w";
 			converter = new Param2DoubleConverter<WashLiquidVolume>();
+			dependentParameters = "WashingRatio, Area, SpecificCakeVolume, Porosity";
 		}
 
 		public WashLiquidVolume(double? value):this()
 		{
 			Value = value;
 		}
+
+		public override double? GetUpdatedParameter()//public double? GetWashLiquidVolume()
+		{
+			double? res;
+			try
+			{
+				res =
+					process.CakeFormation.Cake.Porosity.Value *
+					process.CakeFormation.Filter.Area.Value *
+					process.CakeFormation.SpecificCakeVolume.Value *
+					process.Washing.WashingRatio.Value / 100;
+			}
+			catch
+			{
+				res = null;
+			}
+			return res;
+		}
+		//F
 	}
 
 	public class Volume :Parameter
